@@ -1,0 +1,25 @@
+{
+    "name": "b-eventb-language-extension",
+    "displayName": "b/eventb language extension",
+    "description": "compiler support for b and eventb via prob",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.45.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "b",
+            "aliases": ["B", "b"],
+            "extensions": [".mch",".imp",".ref",".eventb"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "b",
+            "scopeName": "",
+            "path": "./syntaxes/b.tmLanguage.json"
+        }]
+    }
+}
