@@ -2,7 +2,7 @@
 	"name": "b-eventb-language-extension",
 	"displayName": "b-eventb language extension",
 	"description": "compiler support for b and eventb via ProB",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "SeeBasTStick",
 	"icon": "prob2-ui.png",
 	"author": "Sebastian Stock",
@@ -17,10 +17,14 @@
 		"Programming Languages"
 	],
 	"keywords": [
-		"multi-root ready", "B", "eventB", "proB"
+		"multi-root ready",
+		"B",
+		"eventB",
+		"proB"
 	],
 	"activationEvents": [
-		"onLanguage:B", "onLanguage:eventB"
+		"onLanguage:B",
+		"onLanguage:eventB"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
