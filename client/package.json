@@ -1,6 +1,6 @@
 {
 	"name": "lsp-b-eventb-client",
-	"description": "VSCode part of a language server",
+	"description": "client part of the language pack",
 	"author": "Sebastian Stock",
 	"license": "MIT",
 	"version": "0.0.1",
