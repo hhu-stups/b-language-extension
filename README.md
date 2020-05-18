@@ -1,6 +1,6 @@
 # b-eventb-language-extension README
 
-Compiler support for b/eventb via ProB. You need a build a version of ProB downloaded to use fully use this extension. Visit https://www3.hhu.de/stups/prob/ to get the latest version.
+Compiler support for b/eventb via ProB. You need a nightly build of ProB to fully use this extension. Visit https://www3.hhu.de/stups/prob/ to get the latest version.
 
 
 ## Features
@@ -38,3 +38,8 @@ This extension contributes the following settings:
 ### 0.0.2
 
 - Added option to set ProB path
+
+
+### 0.0.3
+
+- README fix

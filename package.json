@@ -17,10 +17,10 @@
 		"Programming Languages"
 	],
 	"keywords": [
-		"multi-root ready"
+		"multi-root ready", "B", "eventB", "proB"
 	],
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:B", "onLanguage:eventB"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
