@@ -5,7 +5,8 @@ Compiler support for b/eventb via ProB. You need a build a version of ProB downl
 
 ## Features
 
-(Animation)
+![animation](https://raw.githubusercontent.com/SeeBasTStick/b-eventb-language-extension/master/media/screencaputer.gif)
+
 
 ## Requirements
 
