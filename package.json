@@ -23,8 +23,7 @@
 		"proB"
 	],
 	"activationEvents": [
-		"onLanguage:B",
-		"onLanguage:eventB"
+		"onLanguage:plaintext"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
