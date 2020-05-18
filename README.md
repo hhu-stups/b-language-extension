@@ -14,17 +14,13 @@ Compiler support for b/eventb via ProB. You need a build a version of ProB downl
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* `languageServer.probHome`: to set the path to ProB
+
 
 ## Bugs
-- please opne an issue at https://github.com/SeeBasTStick/b-eventb-language-extension
+- please open an issue at https://github.com/SeeBasTStick/b-eventb-language-extension
 
 
 ## Future plans
@@ -33,6 +29,11 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+
 ### 0.0.1
 
 - First prototype minimum features
+
+### 0.0.2
+
+- Added option to set ProB path
