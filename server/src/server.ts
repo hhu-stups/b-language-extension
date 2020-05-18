@@ -90,12 +90,13 @@ connection.onInitialized(() => {
 // The example settings
 interface ExampleSettings {
 	maxNumberOfProblems: number;
+	probHome : string;
 }
 
 // The global settings, used when the `workspace/configuration` request is not supported by the client.
 // Please note that this is not the case when using this server with the client provided in this example
 // but could happen with other clients.
-const defaultSettings: ExampleSettings = { maxNumberOfProblems: 1000 };
+const defaultSettings: ExampleSettings = { maxNumberOfProblems: 1000, probHome: "/home/sebastian/prob_prolog/probcli.sh" };
 let globalSettings: ExampleSettings = defaultSettings;
 
 // Cache the settings of all open documents
@@ -149,12 +150,14 @@ documents.onDidChangeContent(change => {
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	// In this simple example we get the settings for every validate run.
 	let settings = await getDocumentSettings(textDocument.uri);
-
+	
 	let pathy:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
 	let dic:string = pathy.dir
+
+	console.log(settings.probHome)
 	
-	let probCliHome:string = '/home/sebastian/prob_prolog/probcli.sh'
+	let probCliHome:string = settings.probHome//'/home/sebastian/prob_prolog/probcli.sh'
 
 	let ndjson:string = 'NDJSON_ERROR_LOG_FILE '
 	let errorPath:string = dic+'/_error.json'

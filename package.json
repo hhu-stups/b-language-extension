@@ -44,6 +44,11 @@
 					],
 					"default": "off",
 					"description": "Traces the communication between VS Code and the language server."
+				},
+				"languageServerExample.probHome":{
+					"type":"string",
+					"default":"~/prob_prolog/probcli.sh",
+					"description": "Path to ProB executable"
 				}
 			}
 		}
