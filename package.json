@@ -1,22 +1,22 @@
 {
-    "name": "b-eventb-language-extension",
-    "displayName": "b-eventb language extension",
-    "description": "compiler support for b and eventb via ProB",
-    "version": "0.0.1",
-    "publisher": "SeeBasTStick",
-    "icon": "prob2-ui.png",
-    "author": "Sebastian Stock",
+	"name": "b-eventb-language-extension",
+	"displayName": "b-eventb language extension",
+	"description": "compiler support for b and eventb via ProB",
+	"version": "0.0.2",
+	"publisher": "SeeBasTStick",
+	"icon": "prob2-ui.png",
+	"author": "Sebastian Stock",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/SeeBasTStick/b-eventb-language-extension"
 	},
-    "engines": {
-        "vscode": "^1.45.0"
-    },
-    "categories": [
-        "Programming Languages"
-    ],
-    "keywords": [
+	"engines": {
+		"vscode": "^1.45.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
 		"multi-root ready"
 	],
 	"activationEvents": [
@@ -45,16 +45,15 @@
 					"default": "off",
 					"description": "Traces the communication between VS Code and the language server."
 				},
-				"languageServer.probHome":{
+				"languageServer.probHome": {
 					"scope": "window",
-					"type":"string",
-					"default":"~/prob_prolog/probcli.sh",
+					"type": "string",
+					"default": "~/prob_prolog/probcli.sh",
 					"description": "Path to ProB executable"
 				}
 			}
 		}
 	},
-	
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -b",
