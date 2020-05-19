@@ -15,9 +15,6 @@ import {
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	InitializeResult,
-	NotificationType0,
-	PublishDiagnosticsNotification
-
 } from 'vscode-languageserver';
 
 import {
@@ -27,7 +24,9 @@ import {
 import { URI } from 'vscode-uri';
 import * as fs from 'fs';
 import {ErrorMatcher} from './ErrorMatcher';
+import * as wordComplition from './wordCompletion'
 import * as path from 'path';
+
 
 
 // Create a connection for the server. The connection uses Node's IPC as a transport.
@@ -143,11 +142,6 @@ documents.onDidSave(change => {
 	validateTextDocument(change.document)
 })
 
-// The content of a text document has changed. This event is emitted
-// when the text document first opened or when its content has changed.
-documents.onDidChangeContent(change => {
-//	validateTextDocument(change.document);
-});
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let settings = await getDocumentSettings(textDocument.uri);
@@ -189,8 +183,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	  });
 	}
 
-
-
 }
 
 function correctPath(path:string): boolean{
@@ -203,81 +195,15 @@ function correctPath(path:string): boolean{
 	return true
 }
 
-connection.onDidChangeWatchedFiles(_change => {
-	// Monitored files have change in VSCode
-	connection.console.log('We received an file change event');
-});
-
-
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
-
 	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-		
-		return [
-			{
-				label: 'MACHINE',
-				kind: CompletionItemKind.Text,
-				data: 1
-			},
-
-			{
-				label: 'VARIABLES',
-				kind: CompletionItemKind.Text,
-				data: 2
-			},
-			{
-				label: 'CONSTANTS',
-				kind: CompletionItemKind.Text,
-				data: 3
-			},
-			{
-				label: 'OPERATIONS',
-				kind: CompletionItemKind.Text,
-				data: 4
-			},
-
-		];
+		return wordComplition.selectCompletion(textDocumentPosition)
 	}
 );
 
-// This handler resolves additional information for the item selected in
-// the completion list.
-connection.onCompletionResolve(
-	(item: CompletionItem): CompletionItem => {
-		if (item.data === 1) {
-			item.detail = 'TypeScript details';
-			item.documentation = 'TypeScript documentation';
-		} else if (item.data === 2) {
-			item.detail = 'JavaScript details';
-			item.documentation = 'JavaScript documentation';
-		}
-		return item;
-	}
-);
 
-/*
-connection.onDidOpenTextDocument((params) => {
-	// A text document got opened in VSCode.
-	// params.textDocument.uri uniquely identifies the document. For documents store on disk this is a file URI.
-	// params.textDocument.text the initial full content of the document.
-	connection.console.log(`${params.textDocument.uri} opened.`);
-});
-connection.onDidChangeTextDocument((params) => {
-	// The content of a text document did change in VSCode.
-	// params.textDocument.uri uniquely identifies the document.
-	// params.contentChanges describe the content changes to the document.
-	connection.console.log(`${params.textDocument.uri} changed: ${JSON.stringify(params.contentChanges)}`);
-});
-connection.onDidCloseTextDocument((params) => {
-	// A text document got closed in VSCode.
-	// params.textDocument.uri uniquely identifies the document.
-	connection.console.log(`${params.textDocument.uri} closed.`);
-});
-*/
-
-// Make the text document manager listen on the connection
 // for open, change and close text document events
 documents.listen(connection);
 

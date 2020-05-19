@@ -27,6 +27,7 @@ This extension contributes the following settings:
 ## Future plans
 - Linter Support
 - Keyword support
+- Quickfix support
 
 ## Release Notes
 
