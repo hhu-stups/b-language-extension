@@ -43,3 +43,10 @@ This extension contributes the following settings:
 ### 0.0.3
 
 - README fix
+
+
+### 0.0.4
+
+- fixed bug in the package.json file leading to unnoticed server crash
+- added feedback when using an unreachable path
+- added feedback when using a old version of proB

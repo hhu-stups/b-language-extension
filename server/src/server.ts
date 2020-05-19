@@ -173,33 +173,33 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let diagnostics : Array<Diagnostic> = new Array()
 	let diagnosticsPromise : Promise<Set<Diagnostic>>
 
-
-	console.log(command2)
-	exec(command2, (err:string, stdout:string, stderr:string) => {
+	
+	if(correctPath(probCliHome))
+	{
+		exec(command2, (err:string, stdout:string, stderr:string) => {
 		let bla = new ErrorMatcher()
 	    diagnosticsPromise =  bla.matchError(textDocument, errorPath)
 
 		diagnosticsPromise.then(function(result:Set<Diagnostic>){
-			console.log("success")
 			diagnostics = Array.from(result)
-			connection.sendDiagnostics({ uri: textDocument.uri, diagnostics});
-			
+			connection.sendDiagnostics({ uri: textDocument.uri, diagnostics});	
 		}, function(err){
 			connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
-			connection.sendDiagnostics({ uri: textDocument.uri, diagnostics})
 		})
 	  });
+	}
 
 
 
 }
 
 function correctPath(path:string): boolean{
-	fs.access(path, (err) => {
+	try{
+		fs.accessSync(path)
+	}catch(e){
 		connection.sendNotification("path_error_prob", path + " seems to be the wrong path to ProB")
 		return false
-	})
-
+	}
 	return true
 }
 

@@ -12,6 +12,7 @@ import {
 	ServerOptions,
 	TransportKind
 } from 'vscode-languageclient';
+import * as api from  'vscode';
 
 let client: LanguageClient;
 
@@ -54,13 +55,16 @@ export function activate(context: ExtensionContext) {
 	);
 
 	client.onReady().then(() => {
+		let bla = api.window.createOutputChannel("internal_error")
 		client.onNotification("path_error_prob", (message:string) => {
-			console.log(message);
+			api.window.showErrorMessage('a problem occured :' + message)
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
-			console.log(message);
+			api.window.showErrorMessage('a error occured :' + message)
 		});
 	});
+
+	
 	//context.subscriptions.push(client.start());
 
 	// Start the client. This will also launch the server
