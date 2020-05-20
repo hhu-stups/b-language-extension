@@ -1,8 +1,3 @@
-/* --------------------------------------------------------------------------------------------
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- * ------------------------------------------------------------------------------------------ */
-
 import {
 	createConnection,
 	TextDocuments,
@@ -26,6 +21,7 @@ import * as fs from 'fs';
 import {ErrorMatcher} from './ErrorMatcher';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
+import { settings } from 'cluster';
 
 
 
@@ -92,12 +88,19 @@ connection.onInitialized(() => {
 
 // The settings
 interface Settings {
-	maxNumberOfProblems: number;
-	probHome : string;
+	maxNumberOfProblems: number
+	strictChecks : boolean
+	wdChecks : boolean
+	probHome : string
 }
 
 
-const defaultSettings: Settings = { maxNumberOfProblems: 1000, probHome: "/home/sebastian/prob_prolog/probcli.sh" };
+const defaultSettings: Settings = { 
+	maxNumberOfProblems: 1000, 
+	probHome: "/home/sebastian/prob_prolog/probcli.sh",
+	strictChecks : false,
+	wdChecks : false };
+
 let globalSettings: Settings = defaultSettings;
 
 // Cache the settings of all open documents
@@ -144,33 +147,22 @@ documents.onDidSave(change => {
 
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
-	let settings = await getDocumentSettings(textDocument.uri);
-	
-	let pathy:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
+	let documentPath:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
-	let dic:string = pathy.dir
+	let errorPath:string = documentPath.dir+'/_error.json'
 
-	console.log(settings.probHome)
-	
-	let probCliHome:string = settings.probHome
-
-
-	let ndjson:string = 'NDJSON_ERROR_LOG_FILE '
-	let errorPath:string = dic+'/_error.json'
 	const {exec} = require('child_process');
-	let command:string = probCliHome + ' -p MAX_INITIALISATIONS 0 -version -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE '
 	
-	fs.writeFile(errorPath, "", () =>{}) //Insure a clean error dictonary
-	let command2:string = command +  URI.parse(textDocument.uri).path + " -p " + ndjson + errorPath;
-	
+	fs.writeFile(errorPath, "", () =>{}) //Insure a clean error file
+
+	let command:string = getCommand(URI.parse(textDocument.uri).path, errorPath) 
 	
 	let diagnostics : Array<Diagnostic> = new Array()
 	let diagnosticsPromise : Promise<Set<Diagnostic>>
 
-	
-	if(correctPath(probCliHome))
+	if(correctPath(globalSettings.probHome))
 	{
-		exec(command2, (err:string, stdout:string, stderr:string) => {
+		exec(command, (err:string, stdout:string, stderr:string) => {
 		let bla = new ErrorMatcher()
 	    diagnosticsPromise =  bla.matchError(textDocument, errorPath)
 
@@ -185,6 +177,22 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 }
 
+function getCommand(documentPath : string, errorPath : string) : string{
+	let wdCmd = ""
+	let strict = ""
+
+	if(globalSettings.wdChecks){
+		wdCmd = " -wd-check -release_java_parser"
+	}
+
+	if(globalSettings.strictChecks){
+		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint"
+	}
+
+	return globalSettings.probHome + ' -p MAX_INITIALISATIONS 0 -version' + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
+}
+
+
 function correctPath(path:string): boolean{
 	try{
 		fs.accessSync(path)
@@ -198,6 +206,7 @@ function correctPath(path:string): boolean{
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
+	
 	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
 		return wordComplition.selectCompletion(textDocumentPosition)
 	}

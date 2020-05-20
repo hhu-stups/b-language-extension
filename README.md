@@ -27,7 +27,9 @@ This extension contributes the following settings:
 ## Future plans
 - Linter Support
 - Keyword support
-- Quickfix support
+- Quickfix support aká Code Completion
+- WD Support
+
 
 ## Release Notes
 

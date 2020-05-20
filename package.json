@@ -53,6 +53,18 @@
 					"type": "string",
 					"default": "~/prob_prolog/probcli.sh",
 					"description": "Path to ProB executable"
+				},
+				"languageServer.wdChecks": {
+					"scope": "window",
+					"type": "boolean",
+					"default": "off",
+					"description": "Option for WD Checks"
+				},
+				"languageServer.strictChecks": {
+					"scope": "window",
+					"type": "boolean",
+					"default": "off",
+					"description": "Option for stricter Checks"
 				}
 			}
 		}
