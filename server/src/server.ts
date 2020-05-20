@@ -204,6 +204,10 @@ connection.onCompletion(
 );
 
 
+//Can be used to enrich completion with more infos
+connection.onCompletionResolve(
+	(item : CompletionItem) => {return item})
+
 // for open, change and close text document events
 documents.listen(connection);
 
