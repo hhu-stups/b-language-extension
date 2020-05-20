@@ -131,10 +131,6 @@ function completionCommon() : CompletionItem[] {
 			kind: CompletionItemKind.Text,
 		},
 		{
-			label: 'INITIALIZATION',
-			kind: CompletionItemKind.Text,
-		},
-		{
 			label: 'OPERATIONS',
 			kind: CompletionItemKind.Text,
 		},
@@ -1167,10 +1163,6 @@ function completionCommon() : CompletionItem[] {
 			kind:CompletionItemKind.Text,
 		},
 		{
-			label:'VARIABLES',
-			kind:CompletionItemKind.Text,
-		},
-		{
 			label:'ABSTRACT_VARIABLES',
 			kind:CompletionItemKind.Text,
 		},
@@ -1442,22 +1434,6 @@ function completionEventB() : CompletionItem[] {
 		},
 		{
 			label: 'VARIABLES',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'INVARIANT',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'EVENTS',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'Event',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'Initialisation',
 			kind: CompletionItemKind.Text,
 		},
 		{
