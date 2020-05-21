@@ -2,7 +2,7 @@
 	"name": "b-eventb-language-extension",
 	"displayName": "b-eventb language extension",
 	"description": "compiler support for b and eventb via ProB",
-	"version": "0.0.4",
+	"version": "0.1.0",
 	"publisher": "SeeBasTStick",
 	"icon": "prob2-ui.png",
 	"author": "Sebastian Stock",
