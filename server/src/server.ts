@@ -6,7 +6,6 @@ import {
 	InitializeParams,
 	DidChangeConfigurationNotification,
 	CompletionItem,
-	CompletionItemKind,
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	InitializeResult,
@@ -21,7 +20,6 @@ import * as fs from 'fs';
 import {ErrorMatcher} from './ErrorMatcher';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
-import { settings } from 'cluster';
 
 
 
@@ -147,6 +145,9 @@ documents.onDidSave(change => {
 
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
+	globalSettings = await getDocumentSettings(textDocument.uri) // Waiting for correct setting; otherwise allways default
+	
+
 	let documentPath:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
 	let errorPath:string = documentPath.dir+'/_error.json'
@@ -160,6 +161,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let diagnostics : Array<Diagnostic> = new Array()
 	let diagnosticsPromise : Promise<Set<Diagnostic>>
 
+	console.log(command)
 	if(correctPath(globalSettings.probHome))
 	{
 		exec(command, (err:string, stdout:string, stderr:string) => {
@@ -180,16 +182,16 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 function getCommand(documentPath : string, errorPath : string) : string{
 	let wdCmd = ""
 	let strict = ""
-
+	console.log(globalSettings.wdChecks + " " + globalSettings.strictChecks)
 	if(globalSettings.wdChecks){
-		wdCmd = " -wd-check -release_java_parser"
+		wdCmd = " -wd-check -release_java_parser "
 	}
 
 	if(globalSettings.strictChecks){
-		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint"
+		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint "
 	}
 
-	return globalSettings.probHome + ' -p MAX_INITIALISATIONS 0 -version' + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
+	return globalSettings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
 }
 
 

@@ -5,5 +5,7 @@
 	"typescript.preferences.quoteStyle": "single",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
-	}
+	},
+	"languageServer.strictChecks": true,
+	"languageServer.wdChecks": true
 }
