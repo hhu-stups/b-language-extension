@@ -58,13 +58,13 @@
 				"languageServer.wdChecks": {
 					"scope": "window",
 					"type": "boolean",
-					"default": "false",
+					"default": true,
 					"description": "Option for WD Checks"
 				},
 				"languageServer.strictChecks": {
 					"scope": "window",
 					"type": "boolean",
-					"default": "false",
+					"default": false,
 					"description": "Option for stricter Checks"
 				}
 			}

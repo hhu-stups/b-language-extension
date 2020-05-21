@@ -18,7 +18,7 @@ export class ErrorMatcher{
 		  });
 		
 
-
+		
 		  for await (const line of rl) {
 			let obj : XOR<Error, Warning> = JSON.parse(line)
 			let diagnostic : Diagnostic

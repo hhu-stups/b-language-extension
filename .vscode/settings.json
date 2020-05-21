@@ -6,6 +6,5 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"languageServer.strictChecks": true,
-	"languageServer.wdChecks": true
+	"languageServer.wdChecks": false
 }

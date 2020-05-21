@@ -16,3 +16,10 @@
 - fixed bug in the package.json file leading to unnoticed server crash
 - added feedback when using an unreachable path
 - added feedback when using a old version of proB
+
+
+## [0.1.0]
+
+- added more sound auto compeltion
+- added WD cheks
+- added strict checks

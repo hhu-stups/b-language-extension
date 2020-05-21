@@ -18,6 +18,8 @@ Compiler support for b/eventb via ProB. You need a nightly build of ProB to full
 This extension contributes the following settings:
 
 * `languageServer.probHome`: to set the path to ProB
+* `languageServer.wdChecks`: to enable/disable WDChecks. Make sure to enable/disable for the current workspace too.
+* `languageServer.strictChecks`: to enable/disable stricter Checks. Make sure to enable/disable for the current workspace too.
 
 
 ## Bugs
@@ -53,3 +55,10 @@ This extension contributes the following settings:
 - fixed bug in the package.json file leading to unnoticed server crash
 - added feedback when using an unreachable path
 - added feedback when using a old version of proB
+
+
+### 0.1.0
+
+- added more sound auto compeltion
+- added WD cheks
+- added strict checks

@@ -139,13 +139,12 @@ documents.onDidClose(e => {
 });
 
 documents.onDidSave(change => {
-
 	validateTextDocument(change.document)
 })
 
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
-	globalSettings = await getDocumentSettings(textDocument.uri) // Waiting for correct setting; otherwise allways default
+	let settings = await getDocumentSettings(textDocument.uri) // Waiting for correct setting; otherwise allways default
 	
 
 	let documentPath:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
@@ -156,7 +155,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	
 	fs.writeFile(errorPath, "", () =>{}) //Insure a clean error file
 
-	let command:string = getCommand(URI.parse(textDocument.uri).path, errorPath) 
+	let command:string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings) 
 	
 	let diagnostics : Array<Diagnostic> = new Array()
 	let diagnosticsPromise : Promise<Set<Diagnostic>>
@@ -179,19 +178,18 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 }
 
-function getCommand(documentPath : string, errorPath : string) : string{
+function getCommand(documentPath : string, errorPath : string, settings: Settings) : string{
 	let wdCmd = ""
 	let strict = ""
-	console.log(globalSettings.wdChecks + " " + globalSettings.strictChecks)
-	if(globalSettings.wdChecks){
+	if(settings.wdChecks == true){
 		wdCmd = " -wd-check -release_java_parser "
 	}
 
-	if(globalSettings.strictChecks){
+	if(settings.strictChecks == true){
 		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint "
 	}
 
-	return globalSettings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
+	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
 }
 
 
