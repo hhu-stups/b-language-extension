@@ -69,3 +69,9 @@ Please note that user settings overwrite workspace settings.
 ### 0.1.1
 
 - fixed issue where path was semi hard coded
+
+
+### 0.2.0
+
+- recognizes correct file ending (.mch; .def; .imp; .ref; .sys)
+- no longer activates extension on normal text documents

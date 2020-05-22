@@ -24,7 +24,8 @@
 		"proB"
 	],
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:B",
+		"onLanguage:EventB"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
@@ -68,7 +69,24 @@
 					"description": "Option for stricter Checks"
 				}
 			}
-		}
+		},
+		"languages": [
+			{
+				"id": "B",
+				"extensions": [
+					".mch",
+					".ref",
+					".imp",
+					".def"
+				]
+			},
+			{
+				"id": "EventB",
+				"extensions": [
+					".sys"
+				]
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
