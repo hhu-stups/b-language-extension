@@ -95,7 +95,7 @@ interface Settings {
 
 const defaultSettings: Settings = { 
 	maxNumberOfProblems: 1000, 
-	probHome: "/home/sebastian/prob_prolog/probcli.sh",
+	probHome: "~/prob_prolog/probcli.sh",
 	strictChecks : false,
 	wdChecks : false };
 
@@ -161,7 +161,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let diagnosticsPromise : Promise<Set<Diagnostic>>
 
 	console.log(command)
-	if(correctPath(globalSettings.probHome))
+	if(correctPath(settings.probHome))
 	{
 		exec(command, (err:string, stdout:string, stderr:string) => {
 		let bla = new ErrorMatcher()

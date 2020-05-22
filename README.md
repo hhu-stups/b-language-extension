@@ -22,6 +22,8 @@ This extension contributes the following settings:
 * `languageServer.strictChecks`: to enable/disable stricter Checks. Make sure to enable/disable for the current workspace too.
 
 
+Please note that user settings overwrite workspace settings.
+
 ## Bugs
 - please open an issue at https://github.com/SeeBasTStick/b-eventb-language-extension
 
