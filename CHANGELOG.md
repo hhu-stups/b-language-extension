@@ -23,3 +23,8 @@
 - added more sound auto compeltion
 - added WD cheks
 - added strict checks
+
+
+## [0.1.1]
+
+- fixed issue where path was semi hard coded
