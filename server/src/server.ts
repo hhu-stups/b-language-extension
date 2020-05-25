@@ -9,6 +9,7 @@ import {
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	InitializeResult,
+	TextDocumentItem,
 } from 'vscode-languageserver';
 
 import {
@@ -218,6 +219,9 @@ connection.onCompletion(
 		return wordComplition.selectCompletion(textDocumentPosition)
 	}
 );
+
+
+
 
 
 //Can be used to enrich completion with more infos

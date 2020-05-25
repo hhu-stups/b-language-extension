@@ -18,13 +18,14 @@
 		"Programming Languages"
 	],
 	"keywords": [
-		"multi-root ready",
+		"classical B",
 		"B",
-		"eventB",
-		"proB"
+		"Event-B",
+		"ProB"
 	],
 	"activationEvents": [
-		"onLanguage:plaintext"
+		"onLanguage:classicalB",
+		"onLanguage:eventB"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
@@ -74,7 +75,17 @@
 					"description": "Option for performance-related Hints"
 				}
 			}
-		}
+		},
+		"languages": [{
+			"id": "classicalB",
+			"extensions": [".mch", ".def", ".imp", ".ref"],
+			"aliases": ["B", "classical B"]
+		  },
+		  {
+			"id": "eventB",
+			"extensions": [".sys"],
+			"aliases": ["Event-B"]
+		  }]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
