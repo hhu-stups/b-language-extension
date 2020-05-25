@@ -24,8 +24,7 @@
 		"proB"
 	],
 	"activationEvents": [
-		"onLanguage:B",
-		"onLanguage:EventB"
+		"onLanguage:plaintext"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
@@ -67,26 +66,15 @@
 					"type": "boolean",
 					"default": false,
 					"description": "Option for stricter Checks"
+				},
+				"languageServer.performanceInfo": {
+					"scope": "window",
+					"type": "boolean",
+					"default": false,
+					"description": "Option for preformance Info"
 				}
 			}
-		},
-		"languages": [
-			{
-				"id": "B",
-				"extensions": [
-					".mch",
-					".ref",
-					".imp",
-					".def"
-				]
-			},
-			{
-				"id": "EventB",
-				"extensions": [
-					".sys"
-				]
-			}
-		]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -115,6 +103,7 @@
 		"stream-to-array": "^2.3.0",
 		"ts-xor": "^1.0.8",
 		"vscode-api": "0.0.0",
-		"vscode-uri": "^2.1.1"
+		"vscode-uri": "^2.1.1",
+		"without": "^1.2.3"
 	}
 }
