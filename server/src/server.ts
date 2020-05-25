@@ -89,7 +89,7 @@ interface Settings {
 	maxNumberOfProblems: number
 	strictChecks : boolean
 	wdChecks : boolean
-	performanceCheck : boolean
+	performanceHints : boolean
 	probHome : string
 }
 
@@ -99,7 +99,7 @@ const defaultSettings: Settings = {
 	probHome: "~/prob_prolog/probcli.sh",
 	strictChecks : false,
 	wdChecks : false,
-	performanceCheck : false };
+	performanceHints : false };
 
 let globalSettings: Settings = defaultSettings;
 
@@ -183,7 +183,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 function getCommand(documentPath : string, errorPath : string, settings: Settings) : string{
 	let wdCmd = ""
 	let strict = ""
-	let performanceCheck = ""
+	let perf = ""
 	if(settings.wdChecks == true){
 		wdCmd = " -wd-check -release_java_parser "
 	}
@@ -192,11 +192,11 @@ function getCommand(documentPath : string, errorPath : string, settings: Setting
 		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint "
 	}
 
-	if(settings.strictChecks == true){
-		performanceCheck = " -p PERFORMANCE_INFO TRUE "
+	if(settings.performanceHints == true){
+		perf = " -p PERFORMANCE_INFO TRUE "
 	}
 
-	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + strict + wdCmd + performanceCheck + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
+	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + perf + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
 }
 
 

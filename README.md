@@ -18,8 +18,9 @@ Compiler support for b/eventb via ProB. You need a nightly build of ProB to full
 This extension contributes the following settings:
 
 * `languageServer.probHome`: to set the path to ProB
-* `languageServer.wdChecks`: to enable/disable WDChecks. Make sure to enable/disable for the current workspace too.
+* `languageServer.wdChecks`: to enable/disable WD (Well-Definedness) Checks. Make sure to enable/disable for the current workspace too.
 * `languageServer.strictChecks`: to enable/disable stricter Checks. Make sure to enable/disable for the current workspace too.
+* `languageServer.performanceHints`: to enable/disable performance-related Hints. Make sure to enable/disable for the current workspace too.
 
 
 Please note that user settings overwrite workspace settings.

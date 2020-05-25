@@ -67,11 +67,11 @@
 					"default": false,
 					"description": "Option for stricter Checks"
 				},
-				"languageServer.performanceInfo": {
+				"languageServer.performanceHints": {
 					"scope": "window",
 					"type": "boolean",
-					"default": false,
-					"description": "Option for preformance Info"
+					"default": true,
+					"description": "Option for performance-related Hints"
 				}
 			}
 		}
