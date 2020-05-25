@@ -2,7 +2,7 @@
 	"name": "b-eventb-language-extension",
 	"displayName": "b-eventb language extension",
 	"description": "compiler support for b and eventb via ProB",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"publisher": "SeeBasTStick",
 	"icon": "prob2-ui.png",
 	"author": "Sebastian Stock",
@@ -76,16 +76,30 @@
 				}
 			}
 		},
-		"languages": [{
-			"id": "classicalB",
-			"extensions": [".mch", ".def", ".imp", ".ref"],
-			"aliases": ["B", "classical B"]
-		  },
-		  {
-			"id": "eventB",
-			"extensions": [".sys"],
-			"aliases": ["Event-B"]
-		  }]
+		"languages": [
+			{
+				"id": "classicalB",
+				"extensions": [
+					".mch",
+					".def",
+					".imp",
+					".ref"
+				],
+				"aliases": [
+					"B",
+					"classical B"
+				]
+			},
+			{
+				"id": "eventB",
+				"extensions": [
+					".sys"
+				],
+				"aliases": [
+					"Event-B"
+				]
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
