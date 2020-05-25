@@ -35,3 +35,9 @@
 
 - recognizes correct file ending (.mch; .def; .imp; .ref; .sys)
 - no longer activates extension on normal text documents
+
+
+## [0.3.0]
+
+- added option for performance feedback
+- implemented 'info' as feedback type
