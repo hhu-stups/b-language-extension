@@ -1,10 +1,10 @@
 {
 	"name": "b-eventb-language-extension",
-	"displayName": "b-eventb language extension",
-	"description": "compiler support for b and eventb via ProB",
+	"displayName": "B/Event-B/ProB language extension",
+	"description": "Compiler and language support for B and Event-B via ProB",
 	"version": "0.3.0",
 	"publisher": "SeeBasTStick",
-	"icon": "prob2-ui.png",
+	"icon": "media/prob2-ui.png",
 	"author": "Sebastian Stock",
 	"license": "MIT",
 	"repository": {
@@ -24,8 +24,8 @@
 		"ProB"
 	],
 	"activationEvents": [
-		"onLanguage:classicalB",
-		"onLanguage:eventB"
+		"onLanguage:classicalb",
+		"onLanguage:event"
 	],
 	"main": "./client/out/extension",
 	"contributes": {
@@ -78,7 +78,7 @@
 		},
 		"languages": [
 			{
-				"id": "classicalB",
+				"id": "classicalb",
 				"extensions": [
 					".mch",
 					".def",
@@ -91,7 +91,7 @@
 				]
 			},
 			{
-				"id": "eventB",
+				"id": "eventb",
 				"extensions": [
 					".sys"
 				],
