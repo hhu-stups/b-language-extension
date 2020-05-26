@@ -1,6 +1,6 @@
 .vscode/**
 .vscode-test/**
 .gitignore
-media/screencapture.gif
+./media/screencapture.gif
 optionAdder.py
 vsc-extension-quickstart.md

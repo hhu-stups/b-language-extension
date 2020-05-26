@@ -1,5 +1,5 @@
 {
-	"name": "lsp-b-eventb-server",
+	"name": "lsp-b-server",
 	"description": "Example implementation of a language server in node.",
 	"version": "0.0.1",
 	"author": "Sebastian Stock",
@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/SeeBasTStick/b-eventb-language-extension"
+		"url": "https://github.com/hhu-stups/b-language-extension"
 	},
 	"dependencies": {
 		"vscode-languageserver": "^6.1.1",

@@ -38,8 +38,8 @@ export function activate(context: ExtensionContext) {
 
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
-		// Register the server for B, EventB documents
-		documentSelector: [{ scheme: 'file', language: 'classicalb' }, { scheme: 'file', language: 'eventb' }],
+		// Register the server for B files
+		documentSelector: [{ scheme: 'file', language: 'classicalb' }],
 		synchronize: {
 			// Notify the server about file changes to '.clientrc files contained in the workspace
 			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')

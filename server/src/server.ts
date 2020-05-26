@@ -188,6 +188,7 @@ function getCommand(documentPath : string, errorPath : string, settings: Setting
 	let wdCmd = ""
 	let strict = ""
 	let perf = ""
+	console.log(documentPath)
 		//PYTHONVAR
 
 	if(settings.wdChecks == true){
@@ -207,7 +208,7 @@ function getCommand(documentPath : string, errorPath : string, settings: Setting
 	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' 
 							 + perf 
 							 + strict 
-							 + wdCmd +
+							 + wdCmd 
 							 /*PYTHONCMD*/
 							 + documentPath 
 							 +" -p " 
@@ -242,6 +243,7 @@ connection.onCompletion(
 //Can be used to enrich completion with more infos
 connection.onCompletionResolve(
 	(item : CompletionItem) => {return item})
+
 
 // for open, change and close text document events
 documents.listen(connection);

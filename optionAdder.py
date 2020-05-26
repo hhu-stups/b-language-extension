@@ -1,7 +1,7 @@
 import json
 import sys
 
-# Example: python3 optionAdder.py --add test '-p MEGATEST' 'A cool option' /home/sebastian/b-eventb-language-extension/
+# Example: python3 optionAdder.py --add test '-p MEGATEST' 'A cool option' /home/sebastian/b-language-extension/
 def modify_server(varName: str, comand: str, filename):
     var_marker: str = '//PYTHONVAR'
     if_marker: str = '//PYTHONIF'

@@ -1,11 +1,11 @@
-# b-eventb-language-extension README
+# b-language-extension README
 
-Compiler support for b/eventb via ProB. You need a nightly build of ProB to fully use this extension. Visit https://www3.hhu.de/stups/prob/ to get the latest version.
+Compiler support for B via ProB. You need a nightly build of ProB to fully use this extension. Visit https://www3.hhu.de/stups/prob/ to get the latest version.
 
 
 ## Features
 
-![animation](https://raw.githubusercontent.com/SeeBasTStick/b-eventb-language-extension/master/media/screencaputer.gif)
+![animation](https://raw.githubusercontent.com/SeeBasTStick/b-language-extension/master/media/screencaputer.gif)
 
 
 ## Requirements
@@ -26,14 +26,12 @@ This extension contributes the following settings:
 Please note that user settings overwrite workspace settings.
 
 ## Bugs
-- please open an issue at https://github.com/SeeBasTStick/b-eventb-language-extension
+- please open an issue at https://github.com/SeeBasTStick/b-language-extension
 
 
 ## Future plans
-- Linter Support
-- Keyword support
+- Linter Support (via Server, is still in development by Mircosoft)
 - Quickfix support aká Code Completion
-- WD Support
 
 
 ## Release Notes

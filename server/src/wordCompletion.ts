@@ -26,9 +26,6 @@ export function selectCompletion(textDocumentPosition : TextDocumentPositionPara
 		return completionDefinition()
 	}
 
-	if(textDocumentPosition.textDocument.uri.endsWith(".sys")){
-		return completionEventB()
-	}
 
 	return []
 
@@ -1391,66 +1388,3 @@ function completionCommonAbstract() : CompletionItem[] {
 	]
 }
 
-
-
-function completionEventB() : CompletionItem[] {
-		
-	return [
-		{
-			label: 'CONTEXT',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'EXTENDS',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'SETS',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'CONSTANTS',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'AXIOMS',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'END',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'MACHINE',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'REFINES',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'SEES',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'VARIABLES',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'where',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'any',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'with',
-			kind: CompletionItemKind.Text,
-		},
-		{
-			label: 'then',
-			kind: CompletionItemKind.Text,
-		}
-	]
-}

@@ -1,5 +1,5 @@
 {
-	"name": "lsp-b-eventb-client",
+	"name": "lsp-b-client",
 	"description": "client part of the language pack",
 	"author": "Sebastian Stock",
 	"license": "MIT",
@@ -7,7 +7,7 @@
 	"publisher": "SeeBasTStick",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/SeeBasTStick/b-eventb-language-extension"
+		"url": "https://github.com/hhu-stups/b-language-extension"
 	},
 	"engines": {
 		"vscode": "^1.43.0"
