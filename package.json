@@ -1,15 +1,15 @@
 {
-	"name": "b-eventb-language-extension",
-	"displayName": "B/Event-B/ProB language extension",
-	"description": "Compiler and language support for B and Event-B via ProB",
+	"name": "b-language-extension",
+	"displayName": "B/ProB Language Support",
+	"description": "Compiler and language support for B and via ProB",
 	"version": "0.3.0",
 	"publisher": "SeeBasTStick",
-	"icon": "media/prob2-ui.png",
+	"icon": "./media/prob2-ui.png",
 	"author": "Sebastian Stock",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/SeeBasTStick/b-eventb-language-extension"
+		"url": "https://github.com/hhu-stups/b-language-extension"
 	},
 	"engines": {
 		"vscode": "^1.45.0"
@@ -20,13 +20,11 @@
 	"keywords": [
 		"classical B",
 		"B",
-		"Event-B",
 		"ProB"
 	],
 	"activationEvents": [
-		"onLanguage:classicalb",
-		"onLanguage:event"
-	],
+		"onLanguage:classicalb"
+		],
 	"main": "./client/out/extension",
 	"contributes": {
 		"configuration": {
@@ -89,15 +87,13 @@
 					"B",
 					"classical B"
 				]
-			},
+			}
+		],
+		"grammars": [
 			{
-				"id": "eventb",
-				"extensions": [
-					".sys"
-				],
-				"aliases": [
-					"Event-B"
-				]
+				"language": "classicalb",
+				"scopeName": "source.classicalb",
+				"path": "./syntaxes/classicalb.tmLanguage.json"
 			}
 		]
 	},

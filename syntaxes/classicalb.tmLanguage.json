@@ -1,0 +1,334 @@
+{
+	"name": "Classical B",
+	"scopeName": "source.classicalb",
+	"patterns": [
+	  {
+		"include": "source.classicalb.rules"
+	  },
+	  {
+		"include": "#pragma"
+	  },
+	  {
+		"include": "#comments"
+	  },
+	  {
+		"include": "#strings"
+	  },
+	  {
+		"include": "#components"
+	  },
+	  {
+		"include": "#machineclauses"
+	  },
+	  {
+		"include": "#control_blocks"
+	  },
+	  {
+		"include": "#keyword_control"
+	  },
+	  {
+		"include": "#keyword_operators"
+	  },
+	  {
+		"include": "#constant_values"
+	  },
+	  {
+		"include": "#preferences"
+	  },
+	  {
+		"include": "#identifiers"
+	  },
+	  {
+		"include": "#invalid"
+	  }
+	],
+	"repository": {
+	  "identifiers": {
+		"patterns": [
+		  {
+			"match": "\\b[a-zA-Z][a-zA-Z0-9_]*\\b",
+			"name": "identifier.classicalb"
+		  }
+		]
+	  },
+	  "pragma": {
+		"patterns": [
+		  {
+			"begin": "/\\*@\\b(package|import-package|import_package|symbolic|unit|label|desc|description|conversion|file)\\b",
+			"captures": {
+			  "0": {
+				"name": "punctuation.definition.tag.classicalb"
+			  }
+			},
+			"end": "\\*/",
+			"name": "identifier.classicalb"
+		  }
+		]
+	  },
+	  "comments": {
+		"patterns": [
+		  {
+			"begin": "/\\*",
+			"captures": {
+			  "0": {
+				"name": "punctuation.definition.comment.classicalb"
+			  }
+			},
+			"end": "\\*/",
+			"name": "comment.block.classicalb"
+		  },
+		  {
+			"begin": "//",
+			"captures": {
+			  "0": {
+				"name": "punctuation.definition.comment.classicalb"
+			  }
+			},
+			"end": "\n",
+			"name": "comment.line.classicalb"
+		  }
+		]
+	  },
+	  "strings": {
+		"patterns": [
+		  {
+			"begin": "\"",
+			"beginCaptures": {
+			  "0": {
+				"name": "punctuation.definition.string.begin.classicalb"
+			  }
+			},
+			"end": "\"",
+			"endCaptures": {
+			  "0": {
+				"name": "punctuation.definition.string.end.classicalb"
+			  }
+			},
+			"name": "string.quoted.double.classicalb",
+			"patterns": [
+			  {
+				"match": "\\\\.",
+				"name": "constant.character.escape.classicalb"
+			  },
+			  {
+				"match": "\"\"",
+				"name": "constant.character.escape.quote.classicalb"
+			  }
+			]
+		  },
+		  {
+			"begin": "'''",
+			"captures": {
+			  "0": {
+				"name": "punctuation.definition.string.begin.classicalb"
+			  }
+			},
+			"end": "'''",
+			"name": "string.quoted.triple.classicalb"
+		  }
+		]
+	  },
+	  "machineclauses": {
+		"patterns": [
+		  {
+			"match": "(?x)\n\\b(INITIALIZATION|INITIALISATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES\n|INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES\n|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS\n|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES)\\b",
+			"name": "storage.type.clause.classicalb"
+		  }
+		]
+	  },
+	  "keyword_control": {
+		"patterns": [
+		  {
+			"match": "(?x)\n\\b(skip|BE|DO|VARIANT|ELSIF|THEN|ELSE|EITHER|CASE|SELECT\n|ASSERT|WHEN|WHERE|OR|OF|IN)\\b",
+			"name": "keyword.control.classicalb"
+		  }
+		]
+	  },
+	  "keyword_operators": {
+		"patterns": [
+		  {
+			"match": "\\bnot\\b|¬|\\bor\\b|∨",
+			"name": "keyword.operator.logical.classicalb"
+		  },
+		  {
+			"match": "!|#|∀|∃|&|∧|<=>|=>|⇔|⇒",
+			"name": "keyword.operator.logical.classicalb"
+		  },
+		  {
+			"match": "≠|/=|=|==",
+			"name": "keyword.operator.equality.classicalb"
+		  },
+		  {
+			"match": "\\b(first|last|tail|front|rev|seq|seq1|conc)\\b",
+			"name": "keyword.operator.sequence.classicalb"
+		  },
+		  {
+			"match": "\\b(tree|btree|top|const|rank|father|son|sons|subtree|arity|bin|left|right|sizet|prefix|postfix|mirror|infix)\\b",
+			"name": "keyword.operator.tree.classicalb"
+		  },
+		  {
+			"match": "\\b(mod|succ|pred)\\b",
+			"name": "keyword.operator.numeric.classicalb"
+		  },
+		  {
+			"match": "\\b(rec|struct)\\b",
+			"name": "keyword.operator.record.classicalb"
+		  },
+		  {
+			"match": "\\b(ran|dom|id|prj1|prj2|closure1|closure|interate|fnc|rel)\\b|%|λ",
+			"name": "keyword.operator.relation.classicalb"
+		  },
+		  {
+			"match": "bool",
+			"name": "keyword.operator.boolean.classicalb"
+		  },
+		  {
+			"match": "<--|:=|::",
+			"name": "keyword.operator.assignment.classicalb"
+		  },
+		  {
+			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏",
+			"name": "keyword.operator.set.classicalb"
+		  },
+		  {
+			"match": "\\b(min|max|card|size)\\b",
+			"name": "keyword.operator.set.classicalb"
+		  },
+		  {
+			"match": ":|∈|∉|\\\\/|/\\\\|∪|∩|⊄|⊈|⊂|⊆",
+			"name": "keyword.operator.set.classicalb"
+		  },
+		  {
+			"begin": "{",
+			"beginCaptures": {
+			  "0": {
+				"name": "punctuation.definition.set.begin.classicalb"
+			  }
+			},
+			"end": "}",
+			"endCaptures": {
+			  "0": {
+				"name": "punctuation.definition.set.end.classicalb"
+			  }
+			},
+			"patterns": [
+			  {
+				"include": "$self"
+			  }
+			]
+		  },
+		  {
+			"match": "-->|-->(>)?|>->(>)?|<->|>+>(>)?",
+			"name": "keyword.operator.relation.classicalb"
+		  },
+		  {
+			"match": "(\\|>(>)?)|((<)?<\\|)|(\\|->)",
+			"name": "keyword.operator.relation.classicalb"
+		  },
+		  {
+			"match": "↠|↦|⤀|⤖|⇸|⤔|◀|←|→|↔|↣|▶|⇾|⋖|⊗|◁|▷|⇽",
+			"name": "keyword.operator.relation.classicalb"
+		  },
+		  {
+			"match": "\\|\\|",
+			"name": "keyword.operator.parallel.classicalb"
+		  },
+		  {
+			"match": ">|<|>=|=<|≤|≥",
+			"name": "keyword.operator.numeric.classicalb"
+		  }
+		]
+	  },
+	  "constant_values": {
+		"patterns": [
+		  {
+			"match": "\\b\\d+",
+			"name": "constant.numeric.classicalb"
+		  },
+		  {
+			"match": "{}|∅",
+			"name": "constant.set.classicalb"
+		  },
+		  {
+			"match": "\\b(TRUE|FALSE)\\b",
+			"name": "constant.language.boolean.classicalb"
+		  },
+		  {
+			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b",
+			"name": "constant.other.sets.classicalb"
+		  }
+		]
+	  },
+	  "control_blocks": {
+		"patterns": [
+		  {
+			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER)\\b",
+			"beginCaptures": {
+			  "0": {
+				"name": "keyword.control.classicalb"
+			  }
+			},
+			"end": "\\bEND\\b",
+			"endCaptures": {
+			  "0": {
+				"name": "keyword.control.classicalb"
+			  }
+			},
+			"patterns": [
+			  {
+				"match": "\\bINVARIANT\\b",
+				"name": "keyword.control.classicalb"
+			  },
+			  {
+				"include": "$self"
+			  }
+			]
+		  }
+		]
+	  },
+	  "components": {
+		"patterns": [
+		  {
+			"begin": "\\b(MACHINE|SYSTEM|MODEL|REFINEMENT|IMPLEMENTATION)\\b",
+			"beginCaptures": {
+			  "0": {
+				"name": "storage.type.machine.start.classicalb"
+			  }
+			},
+			"end": "\\bEND\\b",
+			"endCaptures": {
+			  "0": {
+				"name": "storage.type.machine.end.classicalb"
+			  }
+			},
+			"name": "meta.machine.classicalb",
+			"patterns": [
+			  {
+				"include": "$self"
+			  }
+			]
+		  }
+		]
+	  },
+	  "preferences": {
+		"patterns": [
+		  {
+			"match": "(?x)\n\\b(GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT\n|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*\n|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b",
+			"name": "entity.other.attribute-name.classicalb"
+		  }
+		]
+	  },
+	  "invalid": {
+		"patterns": [
+		  {
+			"match": "@|\\?|€",
+			"name": "invalid.illegal.other.classicalb"
+		  },
+		  {
+			"match": ";(\\s)*;",
+			"name": "invalid.illegal.other.classicalb"
+		  }
+		]
+	  }
+	}
+  }
