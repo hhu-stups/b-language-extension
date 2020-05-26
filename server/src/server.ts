@@ -91,6 +91,7 @@ interface Settings {
 	strictChecks : boolean
 	wdChecks : boolean
 	performanceHints : boolean
+	//PYTHONSETTING
 	probHome : string
 }
 
@@ -100,7 +101,9 @@ const defaultSettings: Settings = {
 	probHome: "~/prob_prolog/probcli.sh",
 	strictChecks : false,
 	wdChecks : false,
-	performanceHints : false };
+	//PYTHONDEFAULT
+	performanceHints : false 
+};
 
 let globalSettings: Settings = defaultSettings;
 
@@ -185,6 +188,8 @@ function getCommand(documentPath : string, errorPath : string, settings: Setting
 	let wdCmd = ""
 	let strict = ""
 	let perf = ""
+		//PYTHONVAR
+
 	if(settings.wdChecks == true){
 		wdCmd = " -wd-check -release_java_parser "
 	}
@@ -197,7 +202,17 @@ function getCommand(documentPath : string, errorPath : string, settings: Setting
 		perf = " -p PERFORMANCE_INFO TRUE "
 	}
 
-	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' + perf + strict + wdCmd + documentPath +" -p " + "NDJSON_ERROR_LOG_FILE " + errorPath
+	//PYTHONIF
+	
+	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' 
+							 + perf 
+							 + strict 
+							 + wdCmd +
+							 /*PYTHONCMD*/
+							 + documentPath 
+							 +" -p " 
+							 + "NDJSON_ERROR_LOG_FILE " 
+							 + errorPath
 }
 
 
