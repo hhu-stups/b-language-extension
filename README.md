@@ -83,6 +83,6 @@ Please note that user settings overwrite workspace settings.
 
 
 
-### 0.4.0
+### 0.5.0
 
 - added syntax highlighting (big thanks to: https://github.com/wysiib/language-b-eventb)
