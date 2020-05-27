@@ -4,7 +4,7 @@
 	"description": "Compiler and language support for B and via ProB",
 	"version": "0.4.0",
 	"publisher": "SeeBasTStick",
-	"icon": "./media/prob2-ui.png",
+	"icon": "media/prob2-ui.png",
 	"author": "Sebastian Stock",
 	"license": "MIT",
 	"repository": {

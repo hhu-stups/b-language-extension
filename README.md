@@ -80,3 +80,9 @@ Please note that user settings overwrite workspace settings.
 
 - added option for performance feedback
 - implemented 'info' as feedback type
+
+
+
+### 0.4.0
+
+- added syntax highlighting (big thanks to: https://github.com/wysiib/language-b-eventb)
