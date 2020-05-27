@@ -50,3 +50,7 @@
 ## [0.5.1]
 
 - minor fixes
+
+## [0.5.2]
+
+- media fixes

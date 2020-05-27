@@ -5,7 +5,7 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 
 ## Features
 
-![animation](https://raw.githubusercontent.com/SeeBasTStick/b-language-extension/master/media/screencaputer.gif)
+![animation](https://raw.githubusercontent.com/hhu-stups/b-language-extension/master/media/screencaputer.gif)
 
 
 ## Requirements
