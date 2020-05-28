@@ -10,11 +10,18 @@ import {
 	TextDocumentSyncKind,
 	InitializeResult,
 	TextDocumentItem,
+	
 } from 'vscode-languageserver';
 
 import {
 	TextDocument
 } from 'vscode-languageserver-textdocument';
+
+
+import {Proposed} from 'vscode-languageserver-protocol'
+
+
+
 
 import { URI } from 'vscode-uri';
 import * as fs from 'fs';
@@ -27,6 +34,7 @@ import * as path from 'path';
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 let connection = createConnection(ProposedFeatures.all);
+let test = createConnection(ProposedFeatures.all)
 
 // Create a simple text document manager. The text document manager
 // supports full document sync only
@@ -35,6 +43,8 @@ let documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 let hasConfigurationCapability: boolean = false;
 let hasWorkspaceFolderCapability: boolean = false;
 let hasDiagnosticRelatedInformationCapability: boolean = false;
+
+
 
 
 connection.onInitialize((params: InitializeParams) => {
@@ -54,6 +64,9 @@ connection.onInitialize((params: InitializeParams) => {
 		capabilities.textDocument.publishDiagnostics.relatedInformation
 	);
 
+	
+
+	
 	const result: InitializeResult = {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Full,
@@ -143,6 +156,12 @@ function getDocumentSettings(resource: string): Thenable<Settings> {
 documents.onDidClose(e => {
 	documentSettings.delete(e.document.uri);
 });
+
+
+
+documents.onDidOpen(change => {
+	validateTextDocument(change.document)
+})
 
 documents.onDidSave(change => {
 	validateTextDocument(change.document)

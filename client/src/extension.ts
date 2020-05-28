@@ -12,7 +12,7 @@ import {
 	ServerOptions,
 	TransportKind
 } from 'vscode-languageclient';
-import * as api from  'vscode';
+import * as vscode from  'vscode';
 
 let client: LanguageClient;
 
@@ -55,12 +55,12 @@ export function activate(context: ExtensionContext) {
 	);
 
 	client.onReady().then(() => {
-		let bla = api.window.createOutputChannel("internal_error")
+		let bla = vscode.window.createOutputChannel("internal_error")
 		client.onNotification("path_error_prob", (message:string) => {
-			api.window.showErrorMessage('a problem occured :' + message)
+			vscode.window.showErrorMessage('a problem occured :' + message)
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
-			api.window.showErrorMessage('a error occured :' + message)
+			vscode.window.showErrorMessage('a error occured :' + message)
 		});
 	});
 
@@ -79,3 +79,4 @@ export function deactivate(): Thenable<void> | undefined {
 	}
 	return client.stop();
 }
+
