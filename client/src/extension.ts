@@ -4,7 +4,10 @@
  * ------------------------------------------------------------------------------------------ */
 
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
+import { 
+	workspace, 
+	ExtensionContext, 
+	window } from 'vscode';
 
 import {
 	LanguageClient,
@@ -12,7 +15,6 @@ import {
 	ServerOptions,
 	TransportKind
 } from 'vscode-languageclient';
-import * as vscode from  'vscode';
 
 let client: LanguageClient;
 
@@ -55,12 +57,12 @@ export function activate(context: ExtensionContext) {
 	);
 
 	client.onReady().then(() => {
-		let bla = vscode.window.createOutputChannel("internal_error")
+		let bla = window.createOutputChannel("internal_error")
 		client.onNotification("path_error_prob", (message:string) => {
-			vscode.window.showErrorMessage('a problem occured :' + message)
+			window.showErrorMessage('a problem occured :' + message)
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
-			vscode.window.showErrorMessage('a error occured :' + message)
+			window.showErrorMessage('a error occured :' + message)
 		});
 	});
 

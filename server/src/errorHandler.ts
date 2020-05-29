@@ -2,7 +2,6 @@ import { Diagnostic, DiagnosticSeverity } from 'vscode-languageserver'
 import { TextDocument, Position } from 'vscode-languageserver-textdocument'
 import * as fs from 'fs';
 import * as readline from 'readline'
-import { Uri } from 'vscode';
 
 
 
