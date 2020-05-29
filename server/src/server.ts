@@ -9,8 +9,7 @@ import {
 	TextDocumentPositionParams,
 	TextDocumentSyncKind,
 	InitializeResult,
-	TextDocumentItem,
-	
+
 } from 'vscode-languageserver';
 
 import {
@@ -18,14 +17,9 @@ import {
 } from 'vscode-languageserver-textdocument';
 
 
-import {Proposed} from 'vscode-languageserver-protocol'
-
-
-
-
 import { URI } from 'vscode-uri';
 import * as fs from 'fs';
-import {ErrorMatcher} from './ErrorMatcher';
+import { NDJSON, readErrors, matchErrors } from './errorHandler';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
 
@@ -34,7 +28,6 @@ import * as path from 'path';
 // Create a connection for the server. The connection uses Node's IPC as a transport.
 // Also include all preview / proposed LSP features.
 let connection = createConnection(ProposedFeatures.all);
-let test = createConnection(ProposedFeatures.all)
 
 // Create a simple text document manager. The text document manager
 // supports full document sync only
@@ -64,9 +57,9 @@ connection.onInitialize((params: InitializeParams) => {
 		capabilities.textDocument.publishDiagnostics.relatedInformation
 	);
 
-	
 
-	
+
+
 	const result: InitializeResult = {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Full,
@@ -101,21 +94,21 @@ connection.onInitialized(() => {
 // The settings
 interface Settings {
 	maxNumberOfProblems: number
-	strictChecks : boolean
-	wdChecks : boolean
-	performanceHints : boolean
+	strictChecks: boolean
+	wdChecks: boolean
+	performanceHints: boolean
 	//PYTHONSETTING
-	probHome : string
+	probHome: string
 }
 
 
-const defaultSettings: Settings = { 
-	maxNumberOfProblems: 1000, 
+const defaultSettings: Settings = {
+	maxNumberOfProblems: 1000,
 	probHome: "~/prob_prolog/probcli.sh",
-	strictChecks : false,
-	wdChecks : false,
+	strictChecks: false,
+	wdChecks: false,
 	//PYTHONDEFAULT
-	performanceHints : false 
+	performanceHints: false
 };
 
 let globalSettings: Settings = defaultSettings;
@@ -170,76 +163,82 @@ documents.onDidSave(change => {
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let settings = await getDocumentSettings(textDocument.uri) // Waiting for correct setting; otherwise allways default
-	
 
-	let documentPath:path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
+	let documentPath: path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
-	let errorPath:string = documentPath.dir+'/_error.json'
+	let errorPath: string = documentPath.dir + '/_error.json'
 
-	const {exec} = require('child_process');
-	
-	fs.writeFile(errorPath, "", () =>{}) //Insure a clean error file
+	const { exec } = require('child_process');
 
-	let command:string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings) 
-	
-	let diagnostics : Array<Diagnostic> = new Array()
-	let diagnosticsPromise : Promise<Set<Diagnostic>>
+	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
 
-	console.log(command)
-	if(correctPath(settings.probHome))
-	{
-		exec(command, (err:string, stdout:string, stderr:string) => {
-		let bla = new ErrorMatcher()
-	    diagnosticsPromise =  bla.matchError(textDocument, errorPath)
+	let command: string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings)
 
-		diagnosticsPromise.then(function(result:Set<Diagnostic>){
-			diagnostics = Array.from(result)
-			connection.sendDiagnostics({ uri: textDocument.uri, diagnostics});	
-		}, function(err){
-			connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
+	//console.log(command)
+	if (correctPath(settings.probHome)) {
+		exec(command, (err: string, stdout: string, stderr: string) => {
+			let errorMap: Promise<Map<string, Set<NDJSON>>> = readErrors(errorPath)
+			errorMap.then(function (result: Map<string, Set<NDJSON>>) {
+
+				let diagnostics: Array<Diagnostic> = new Array()
+
+				for (let entry of result) {
+					if (entry[0] == textDocument.uri) {
+						diagnostics = matchErrors(entry[1], textDocument)
+					} else {
+						diagnostics = matchErrors(entry[1])
+					}
+					console.log("sending to " + entry[0])
+					connection.sendDiagnostics({ uri: entry[0], diagnostics });
+				}
+
+			}, function (err) {
+				connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
+			});
 		})
-	  });
 	}
-
 }
 
-function getCommand(documentPath : string, errorPath : string, settings: Settings) : string{
+
+
+
+function getCommand(documentPath: string, errorPath: string, settings: Settings): string {
 	let wdCmd = ""
 	let strict = ""
 	let perf = ""
-	console.log(documentPath)
-		//PYTHONVAR
+//	console.log(documentPath)
+	//PYTHONVAR
 
-	if(settings.wdChecks == true){
+	if (settings.wdChecks == true) {
 		wdCmd = " -wd-check -release_java_parser "
 	}
 
-	if(settings.strictChecks == true){
+	if (settings.strictChecks == true) {
 		strict = " -p STRICT_CLASH_CHECKING TRUE -p TYPE_CHECK_DEFINITIONS TRUE -lint "
 	}
 
-	if(settings.performanceHints == true){
+	if (settings.performanceHints == true) {
 		perf = " -p PERFORMANCE_INFO TRUE "
 	}
 
 	//PYTHONIF
-	
-	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version ' 
-							 + perf 
-							 + strict 
-							 + wdCmd 
-							 /*PYTHONCMD*/
-							 + documentPath 
-							 +" -p " 
-							 + "NDJSON_ERROR_LOG_FILE " 
-							 + errorPath
+
+	return settings.probHome + ' -p MAX_INITIALISATIONS 0 -version '
+		+ perf
+		+ strict
+		+ wdCmd
+		/*PYTHONCMD*/
+		+ documentPath
+		+ " -p "
+		+ "NDJSON_ERROR_LOG_FILE "
+		+ errorPath
 }
 
 
-function correctPath(path:string): boolean{
-	try{
+function correctPath(path: string): boolean {
+	try {
 		fs.accessSync(path)
-	}catch(e){
+	} catch (e) {
 		connection.sendNotification("path_error_prob", path + " seems to be the wrong path to ProB")
 		return false
 	}
@@ -249,7 +248,7 @@ function correctPath(path:string): boolean{
 
 // This handler provides the initial list of the completion items.
 connection.onCompletion(
-	
+
 	(textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
 		return wordComplition.selectCompletion(textDocumentPosition)
 	}
@@ -261,7 +260,7 @@ connection.onCompletion(
 
 //Can be used to enrich completion with more infos
 connection.onCompletionResolve(
-	(item : CompletionItem) => {return item})
+	(item: CompletionItem) => { return item })
 
 
 // for open, change and close text document events
