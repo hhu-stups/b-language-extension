@@ -54,3 +54,8 @@
 ## [0.5.2]
 
 - media fixes
+
+
+## [0.5.3]
+
+- reworked error messages to be more managable

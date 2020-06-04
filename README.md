@@ -32,6 +32,7 @@ Please note that user settings overwrite workspace settings.
 ## Future plans
 - Linter Support (via Server, is still in development by Mircosoft https://microsoft.github.io/language-server-protocol/specifications/specification-3-16/)
 - Quickfix support aká Code Completion
+- Add feedback of failing prob cli to output
 
 
 ## Release Notes
@@ -86,3 +87,8 @@ Please note that user settings overwrite workspace settings.
 ### 0.5.0
 
 - added syntax highlighting (big thanks to: https://github.com/wysiib/language-b-eventb)
+
+
+### 0.5.3
+
+- reworked error messages to be more managable
