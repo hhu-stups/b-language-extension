@@ -19,10 +19,19 @@ export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJ
 		crlfDelay: Infinity
 	});
 
+
+	let i : number = 1
 	for await (const line of rl) {
 
-		let obj: NDJSON = JSON.parse(line)
-
+		let obj: NDJSON 
+		
+		try{
+			console.log(line)
+			 obj = JSON.parse(line)
+		}catch(e){
+			throw Error(e.message + " at line " + line)
+		}
+		i++
 		let path: string = obj.details.file
 
 
