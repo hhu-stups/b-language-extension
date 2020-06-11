@@ -1,0 +1,132 @@
+{
+	".source.classicalb": {
+	  "MACHINE": {
+		"prefix": "MACHINE ...",
+		"body": "MACHINE ${1:MyMachine}\nCONSTANTS ${2:c}\nPROPERTIES ${3:c : 1..10 }\nVARIABLES ${4:x}\nINVARIANT ${5:x : 1..c}\nINITIALISATION ${6:x := 1}\nOPERATIONS \n  Inc = SELECT x < c THEN x := x + 1 END\nEND//MACHINE"
+	  },
+	  "package pragma": {
+		"prefix": "package",
+		"body": "/*@package ${1:foo.bar} */"
+	  },
+	  "import-package pragma": {
+		"prefix": "import-package",
+		"body": "/*@import-package ${1:foo.bazz} */"
+	  },
+	  "OPERATIONS Keyword": {
+		"prefix": "OPERATIONS",
+		"body": "OPERATIONS"
+	  },
+	  "DEFINITIONS Keyword": {
+		"prefix": "DEFINITIONS",
+		"body": "DEFINITIONS"
+	  },
+	  "VARIABLES": {
+		"prefix": "VARIABLES",
+		"body": "VARIABLES\n\t${1:x}\nINVARIANT\n\t${2:P}\nINITIALISATION\n\t${4:I}"
+	  },
+	  "CONSTANTS": {
+		"prefix": "CONSTANTS",
+		"body": "CONSTANTS\n\t${1:c}\nPROPERTIES\n\t${2:P}"
+	  },
+	  "ASSERTIONS": {
+		"prefix": "ASSERTIONS",
+		"body": "ASSERTIONS\n\t${1:a}"
+	  },
+	  "WHILE": {
+		"prefix": "while",
+		"body": "WHILE ${1:p}\nDO\n\t${2:G}\nINVARIANT ${3:Q}\nVARIANT ${4:E}\nEND"
+	  },
+	  "PRE Template": {
+		"prefix": "PRE",
+		"body": "PRE ${1:p}\nTHEN\n\t${2:G}\nEND"
+	  },
+	  "VAR": {
+		"prefix": "var",
+		"body": "VAR ${1:z}\nIN\n\t${2:G}\nEND"
+	  },
+	  "ANY": {
+		"prefix": "any",
+		"body": "ANY ${1:z}\nWHERE\n\t${2:P}\nTHEN\n\t${3:G}\nEND"
+	  },
+	  "LET": {
+		"prefix": "let",
+		"body": "LET ${1:x}\nBE ${2:E}\nIN\n\t${3:G}\nEND"
+	  },
+	  "IF": {
+		"prefix": "if",
+		"body": "IF ${1:p}\nTHEN\n\t${2:G}\nEND"
+	  },
+	  "IF ... ELSE": {
+		"prefix": "ifelse",
+		"body": "IF ${1:p}\nTHEN\n\t${2:G}\nELSE\n\t${2:H}\nEND"
+	  },
+	  "CHOICE": {
+		"prefix": "choice",
+		"body": "CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND"
+	  },
+	  "SELECT": {
+		"prefix": "select",
+		"body": "SELECT\n\t${1:p}\nTHEN\n\t${2:G}\nEND"
+	  },
+	  "SELECT ... ELSE": {
+		"prefix": "selectelse",
+		"body": "SELECT ${1:p}\nTHEN\n\t${2:G}\nWHEN ${3:q}\nTHEN\n\t${4:H}\nELSE\n\t${5:E}\nEND"
+	  },
+	  "CASE": {
+		"prefix": "choice",
+		"body": "CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND"
+	  },
+	  "Set Pref MININT": {
+		"prefix": "set minint",
+		"body": "SET_PREF_MININT == ${1:n};"
+	  },
+	  "Set Pref MAXINT": {
+		"prefix": "set minint",
+		"body": "SET_PREF_MININT == ${1:n};"
+	  },
+	  "B:INT": {
+		"prefix": "INT",
+		"body": "INT;"
+	  },
+	  "B:INTEGER": {
+		"prefix": "INTEGER",
+		"body": "INTEGER"
+	  },
+	  "B:NAT": {
+		"prefix": "NAT",
+		"body": "NAT"
+	  },
+	  "B:NATURAL": {
+		"prefix": "NATURAL",
+		"body": "NATURAL"
+	  },
+	  "B: -->": {
+		"prefix": "funcTotal",
+		"body": "-->"
+	  },
+	  "B: >->": {
+		"prefix": "funcTotalInjection",
+		"body": ">->"
+	  },
+	  "B: -->>": {
+		"prefix": "funcTotalSurjection",
+		"body": ">->"
+	  },
+	  "B: >->>": {
+		"prefix": "funcTotalBijection",
+		"body": ">->>"
+	  },
+	  "B: +->": {
+		"prefix": "funcPartial",
+		"body": "+->"
+	  },
+	  "B: >+>": {
+		"prefix": "funcPartialInjection",
+		"body": "+->>"
+	  },
+	  "B: >+>>": {
+		"prefix": "funcBijection",
+		"body": ">+>>"
+	  }
+	}
+  }

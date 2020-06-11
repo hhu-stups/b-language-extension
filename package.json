@@ -95,6 +95,12 @@
 				"scopeName": "source.classicalb",
 				"path": "./syntaxes/classicalb.tmLanguage.json"
 			}
+		],
+		"snippets": [
+			{
+				"language": "classicalb",
+				"path": "./snippets/classicalb_snippets.json"
+			}
 		]
 	},
 	"scripts": {
