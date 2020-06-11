@@ -166,9 +166,15 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 	let documentPath: path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
-	let errorPath: string = documentPath.dir + '/_error.json'
+	let errorDic : string = documentPath.dir + '/tmp'
+	let errorPath: string = errorDic + '/_error.json'
+
 
 	const { exec } = require('child_process');
+
+	if (!fs.existsSync(errorDic)){
+		fs.mkdirSync(errorDic);
+	}
 
 	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
 
