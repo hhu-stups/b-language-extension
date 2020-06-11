@@ -59,3 +59,11 @@
 ## [0.5.3]
 
 - reworked error messages to be more managable
+
+
+## [0.6.0]
+
+- added snippets
+- improved error feedback for failing call to probcli
+- improved error feedback for wrong format of the _error.json file
+- _error.json will now dumpend in a /tmp/ folder

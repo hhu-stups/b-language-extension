@@ -32,7 +32,6 @@ Please note that user settings overwrite workspace settings.
 ## Future plans
 - Linter Support (via Server, is still in development by Mircosoft https://microsoft.github.io/language-server-protocol/specifications/specification-3-16/)
 - Quickfix support aká Code Completion
-- Add snipptest
 - Make startup time faster
 - Switch to Java Server
 
@@ -93,3 +92,11 @@ Please note that user settings overwrite workspace settings.
 ### 0.5.3
 
 - reworked error messages to be more managable
+
+
+### 0.6.0
+
+- added snippets
+- improved error feedback for failing call to probcli
+- improved error feedback for wrong format of the _error.json file
+- _error.json will now dumpend in a /tmp/ folder
