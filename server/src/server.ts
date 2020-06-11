@@ -179,8 +179,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
 
 	let command: string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings)
-
-	//console.log(command)
+//	console.log(command)
 	if (correctPath(settings.probHome)) {
 		exec(command, (err: string, stdout: string, stderr: string) => {
 			let errorMap: Promise<Map<string, Set<NDJSON>>> = readErrors(errorPath)
@@ -194,13 +193,20 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 					} else {
 						diagnostics = matchErrors(entry[1])
 					}
-					console.log("sending to " + entry[0])
 					connection.sendDiagnostics({ uri: entry[0], diagnostics });
 				}
 
 			}, function (err) {
 				connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
 			});
+		
+
+		if(!stdout.includes('Running ProB Command-line Interface'))
+		{
+			connection.sendNotification("path_error_prob", "could not call/reach probcli "+ command)	
+		}
+		
+		
 		})
 	}
 }

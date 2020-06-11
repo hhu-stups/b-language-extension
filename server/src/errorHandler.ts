@@ -24,10 +24,9 @@ export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJ
 	for await (const line of rl) {
 
 		let obj: NDJSON 
-		
+
 		try{
-			console.log(line)
-			 obj = JSON.parse(line)
+		    obj = JSON.parse(line)
 		}catch(e){
 			throw Error(e.message + " at line " + line)
 		}

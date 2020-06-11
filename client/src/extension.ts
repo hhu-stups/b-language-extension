@@ -59,7 +59,7 @@ export function activate(context: ExtensionContext) {
 	client.onReady().then(() => {
 		let bla = window.createOutputChannel("internal_error")
 		client.onNotification("path_error_prob", (message:string) => {
-			window.showErrorMessage('a problem occured :' + message)
+			window.showErrorMessage('a problem occured: ' + message)
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
 			window.showErrorMessage('a error occured :' + message)

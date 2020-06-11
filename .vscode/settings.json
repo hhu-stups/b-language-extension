@@ -7,5 +7,5 @@
 		"source.fixAll.eslint": true
 	},
 	"languageServer.wdChecks": false,
-	"languageServer.probHome": "/home/sebastian/prob_prolog/probcli.sh"
+	"languageServer.probHome": "/home/sebastian/prb_prolog/probcli.sh"
 }
