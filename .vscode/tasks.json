@@ -1,6 +1,40 @@
 {
 	"version": "2.0.0",
+	"command": "npm",
 	"tasks": [
+		{
+			"label": "compile",
+			// we run the custom script "compile" as defined in package.json
+			"args": [
+				"run",
+				"compile",
+				"--loglevel",
+				"silent"
+			],
+			// The tsc compiler is started in watching mode
+			"isBackground": true,
+			// use the standard tsc in watch mode problem matcher to find compile problems in the output.
+			"problemMatcher": "$tsc-watch",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+
+		},
+		{
+			"label": "build-server",
+			// we run the custom script "compile" as defined in package.json
+			"args": [
+				"run",
+				"build-server",
+				"--loglevel",
+				"silent"
+			],
+			// The tsc compiler is started in watching mode
+			"isBackground": false
+		},
+
+
 		{
 			"type": "npm",
 			"script": "compile",

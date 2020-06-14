@@ -32,7 +32,6 @@ Please note that user settings overwrite workspace settings.
 ## Future plans
 - Linter Support (via Server, is still in development by Mircosoft https://microsoft.github.io/language-server-protocol/specifications/specification-3-16/)
 - Quickfix support aká Code Completion
-- Make startup time faster
 - Switch to Java Server
 
 ## Release Notes

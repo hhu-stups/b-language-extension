@@ -3,11 +3,15 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  * ------------------------------------------------------------------------------------------ */
 
-import * as path from 'path';
 import { 
 	workspace, 
 	ExtensionContext, 
-	window } from 'vscode';
+	window,
+	WorkspaceConfiguration,
+	TextEditor,
+StatusBarAlignment } from 'vscode';
+
+
 
 import {
 	LanguageClient,
@@ -20,9 +24,9 @@ let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
 	// The server is implemented in node
-	let serverModule = context.asAbsolutePath(
+/*	let serverModule = context.asAbsolutePath(
 		path.join('server', 'out', 'server.js')
-	);
+	);*/
 	// The debug options for the server
 	// --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
 	let debugOptions = { execArgv: ['--nolazy', '--inspect=6009'] };
@@ -30,12 +34,15 @@ export function activate(context: ExtensionContext) {
 	// If the extension is launched in debug mode then the debug server options are used
 	// Otherwise the run options are used
 	let serverOptions: ServerOptions = {
-		run: { module: serverModule, transport: TransportKind.ipc },
+	/*	run: { module: serverModule, transport: TransportKind.ipc },
 		debug: {
 			module: serverModule,
 			transport: TransportKind.ipc,
 			options: debugOptions
 		}
+		*/
+		command: '/usr/bin/java',
+		args: [ "-jar", "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"]
 	};
 
 	// Options to control the language client
@@ -49,12 +56,10 @@ export function activate(context: ExtensionContext) {
 	};
 
 	// Create the language client and start the client.
-	client = new LanguageClient(
-		'languageServer',
-		'Language Server Example',
-		serverOptions,
-		clientOptions
-	);
+	client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
+
+
+
 
 	client.onReady().then(() => {
 		let bla = window.createOutputChannel("internal_error")
@@ -64,14 +69,21 @@ export function activate(context: ExtensionContext) {
 		client.onNotification("parse_error_prob", (message:string) => {
 			window.showErrorMessage('a error occured :' + message)
 		});
+		client.onNotification("lsp-test", (message:string) => {
+			window.showErrorMessage('test message recived: ' + message)
+		});
 	});
 
+	let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
+
 	
-	//context.subscriptions.push(client.start());
+
+	item.text = 'Starting Le Language Server de Chamrousse...';
+	toggleItem(window.activeTextEditor, item);
 
 	// Start the client. This will also launch the server
-	client.start();
-	console.log("Client started")
+	let disposable = client.start();
+	context.subscriptions.push(disposable);
 }
 
 
@@ -80,5 +92,19 @@ export function deactivate(): Thenable<void> | undefined {
 		return undefined;
 	}
 	return client.stop();
+}
+
+
+function toggleItem(editor: TextEditor, item) {
+	if(editor && editor.document &&
+		(editor.document.languageId === 'ski')){
+		item.show();
+	} else{
+		item.hide();
+	}
+}
+
+function getServerConfiguration():WorkspaceConfiguration {
+	return workspace.getConfiguration('ski');
 }
 
