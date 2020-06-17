@@ -201,11 +201,12 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 			});
 		
 
-		if(!stdout.includes('Running ProB Command-line Interface'))
+		if(!stdout.includes('ProB Command Line Interface'))
 		{
 			connection.sendNotification("path_error_prob", "could not call/reach probcli "+ command)	
 		}
 		
+		console.log(command)
 		
 		})
 	}
