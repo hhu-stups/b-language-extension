@@ -67,3 +67,8 @@
 - improved error feedback for failing call to probcli
 - improved error feedback for wrong format of the _error.json file
 - _error.json will now dumpend in a /tmp/ folder
+
+
+## [0.6.1]
+
+- fixed recognition of failing probcli
