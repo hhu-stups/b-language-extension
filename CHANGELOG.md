@@ -69,6 +69,6 @@
 - _error.json will now dumpend in a /tmp/ folder
 
 
-## [0.6.1]
+## [0.6.2]
 
 - fixed recognition of failing probcli
