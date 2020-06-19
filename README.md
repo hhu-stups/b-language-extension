@@ -102,6 +102,6 @@ Please note that user settings overwrite workspace settings.
 - _error.json will now dumpend in a /tmp/ folder
 
 
-### 0.6.2
+### 0.6.3
 
 - fixed recognition of failing probcli
