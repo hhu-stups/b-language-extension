@@ -2,7 +2,7 @@
 	"name": "b-language-extension",
 	"displayName": "B/ProB Language Support",
 	"description": "Compiler and language support for B and via ProB",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"publisher": "SeeBasTStick",
 	"icon": "media/prob2-ui.png",
 	"author": "Sebastian Stock",
