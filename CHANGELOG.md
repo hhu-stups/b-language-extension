@@ -72,3 +72,9 @@
 ## [0.6.3]
 
 - fixed recognition of failing probcli
+
+
+
+## [0.6.4]
+
+- fixed bug where sometimes changes lead to wrong represantation of mistakes

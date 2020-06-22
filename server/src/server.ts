@@ -160,6 +160,13 @@ documents.onDidSave(change => {
 	validateTextDocument(change.document)
 })
 
+documents.onDidChangeContent(change => {
+//	validateTextDocument(change.document);
+});
+
+
+
+
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let settings = await getDocumentSettings(textDocument.uri) // Waiting for correct setting; otherwise allways default
@@ -176,8 +183,9 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 		fs.mkdirSync(errorDic);
 	}
 
-	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
 
+	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
+	//fs.writeFileSync(errorPath,"",{encoding:'utf8',flag:'w'})
 	let command: string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings)
 //	console.log(command)
 	if (correctPath(settings.probHome)) {
@@ -186,14 +194,19 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 			errorMap.then(function (result: Map<string, Set<NDJSON>>) {
 
 				let diagnostics: Array<Diagnostic> = new Array()
-
-				for (let entry of result) {
-					if (entry[0] == textDocument.uri) {
-						diagnostics = matchErrors(entry[1], textDocument)
-					} else {
-						diagnostics = matchErrors(entry[1])
+				if(result.size != 0)
+				{
+					for (let entry of result) {
+						if (entry[0] == textDocument.uri) {
+							diagnostics = matchErrors(entry[1], textDocument)
+						} else {
+							diagnostics = matchErrors(entry[1])
+						}
+						connection.sendDiagnostics({ uri: entry[0], diagnostics });
 					}
-					connection.sendDiagnostics({ uri: entry[0], diagnostics });
+				}
+				else{
+					connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 				}
 
 			}, function (err) {
@@ -210,6 +223,9 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 		
 		})
 	}
+
+	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
+
 }
 
 
@@ -266,6 +282,7 @@ connection.onCompletion(
 		return wordComplition.selectCompletion(textDocumentPosition)
 	}
 );
+
 
 
 
