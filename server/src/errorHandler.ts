@@ -98,7 +98,7 @@ export function matchErrors(infos: Set<NDJSON>, file?: TextDocument | undefined)
 				}
 			},
 			message: content.message,
-			source: 'prob_prolog',
+			source: content.file,
 
 		};
 

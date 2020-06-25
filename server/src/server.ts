@@ -22,6 +22,8 @@ import * as fs from 'fs';
 import { NDJSON, readErrors, matchErrors } from './errorHandler';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
+import * as URL from 'url'
+//import * as uri2path from 'file-uri-to-path'
 
 
 
@@ -196,19 +198,43 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 				let diagnostics: Array<Diagnostic> = new Array()
 				if(result.size != 0)
 				{
+					let mainFileWritten : boolean = false;
 					for (let entry of result) {
 						if (entry[0] == textDocument.uri) {
 							diagnostics = matchErrors(entry[1], textDocument)
 						} else {
 							diagnostics = matchErrors(entry[1])
 						}
+						
 						connection.sendDiagnostics({ uri: entry[0], diagnostics });
+						
+						/**
+						 * TL;DR we need to cast here to clean the main file 
+						 * 
+						 * This is a little bit of a mess here: Problem the paths in the _error.json a system relevant
+						 * and system centered e.g. /home/sebastian...
+						 * 
+						 * The URI from the textdocument is domain centered e.g. file///home/sebastian in order to deal
+						 * with remote files like serverXYZ///home/michael
+						 * 
+						 * However the extension.ts can deal with system centric paths and uris, but we need a comparision
+						 * so we have to cast here...
+						 */
+						if(URI.parse(entry[0]).toString() == textDocument.uri){
+							mainFileWritten = true
+						}
+					}
+
+					if(mainFileWritten == false){
+						// The main file has no errors, we need to reset it...
+						diagnostics = new Array()
+						connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+
 					}
 				}
 				else{
 					connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
 				}
-
 			}, function (err) {
 				connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
 			});
@@ -218,9 +244,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 		{
 			connection.sendNotification("path_error_prob", "could not call/reach probcli "+ command)	
 		}
-		
-		console.log(command)
-		
+			
 		})
 	}
 
