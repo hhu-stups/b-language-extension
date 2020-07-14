@@ -15,12 +15,16 @@
 			}
 		},
 		{
-			"type": "node",
+			"type": "pwa-node",
 			"request": "attach",
 			"name": "Attach to Server",
 			"port": 6009,
 			"restart": true,
-			"outFiles": ["${workspaceRoot}/server/out/**/*.js"]
+			"outFiles": ["${workspaceRoot}/server/out/**/*.js"],
+			"resolveSourceMapLocations": [
+				"${workspaceFolder}/",
+				"!/node_modules/**"
+				],
 		},
 		{
 			"name": "Language Server E2E Test",
