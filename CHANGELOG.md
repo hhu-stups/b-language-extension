@@ -85,6 +85,6 @@
 - small spelling fixes
 
 
-## [0.6.6]
+## [0.6.8]
 
 - markers in files without problems are now resettet properly

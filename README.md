@@ -112,6 +112,6 @@ Please note that user settings overwrite workspace settings.
 - fixed bug where sometimes changes lead to wrong represantation of mistakes
 
 
-### [0.6.6]
+### [0.6.8]
 
 - markers in files without problems are now resettet properly
