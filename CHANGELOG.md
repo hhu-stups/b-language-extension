@@ -78,3 +78,13 @@
 ## [0.6.4]
 
 - fixed bug where sometimes changes lead to wrong represantation of mistakes
+
+
+## [0.6.5]
+
+- small spelling fixes
+
+
+## [0.6.6]
+
+- markers in files without problems are now resettet properly

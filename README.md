@@ -10,7 +10,7 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 
 ## Requirements
 
-- Latest nightly build of ProB.
+- Latest nightly build of ProB. You can use older builds but be aware that things can break without notice.
 
 
 ## Extension Settings
@@ -110,3 +110,8 @@ Please note that user settings overwrite workspace settings.
 ### 0.6.4
 
 - fixed bug where sometimes changes lead to wrong represantation of mistakes
+
+
+### [0.6.6]
+
+- markers in files without problems are now resettet properly
