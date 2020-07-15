@@ -175,10 +175,10 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 	let documentPath: path.ParsedPath = path.parse(URI.parse(textDocument.uri).path);
 
-	let errorDic : string = documentPath.dir + '/tmp'
-	let errorPath: string = errorDic + '/_error.json'
+	let errorDic : string = documentPath.dir + path.sep + 'tmp'
+	let errorPath: string = errorDic + path.sep + '_error.json'
 
-	
+
 	const { exec } = require('child_process');
 
 	if (!fs.existsSync(errorDic)){
@@ -206,19 +206,13 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 				for(let dependency of allFilesAndCorrespondingErrors.keys())
 				{
-					console.log(dependency)
-					console.log(documentPath.dir+documentPath.name+documentPath.ext)
-					if(dependency == (documentPath.dir+documentPath.name+documentPath.ext)){
-						console.log("is:main")
+					if(dependency == (documentPath.dir+ path.sep + documentPath.name+documentPath.ext)){
 						let errors : Set<NDJSON> = allFilesAndCorrespondingErrors.get(dependency)!!
-						console.log("errors " + errors)
 						let diagnostics = matchErrors(errors, textDocument)
 						connection.sendDiagnostics({ uri: dependency, diagnostics });
 					}else{
-						console.log("is:dep")
 						let errors : Set<NDJSON> = allFilesAndCorrespondingErrors.get(dependency)!!
 						let diagnostics = matchErrors(errors)
-						console.log("errors " + errors)
 						connection.sendDiagnostics({ uri: dependency, diagnostics });
 					}
 				}
@@ -227,7 +221,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 
 				for(let dependency of filesToReset)
 				{					
-					console.log("reset:errrors")
 					let diagnostics : Array<Diagnostic> = new Array()
 					connection.sendDiagnostics({ uri: dependency, diagnostics });
 				}

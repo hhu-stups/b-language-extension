@@ -62,10 +62,8 @@ export function buildErrors(errorLines : Array<string> ): Map<string, Set<NDJSON
  */
 export function matchErrors(infos: Set<NDJSON>, file?: TextDocument | undefined): Array<Diagnostic> {
 	let result: Array<Diagnostic> = new Array()
-    console.log("infos " + infos)
 	for (var info of infos) {
 
-		console.log("type" + info.type)
 		let serveity: DiagnosticSeverity = DiagnosticSeverity.Error
 
 		if (info.type == "error") {
@@ -131,8 +129,6 @@ export interface NDJSON {
 	start: StartOrEnd
 	end: StartOrEnd
 	prob_version : string
-//	main_file : string
-//	dependencies : Array<string>
 }
 
 
