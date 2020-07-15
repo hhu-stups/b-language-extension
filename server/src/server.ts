@@ -19,7 +19,7 @@ import {
 
 import { URI } from 'vscode-uri';
 import * as fs from 'fs';
-import { NDJSON, readErrors, matchErrors } from './errorHandler';
+import { NDJSON, readErrors, matchErrors, buildErrors } from './errorHandler';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
 import * as URL from 'url'
@@ -167,7 +167,7 @@ documents.onDidChangeContent(change => {
 });
 
 
-
+let issueTracker : Map<string, Array<string>> = new Map()
 
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
@@ -178,7 +178,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	let errorDic : string = documentPath.dir + '/tmp'
 	let errorPath: string = errorDic + '/_error.json'
 
-
+	
 	const { exec } = require('child_process');
 
 	if (!fs.existsSync(errorDic)){
@@ -186,55 +186,56 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
 	}
 
 
-	fs.writeFile(errorPath, "", () => { }) //Insure a clean error file
-	//fs.writeFileSync(errorPath,"",{encoding:'utf8',flag:'w'})
+	if(!issueTracker.has(textDocument.uri)){ //ensure that position is always initalised
+		issueTracker.set(textDocument.uri, new Array())
+	}
+
+	fs.writeFileSync(errorPath,"",{encoding:'utf8',flag:'w'})
 	let command: string = getCommand(URI.parse(textDocument.uri).path, errorPath, settings)
-//	console.log(command)
+	
+	
 	if (correctPath(settings.probHome)) {
 		exec(command, (err: string, stdout: string, stderr: string) => {
-			let errorMap: Promise<Map<string, Set<NDJSON>>> = readErrors(errorPath)
-			errorMap.then(function (result: Map<string, Set<NDJSON>>) {
+			let errorLines : Promise<Array<string>> = readErrors(errorPath)
 
-				let diagnostics: Array<Diagnostic> = new Array()
-				if(result.size != 0)
+			errorLines.then(function (result: Array<string>) {
+
+				let allFilesAndCorrespondingErrors : Map<string, Set<NDJSON>> = buildErrors(result);
+				let filesWithProblemms : Array<string> = Array.from(allFilesAndCorrespondingErrors.keys())
+
+
+				for(let dependency of allFilesAndCorrespondingErrors.keys())
 				{
-					let mainFileWritten : boolean = false;
-					for (let entry of result) {
-						if (entry[0] == textDocument.uri) {
-							diagnostics = matchErrors(entry[1], textDocument)
-						} else {
-							diagnostics = matchErrors(entry[1])
-						}
-						
-						connection.sendDiagnostics({ uri: entry[0], diagnostics });
-						
-						/**
-						 * TL;DR we need to cast here to clean the main file 
-						 * 
-						 * This is a little bit of a mess here: Problem the paths in the _error.json a system relevant
-						 * and system centered e.g. /home/sebastian...
-						 * 
-						 * The URI from the textdocument is domain centered e.g. file///home/sebastian in order to deal
-						 * with remote files like serverXYZ///home/michael
-						 * 
-						 * However the extension.ts can deal with system centric paths and uris, but we need a comparision
-						 * so we have to cast here...
-						 */
-						if(URI.parse(entry[0]).toString() == textDocument.uri){
-							mainFileWritten = true
-						}
-					}
-
-					if(mainFileWritten == false){
-						// The main file has no errors, we need to reset it...
-						diagnostics = new Array()
-						connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
-
+					console.log(dependency)
+					console.log(documentPath.dir+documentPath.name+documentPath.ext)
+					if(dependency == (documentPath.dir+documentPath.name+documentPath.ext)){
+						console.log("is:main")
+						let errors : Set<NDJSON> = allFilesAndCorrespondingErrors.get(dependency)!!
+						console.log("errors " + errors)
+						let diagnostics = matchErrors(errors, textDocument)
+						connection.sendDiagnostics({ uri: dependency, diagnostics });
+					}else{
+						console.log("is:dep")
+						let errors : Set<NDJSON> = allFilesAndCorrespondingErrors.get(dependency)!!
+						let diagnostics = matchErrors(errors)
+						console.log("errors " + errors)
+						connection.sendDiagnostics({ uri: dependency, diagnostics });
 					}
 				}
-				else{
-					connection.sendDiagnostics({ uri: textDocument.uri, diagnostics });
+
+				let filesToReset : Array<string> = issueTracker.get(textDocument.uri)!.filter(function(obj) { return filesWithProblemms.indexOf(obj) == -1; });
+
+				for(let dependency of filesToReset)
+				{					
+					console.log("reset:errrors")
+					let diagnostics : Array<Diagnostic> = new Array()
+					connection.sendDiagnostics({ uri: dependency, diagnostics });
 				}
+
+				issueTracker.set(textDocument.uri, Array.from(allFilesAndCorrespondingErrors.keys()))
+
+		
+
 			}, function (err) {
 				connection.sendNotification("parse_error_prob", "there are things wrong with the parse results " + err)
 			});

@@ -5,12 +5,9 @@ import * as readline from 'readline'
 
 
 
-/**
- * Reads the error file, casts the errors to a readable form, sorts them by origin
- * @param errorPath the path to the file where the ndjson errors are stored
- */
-export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJSON>>> {
-	let result: Map<string, Set<NDJSON>> = new Map()
+export async function readErrors(errorPath: string) : Promise<Array<string>>{
+
+	let lines : Array<string> = new Array()
 
 	var stream = fs.createReadStream(errorPath)
 
@@ -19,9 +16,23 @@ export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJ
 		crlfDelay: Infinity
 	});
 
+	for await(const line of rl){
+		lines.push(line)
+	}
 
-	let i : number = 1
-	for await (const line of rl) {
+	return lines
+}
+
+
+/**
+ * Reads the error file, casts the errors to a readable form, sorts them by origin
+ * @param errorLines an array containing all errors
+ */
+export function buildErrors(errorLines : Array<string> ): Map<string, Set<NDJSON>> {
+	let result: Map<string, Set<NDJSON>> = new Map()
+
+	let i : number = 2
+	for (const line of errorLines) {
 
 		let obj: NDJSON 
 
@@ -31,13 +42,14 @@ export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJ
 			throw Error(e.message + " at line " + line)
 		}
 		i++
-		let path: string = obj.details.file
+		let path = obj.file
 
 
-		if (!result.has(path)) {
+		
+		if(!result.has(path)){
 			result.set(path, new Set())
 		}
-
+		
 		result.get(path)!.add(obj)
 	}
 
@@ -50,10 +62,10 @@ export async function readErrors(errorPath: string): Promise<Map<string, Set<NDJ
  */
 export function matchErrors(infos: Set<NDJSON>, file?: TextDocument | undefined): Array<Diagnostic> {
 	let result: Array<Diagnostic> = new Array()
-
+    console.log("infos " + infos)
 	for (var info of infos) {
 
-
+		console.log("type" + info.type)
 		let serveity: DiagnosticSeverity = DiagnosticSeverity.Error
 
 		if (info.type == "error") {
@@ -68,37 +80,37 @@ export function matchErrors(infos: Set<NDJSON>, file?: TextDocument | undefined)
 			serveity = DiagnosticSeverity.Information
 		}
 
-		let content: JBody = info.details
 
 		// Managing case we get conent with no error massage
-		if (content.start.line == -1 && content.start.col == -1 && content.end.line == -1 && content.end.col == -1) {
+		if (info.start.line == -1 && info.start.col == -1 && info.end.line == -1 && info.end.col == -1) {
 			if (file != undefined) {
 				//Due to server architecture we only have the most actual document
 				let targetLine = getFirstOccurence(file).line
-				content.start = { line: targetLine, col: 0 }
-				content.end = { line: targetLine, col: Number.MAX_VALUE }
+				info.start = { line: targetLine, col: 0 }
+				info.end = { line: targetLine, col: Number.MAX_VALUE }
 			} else {
 				//Fallback if an error occurs on  differnt document
-				content.start = { line: 1, col: 0 }
-				content.end = { line: 1, col: Number.MAX_VALUE }
+				info.start = { line: 1, col: 0 }
+				info.end = { line: 1, col: Number.MAX_VALUE }
 			}
 		}
 
-		let diagnostic = {
+		let diagnostic : Diagnostic = {
 			severity: serveity,
 			range: {
 				start:
 				{
-					character: content.start.col,
-					line: content.start.line - 1
+					character: info.start.col,
+					line: info.start.line - 1
 				},
 				end: {
-					character: content.end.col,
-					line: content.end.line - 1
+					character: info.end.col,
+					line: info.end.line - 1
 				}
 			},
-			message: content.message,
-			source: content.file,
+			message: info.message,
+			source: info.file,
+			code : "probcli v." + info.prob_version
 
 		};
 
@@ -113,21 +125,26 @@ export function matchErrors(infos: Set<NDJSON>, file?: TextDocument | undefined)
 ////////////// Representation of the NDJSON File
 export interface NDJSON {
 	type: string
-	details: JBody
+	message: string
+	reason: string
+	file: string
+	start: StartOrEnd
+	end: StartOrEnd
+	prob_version : string
+//	main_file : string
+//	dependencies : Array<string>
 }
 
-export interface JBody {
-	message: string;
-	type: string;
-	file: string;
-	start: StartOrEnd;
-	end: StartOrEnd;
-}
+
+
 
 export interface StartOrEnd {
 	line: number;
 	col: number;
 }
+
+
+
 
 ///////////////////
 
