@@ -22,9 +22,6 @@ import * as fs from 'fs';
 import { NDJSON, readErrors, matchErrors, buildErrors } from './errorHandler';
 import * as wordComplition from './wordCompletion'
 import * as path from 'path';
-import * as URL from 'url'
-//import * as uri2path from 'file-uri-to-path'
-
 
 
 // Create a connection for the server. The connection uses Node's IPC as a transport.

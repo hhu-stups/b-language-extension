@@ -1,7 +1,7 @@
 {
 	"name": "b-language-extension",
 	"displayName": "B/ProB Language Support",
-	"description": "Compiler and language support for B and via ProB",
+	"description": "Compiler and language support for B via ProB",
 	"version": "0.6.8",
 	"publisher": "SeeBasTStick",
 	"icon": "media/prob2-ui.png",
