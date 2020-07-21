@@ -49,25 +49,25 @@
 					"description": "Traces the communication between VS Code and the language server."
 				},
 				"languageServer.probHome": {
-					"scope": "window",
+					"scope": "resource",
 					"type": "string",
 					"default": "~/prob_prolog/probcli.sh",
 					"description": "Path to ProB executable"
 				},
 				"languageServer.wdChecks": {
-					"scope": "window",
+					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for WD Checks"
 				},
 				"languageServer.strictChecks": {
-					"scope": "window",
+					"scope": "resource",
 					"type": "boolean",
 					"default": false,
 					"description": "Option for stricter Checks"
 				},
 				"languageServer.performanceHints": {
-					"scope": "window",
+					"scope": "resource",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for performance-related Hints"
