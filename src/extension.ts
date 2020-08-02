@@ -1,23 +1,16 @@
-/* --------------------------------------------------------------------------------------------
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- * ------------------------------------------------------------------------------------------ */
-
 import { 
 	workspace, 
 	ExtensionContext, 
 	window,
 	WorkspaceConfiguration,
 	TextEditor,
-StatusBarAlignment } from 'vscode';
-
+	StatusBarAlignment } from 'vscode';
 
 
 import {
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
-	TransportKind
 } from 'vscode-languageclient';
 
 let client: LanguageClient;
@@ -47,14 +40,21 @@ export function activate(context: ExtensionContext) {
 
 	client.onReady().then(() => {
 		let bla = window.createOutputChannel("internal_error")
+		client.onDidChangeState(event => {			bla.appendLine("Error")
+	})
 		client.onNotification("path_error_prob", (message:string) => {
 			window.showErrorMessage('a problem occured: ' + message)
+			bla.appendLine("Error")
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
 			window.showErrorMessage('a error occured :' + message)
+			bla.appendLine("Error")
+
 		});
 		client.onNotification("lsp-test", (message:string) => {
 			window.showErrorMessage('test message recived: ' + message)
+			bla.appendLine("Error")
+
 		});
 	});
 
@@ -62,7 +62,7 @@ export function activate(context: ExtensionContext) {
 
 	
 
-	item.text = 'Starting Le Language Server de Chamrousse...';
+	item.text = 'Starting ProB LSP...';
 	toggleItem(window.activeTextEditor, item);
 
 	// Start the client. This will also launch the server
@@ -89,7 +89,5 @@ function toggleItem(editor: TextEditor, item) {
 	}
 }
 
-function getServerConfiguration():WorkspaceConfiguration {
-	return workspace.getConfiguration('ski');
-}
+ 
 

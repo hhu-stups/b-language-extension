@@ -6,6 +6,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"languageServer.wdChecks": false,
-	"languageServer.probHome": "/home/sebastian/prb_prolog/probcli.sh"
+	//"languageServer.wdChecks": false,
+	//"languageServer.probHome": "/home/sebastian/prb_prolog/probcli.sh"
 }
