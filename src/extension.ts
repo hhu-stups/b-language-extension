@@ -36,25 +36,20 @@ export function activate(context: ExtensionContext) {
 	client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
 
 
+	
 
 
 	client.onReady().then(() => {
+		
 		let bla = window.createOutputChannel("internal_error")
-		client.onDidChangeState(event => {			bla.appendLine("Error")
-	})
+		client.onRequest("hello", (message:string) => {
+			window.showErrorMessage('a problem occured: ' + message)
+		});
 		client.onNotification("path_error_prob", (message:string) => {
 			window.showErrorMessage('a problem occured: ' + message)
-			bla.appendLine("Error")
 		});
 		client.onNotification("parse_error_prob", (message:string) => {
 			window.showErrorMessage('a error occured :' + message)
-			bla.appendLine("Error")
-
-		});
-		client.onNotification("lsp-test", (message:string) => {
-			window.showErrorMessage('test message recived: ' + message)
-			bla.appendLine("Error")
-
 		});
 	});
 
@@ -82,7 +77,7 @@ export function deactivate(): Thenable<void> | undefined {
 
 function toggleItem(editor: TextEditor, item) {
 	if(editor && editor.document &&
-		(editor.document.languageId === 'ski')){
+		(editor.document.languageId === 'B')){
 		item.show();
 	} else{
 		item.hide();
