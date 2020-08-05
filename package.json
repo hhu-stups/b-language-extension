@@ -71,6 +71,12 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Option for performance-related Hints"
+				},
+				"languageServer.debugMode": {
+					"scope": "resource",
+					"type": "boolean",
+					"default": true,
+					"description": "Option for enabeling (extensiv) debug messages"
 				}
 			}
 		},
