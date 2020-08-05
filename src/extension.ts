@@ -11,6 +11,7 @@ import {
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
+	NotificationType,
 } from 'vscode-languageclient';
 
 let client: LanguageClient;
@@ -35,27 +36,7 @@ export function activate(context: ExtensionContext) {
 	// Create the language client and start the client.
 	client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
 
-
-	
-
-
-	client.onReady().then(() => {
-		
-		let bla = window.createOutputChannel("internal_error")
-		client.onRequest("hello", (message:string) => {
-			window.showErrorMessage('a problem occured: ' + message)
-		});
-		client.onNotification("path_error_prob", (message:string) => {
-			window.showErrorMessage('a problem occured: ' + message)
-		});
-		client.onNotification("parse_error_prob", (message:string) => {
-			window.showErrorMessage('a error occured :' + message)
-		});
-	});
-
 	let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
-
-	
 
 	item.text = 'Starting ProB LSP...';
 	toggleItem(window.activeTextEditor, item);
