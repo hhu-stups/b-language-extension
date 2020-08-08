@@ -2,17 +2,18 @@ import {
 	workspace, 
 	ExtensionContext, 
 	window,
-	WorkspaceConfiguration,
 	TextEditor,
-	StatusBarAlignment } from 'vscode';
+	StatusBarAlignment, 
+	OutputChannel} from 'vscode';
 
 
 import {
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
-	NotificationType,
 } from 'vscode-languageclient';
+
+
 
 let client: LanguageClient;
 
@@ -23,6 +24,9 @@ export function activate(context: ExtensionContext) {
 		args: [ "-jar", "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"]
 	};
 
+
+	let debugChannle = window.createOutputChannel("ProB language server")
+	
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for B files
@@ -30,8 +34,10 @@ export function activate(context: ExtensionContext) {
 		synchronize: {
 			// Notify the server about file changes to '.clientrc files contained in the workspace
 			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
-		}
-	};
+		},
+		outputChannel : debugChannle,
+		
+	}
 
 	// Create the language client and start the client.
 	client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
@@ -44,7 +50,31 @@ export function activate(context: ExtensionContext) {
 	// Start the client. This will also launch the server
 	let disposable = client.start();
 	context.subscriptions.push(disposable);
+
 	
+
+	
+
+	workspace.onDidChangeConfiguration(() => {
+		
+		showDebugMessages(debugChannle)
+	})
+
+	client.onDidChangeState(() => {
+		showDebugMessages(debugChannle)
+		
+	})
+
+
+}
+
+function showDebugMessages(debugChannle : OutputChannel){
+	const debugMode : Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+	console.log(debugMode)
+	if(debugMode)
+	{
+		debugChannle.show()
+	}
 }
 
 
