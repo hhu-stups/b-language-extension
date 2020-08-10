@@ -113,8 +113,8 @@
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",
 		"compile": "tsc -watch -p ./",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "node ./node_modules/vscode/bin/test",
+		"install:nix": "./node_modules/b-language-server/gradlew shadowjar -p ./node_modules/b-language-server",
+		"install:windows": "./node_modules/b-language-server/gradlew.bat shadowjar -p ./node_modules/b-language-server",
 		"tslint": "gulp tslint"
 	},
 	"devDependencies": {
@@ -129,11 +129,13 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.47.0",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.0.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"mkdirp": "^1.0.4",
 		"ndjson": "^1.5.0",
 		"path": "^0.12.7",
+		"run-script-os": "^1.1.1",
 		"stream-to-array": "^2.3.0",
 		"ts-xor": "^1.0.8",
 		"vscode-api": "0.0.0",

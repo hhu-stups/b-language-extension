@@ -21,7 +21,7 @@ export function activate(context: ExtensionContext) {
 
 	let serverOptions: ServerOptions = {
 		command: '/usr/bin/java',
-		args: [ "-jar", "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"]
+		args: [ "-jar", "./node_modules/b-language-server/build/libs/b-language-server-all.jar"]
 	};
 
 
