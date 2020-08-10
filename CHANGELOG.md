@@ -67,3 +67,9 @@
 - improved error feedback for failing call to probcli
 - improved error feedback for wrong format of the _error.json file
 - _error.json will now dumpend in a /tmp/ folder
+
+
+## [1.0.0]
+
+- switched to Java Server and will be able to access ProB Kernel library.
+- server has no debug option and output
