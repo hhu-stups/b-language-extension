@@ -34,7 +34,7 @@
 				"languageServer.probHome": {
 					"id": "1",
 					"title": "ProBHome",
-					"scope": "window",
+					"scope": "application",
 					"type": "string",
 					"default": "~/prob_prolog/probcli.sh",
 					"description": "Path to ProB executable"
@@ -42,7 +42,7 @@
 				"languageServer.wdChecks": {
 					"id": "2",
 					"title": "WD Checks",
-					"scope": "window",
+					"scope": "application",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for WD Checks"
@@ -50,7 +50,7 @@
 				"languageServer.strictChecks": {
 					"id": "3",
 					"title": "Strict Checks",
-					"scope": "window",
+					"scope": "application",
 					"type": "boolean",
 					"default": false,
 					"description": "Option for stricter Checks"
@@ -58,7 +58,7 @@
 				"languageServer.performanceHints": {
 					"id": "4",
 					"title": "Performance Hints",
-					"scope": "window",
+					"scope": "application",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for performance-related Hints"
@@ -66,7 +66,7 @@
 				"languageServer.debugMode": {
 					"id": "5",
 					"title": "Debug Mode",
-					"scope": "window",
+					"scope": "application",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for enabeling (extensiv) debug messages"
@@ -74,10 +74,18 @@
 				"languageServer.maxNumberOfProblems": {
 					"id": "6",
 					"title": "max. number of problems",
-					"scope": "window",
+					"scope": "application",
 					"type": "number",
 					"default": 100,
 					"description": "Controls the maximum number of problems produced by the server."
+				},
+				"common.javaHome": {
+					"id": "7",
+					"title": "Java Home",
+					"scope": "application",
+					"type": "string",
+					"default": "java",
+					"description": "points to the java sdk responsible for executing the server"
 				}
 			}
 		},
@@ -129,9 +137,10 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.47.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.0.tar.gz",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.2.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
+		"fs": "0.0.1-security",
 		"mkdirp": "^1.0.4",
 		"ndjson": "^1.5.0",
 		"path": "^0.12.7",
