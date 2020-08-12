@@ -12,21 +12,27 @@ import {
 	LanguageClientOptions,
 	ServerOptions,
 } from 'vscode-languageclient';
-
+import fs from "fs"
+import * as path from 'path'
 
 
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
 
+	const serverHome = context.asAbsolutePath(path.join('node_modules', 'b-language-server', 'build', 'libs', 'b-language-server-all.jar'))
+	//const serverHome = "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"
+	const javaHome : string = workspace.getConfiguration("common").get("javaHome")
+
 	let serverOptions: ServerOptions = {
-		command: '/usr/bin/java',
-		args: [ "-jar", "./node_modules/b-language-server/build/libs/b-language-server-all.jar"]
+		command: javaHome,
+		args: [ "-jar", serverHome]
 	};
 
 
 	let debugChannle = window.createOutputChannel("ProB language server")
-	
+	debugChannle.appendLine("starting server at <" + javaHome + " -jar " + serverHome + ">")
+	debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for B files

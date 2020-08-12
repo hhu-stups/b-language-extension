@@ -11,7 +11,7 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 ## Requirements
 
 - Latest nightly build of ProB.
-- Java v.11 or higher
+- Java v.8 or higher. By default java home is considerd to be accesseble by 'java' in terminal/powershell
 
 
 ## Extension Settings
