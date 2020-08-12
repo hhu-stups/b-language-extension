@@ -43,4 +43,4 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 ### 1.0.0
 
 - switched to Java Server and will be able to access ProB Kernel library.
-- server has no debug option and output
+- server has now debug option and output
