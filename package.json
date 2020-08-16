@@ -52,7 +52,7 @@
 					"title": "Strict Checks",
 					"scope": "application",
 					"type": "boolean",
-					"default": false,
+					"default": true,
 					"description": "Option for stricter Checks"
 				},
 				"languageServer.performanceHints": {
@@ -68,7 +68,7 @@
 					"title": "Debug Mode",
 					"scope": "application",
 					"type": "boolean",
-					"default": true,
+					"default": false,
 					"description": "Option for enabeling (extensiv) debug messages"
 				},
 				"languageServer.maxNumberOfProblems": {
@@ -137,7 +137,7 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.47.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.2.tar.gz",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.3.2.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"fs": "0.0.1-security",
