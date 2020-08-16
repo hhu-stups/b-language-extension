@@ -36,11 +36,12 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 ## Future plans
 - Linter Support (via Server, is still in development by Mircosoft https://microsoft.github.io/language-server-protocol/specifications/specification-3-16/)
 - Quickfix support aká Code Completion
-- Compelation and Feedback via ProB Java kernel instead of cli calls. (will improve performance and give access to more features)
+- Completion and Feedback via ProB Java kernel instead of cli calls. (will improve performance and give access to more features)
 
 ## Release Notes
 
-### 1.0.0
+### 1.0.1
 
-- switched to Java Server and will be able to access ProB Kernel library.
-- server has now debug option and output
+- debug mode is now disabled by default
+- debug console will now behave more reasonable behavior
+- updated server version to take care of windows and mac problems; server will now use process builder and handle process output properly

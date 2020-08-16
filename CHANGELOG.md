@@ -73,3 +73,11 @@
 
 - switched to Java Server and will be able to access ProB Kernel library.
 - server has no debug option and output
+
+
+
+## [1.0.1]
+
+- debug mode is now disabled by default
+- debug console will now behave more reasonable behavior
+- updated server version to take care of windows and mac problems
