@@ -11,7 +11,7 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 ## Requirements
 
 - Latest nightly build of ProB.
-- Java v.8 or higher. By default java home is considerd to be accesseble by 'java' in terminal/powershell
+- Java v.8 or higher. By default java home is considerd to be accessible by 'java' in terminal/powershell
 
 
 ## Extension Settings
@@ -19,9 +19,9 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 This extension contributes the following settings:
 
 * `languageServer.probHome`: to set the path to ProB
-* `languageServer.wdChecks`: to enable/disable WD (Well-Definedness) Checks. Make sure to enable/disable for the current workspace too.
-* `languageServer.strictChecks`: to enable/disable stricter Checks. Make sure to enable/disable for the current workspace too.
-* `languageServer.performanceHints`: to enable/disable performance-related Hints. Make sure to enable/disable for the current workspace too.
+* `languageServer.wdChecks`: to enable/disable WD (Well-Definedness) Checks. 
+* `languageServer.strictChecks`: to enable/disable stricter Checks. 
+* `languageServer.performanceHints`: to enable/disable performance-related Hints.
 * `languageServer.debugMode`: to enable/disable the server log
 
 To ensure expected behavior deactivate/activate settings in the User and Worksapce Tab.
@@ -43,5 +43,5 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 ### 1.0.1
 
 - debug mode is now disabled by default
-- debug console will now behave more reasonable behavior
+- debug console will now behave more reasonable
 - updated server version to take care of windows and mac problems; server will now use process builder and handle process output properly
