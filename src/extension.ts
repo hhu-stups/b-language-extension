@@ -29,10 +29,11 @@ export function activate(context: ExtensionContext) {
 		args: [ "-jar", serverHome]
 	};
 
+	
 
 	let debugChannle = window.createOutputChannel("ProB language server")
 	debugChannle.appendLine("starting server at <" + javaHome + " -jar " + serverHome + ">")
-	debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
+	//debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for B files
@@ -57,26 +58,25 @@ export function activate(context: ExtensionContext) {
 	let disposable = client.start();
 	context.subscriptions.push(disposable);
 
+	const debugMode : Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+	if(!debugMode){
+		debugChannle.hide()
+	}else{
+		debugChannle.show()
+	}
+
+	console.log(workspace.getConfiguration("languageServer").get("debugMode"))
 	
-
-	
-
-	workspace.onDidChangeConfiguration(() => {
-		
+	window.onDidOpenTerminal(() => 
+	{
 		showDebugMessages(debugChannle)
-	})
-
-	client.onDidChangeState(() => {
-		showDebugMessages(debugChannle)
-		
-	})
+	})	
 
 
 }
 
 function showDebugMessages(debugChannle : OutputChannel){
 	const debugMode : Boolean = workspace.getConfiguration("languageServer").get("debugMode")
-	console.log(debugMode)
 	if(debugMode)
 	{
 		debugChannle.show()
