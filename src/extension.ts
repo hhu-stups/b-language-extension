@@ -11,7 +11,12 @@ import {
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
+	TransportKind,
+	NodeModule,
+	Transport,
+	StreamInfo
 } from 'vscode-languageclient';
+import * as net from 'net';
 import fs from "fs"
 import * as path from 'path'
 
@@ -24,12 +29,28 @@ export function activate(context: ExtensionContext) {
 	//const serverHome = "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"
 	const javaHome : string = workspace.getConfiguration("common").get("javaHome")
 
+
+	let connectionInfo = {
+		port : 5555
+	}
+
+
+	let serverOptions : ServerOptions = () => {
+		let socket = net.connect(connectionInfo);
+        let result: StreamInfo = {
+            writer: socket,
+            reader: socket
+        };
+        return Promise.resolve(result);
+	}
+/*
 	let serverOptions: ServerOptions = {
 		command: javaHome,
-		args: [ "-jar", serverHome]
+		args: [ "-jar", "--add-opens",  "java.base/java.lang=ALL-UNNAMED", serverHome],
+		run : nodeModule
 	};
 
-	
+	*/
 
 	let debugChannle = window.createOutputChannel("ProB language server")
 	debugChannle.appendLine("starting server at <" + javaHome + " -jar " + serverHome + ">")

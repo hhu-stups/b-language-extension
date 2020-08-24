@@ -143,6 +143,7 @@
 		"fs": "0.0.1-security",
 		"mkdirp": "^1.0.4",
 		"ndjson": "^1.5.0",
+		"net": "^1.0.2",
 		"path": "^0.12.7",
 		"run-script-os": "^1.1.1",
 		"stream-to-array": "^2.3.0",
