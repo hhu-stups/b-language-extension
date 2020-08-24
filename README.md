@@ -1,6 +1,6 @@
 # b-language-extension README
 
-Compiler support for B via ProB. You need a nightly build of ProB to fully use this extension. Visit https://www3.hhu.de/stups/prob/ to get the latest version.
+Compiler support for B via ProB. You don´t need your own version of proB, This plugin comes with one packed. You can however provide a proB version by your own, but be cautious; This can lead to unexpected and untested behavior.
 
 
 ## Features
@@ -10,8 +10,7 @@ Compiler support for B via ProB. You need a nightly build of ProB to fully use t
 
 ## Requirements
 
-- Latest nightly build of ProB.
-- Java v.8 or higher. By default java home is considerd to be accessible by 'java' in terminal/powershell
+- Java v.8 or higher. By default java home is considerd to be accessible by typing 'java' in terminal/powershell
 
 
 ## Extension Settings
@@ -24,7 +23,6 @@ This extension contributes the following settings:
 * `languageServer.performanceHints`: to enable/disable performance-related Hints.
 * `languageServer.debugMode`: to enable/disable the server log
 
-To ensure expected behavior deactivate/activate settings in the User and Worksapce Tab.
 
 ## Bugs
 - please open an issue at https://github.com/SeeBasTStick/b-language-extension
@@ -34,12 +32,13 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 
 ## Future plans
-- Linter Support (via Server, is still in development by Mircosoft https://microsoft.github.io/language-server-protocol/specifications/specification-3-16/)
 - Quickfix support aká Code Completion
-- Completion and Feedback via ProB Java kernel instead of cli calls. (will improve performance and give access to more features)
+- Definition provider
+
+
 
 ## Release Notes
 
-### 1.1.2
+### 2.0.0
 
-- fixed a bug where for longer outputs from probcli the system would not return causing a deadlook
+- know uses the java prob kernel for drastic performance gain

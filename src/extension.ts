@@ -11,8 +11,12 @@ import {
 	LanguageClient,
 	LanguageClientOptions,
 	ServerOptions,
+	StreamInfo
 } from 'vscode-languageclient';
+
+import * as net from 'net';
 import * as path from 'path'
+import { spawn } from 'child_process';
 
 
 let client: LanguageClient;
@@ -20,18 +24,35 @@ let client: LanguageClient;
 export function activate(context: ExtensionContext) {
 
 	const serverHome = context.asAbsolutePath(path.join('node_modules', 'b-language-server', 'build', 'libs', 'b-language-server-all.jar'))
-	//const serverHome = "/home/sebastian/IdeaProjects/b-language-server/build/libs/b-language-server-all.jar"
 	const javaHome : string = workspace.getConfiguration("common").get("javaHome")
 
-	let serverOptions: ServerOptions = {
-		command: javaHome,
-		args: [ "-jar", serverHome]
-	};
 
+
+	//Start the server
+	let prc = spawn(javaHome, ['-jar', serverHome])
 	
 
+	prc.stdout.on('data', function(data){
+	
+
+	let connectionInfo = {
+		port : 55556
+	}
+
+
+	let serverOptions : ServerOptions = () => {
+		let socket = net.connect(connectionInfo);
+        let result: StreamInfo = {
+            writer: socket,
+            reader: socket
+        };
+        return Promise.resolve(result);
+	}
+
+
 	let debugChannle = window.createOutputChannel("ProB language server")
-	debugChannle.appendLine("starting server at <" + javaHome + " -jar " + serverHome + ">")
+	debugChannle.appendLine("starting server " )
+
 	//debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
@@ -70,8 +91,8 @@ export function activate(context: ExtensionContext) {
 	{
 		showDebugMessages(debugChannle)
 	})	
-
-
+	})
+	
 }
 
 function showDebugMessages(debugChannle : OutputChannel){
@@ -99,6 +120,7 @@ function toggleItem(editor: TextEditor, item) {
 		item.hide();
 	}
 }
+
 
  
 

@@ -43,7 +43,7 @@
 				"languageServer.wdChecks": {
 					"id": "2",
 					"title": "WD Checks",
-					"scope": "application",
+					"scope": "window",
 					"type": "boolean",
 					"default": true,
 					"description": "Option for WD Checks"
@@ -162,9 +162,11 @@
 		"fs": "0.0.1-security",
 		"mkdirp": "^1.0.4",
 		"ndjson": "^1.5.0",
+		"net": "^1.0.2",
 		"path": "^0.12.7",
 		"run-script-os": "^1.1.1",
 		"stream-to-array": "^2.3.0",
+		"tcp-port-used": "^1.0.1",
 		"ts-xor": "^1.0.8",
 		"vscode-api": "0.0.0",
 		"vscode-languageclient": "^6.1.3",
