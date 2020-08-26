@@ -1,0 +1,11 @@
+{
+	"iconDefinitions":{
+		"_b":{
+			"iconPath":"prob2-ui.svg"
+		}
+	},
+	"languageIds": {
+		"classicalb": "_b",
+		"rmchAddOn": "_b"
+	  }
+}
