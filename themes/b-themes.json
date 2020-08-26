@@ -1,7 +1,7 @@
 {
 	"iconDefinitions":{
 		"_b":{
-			"iconPath":"prob2-ui.svg"
+			"iconPath":"../media/prob2-ui.svg"
 		}
 	},
 	"languageIds": {
