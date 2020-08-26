@@ -164,7 +164,7 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.48.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.3.3.tar.gz",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.4.0.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"fs": "0.0.1-security",
