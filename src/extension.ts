@@ -12,7 +12,6 @@ import {
 	LanguageClientOptions,
 	ServerOptions,
 } from 'vscode-languageclient';
-import fs from "fs"
 import * as path from 'path'
 
 
@@ -37,7 +36,7 @@ export function activate(context: ExtensionContext) {
 	// Options to control the language client
 	let clientOptions: LanguageClientOptions = {
 		// Register the server for B files
-		documentSelector: [{ scheme: 'file', language: 'classicalb' }],
+		documentSelector: [{ scheme: 'file', language: 'classicalb' }, { scheme: 'file', language: 'rmchAddOn' }],
 		synchronize: {
 			// Notify the server about file changes to '.clientrc files contained in the workspace
 			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')

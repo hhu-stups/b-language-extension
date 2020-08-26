@@ -1,9 +1,9 @@
 {
-	"name": "Classical B",
-	"scopeName": "source.classicalb",
+	"name": "Rules Machine B",
+	"scopeName": "source.rmchAddOn",
 	"patterns": [
 	  {
-		"include": "source.classicalb.rules"
+		"include": "source.rmchAddOn.rules"
 	  },
 	  {
 		"include": "#pragma"
@@ -24,6 +24,9 @@
 		"include": "#control_blocks"
 	  },
 	  {
+		  "include": "#scope_blocks"
+	  },
+	  {
 		"include": "#keyword_control"
 	  },
 	  {
@@ -40,6 +43,9 @@
 	  },
 	  {
 		"include": "#invalid"
+	  },
+	  {
+		"include": "#scope_blocks"
 	  }
 	],
 	"repository": {
@@ -47,7 +53,7 @@
 		"patterns": [
 		  {
 			"match": "\\b[a-zA-Z][a-zA-Z0-9_]*\\b",
-			"name": "identifier.classicalb"
+			"name": "identifier.rmchAddOn"
 		  }
 		]
 	  },
@@ -57,11 +63,11 @@
 			"begin": "/\\*@\\b(package|import-package|import_package|symbolic|unit|label|desc|description|conversion|file)\\b",
 			"captures": {
 			  "0": {
-				"name": "punctuation.definition.tag.classicalb"
+				"name": "punctuation.definition.tag.rmchAddOn"
 			  }
 			},
 			"end": "\\*/",
-			"name": "identifier.classicalb"
+			"name": "identifier.rmchAddOn"
 		  }
 		]
 	  },
@@ -71,21 +77,21 @@
 			"begin": "/\\*",
 			"captures": {
 			  "0": {
-				"name": "punctuation.definition.comment.classicalb"
+				"name": "punctuation.definition.comment.rmchAddOn"
 			  }
 			},
 			"end": "\\*/",
-			"name": "comment.block.classicalb"
+			"name": "comment.block.rmchAddOn"
 		  },
 		  {
 			"begin": "//",
 			"captures": {
 			  "0": {
-				"name": "punctuation.definition.comment.classicalb"
+				"name": "punctuation.definition.comment.rmchAddOn"
 			  }
 			},
 			"end": "\n",
-			"name": "comment.line.classicalb"
+			"name": "comment.line.rmchAddOn"
 		  }
 		]
 	  },
@@ -95,24 +101,24 @@
 			"begin": "\"",
 			"beginCaptures": {
 			  "0": {
-				"name": "punctuation.definition.string.begin.classicalb"
+				"name": "punctuation.definition.string.begin.rmchAddOn"
 			  }
 			},
 			"end": "\"",
 			"endCaptures": {
 			  "0": {
-				"name": "punctuation.definition.string.end.classicalb"
+				"name": "punctuation.definition.string.end.rmchAddOn"
 			  }
 			},
-			"name": "string.quoted.double.classicalb",
+			"name": "string.quoted.double.rmchAddOn",
 			"patterns": [
 			  {
 				"match": "\\\\.",
-				"name": "constant.character.escape.classicalb"
+				"name": "constant.character.escape.rmchAddOn"
 			  },
 			  {
 				"match": "\"\"",
-				"name": "constant.character.escape.quote.classicalb"
+				"name": "constant.character.escape.quote.rmchAddOn"
 			  }
 			]
 		  },
@@ -120,27 +126,27 @@
 			"begin": "'''",
 			"captures": {
 			  "0": {
-				"name": "punctuation.definition.string.begin.classicalb"
+				"name": "punctuation.definition.string.begin.rmchAddOn"
 			  }
 			},
 			"end": "'''",
-			"name": "string.quoted.triple.classicalb"
+			"name": "string.quoted.triple.rmchAddOn"
 		  }
 		]
 	  },
 	  "machineclauses": {
 		"patterns": [
 		  {
-			"match": "(?x)\n\\b(INITIALI(Z|S)ATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES\n|INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES\n|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS\n|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES|GOAL)\\b",
-			"name": "storage.type.clause.classicalb"
+			"match": "(?x)\n\\b(INITIALI(Z|S)ATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES\n|INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES\n|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS\n|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|DEFINITIONS|VALUES)\\b",
+			"name": "storage.type.clause.rmchAddOn"
 		  }
 		]
 	  },
 	  "keyword_control": {
 		"patterns": [
 		  {
-			"match": "(?x)\n\\b(skip|BE|DO|VARIANT|ELSIF|THEN|ELSE|EITHER|CASE|SELECT\n|ASSERT|WHEN|WHERE|OR|OF|IN)\\b",
-			"name": "keyword.control.classicalb"
+			"match": "(?x)\n\\b(skip|BE|DO|VARIANT|ELSIF|THEN|ELSE|EITHER|CASE|SELECT\n|ASSERT|WHERE|OR|OF|IN|BODY|GOAL|RULEID|WHEN|COUNTEREXAMPLE|TYPE|VALUE|EXPECT|STRING_FORMAT|DEPENDS_ON_RULE|ERROR_TYPE|ERROR_TYPES|PRECONDITION|POSTCONDITION|DUMMY_VALUE)\\b",
+			"name": "keyword.control.rmchAddOn"
 		  }
 		]
 	  },
@@ -148,67 +154,67 @@
 		"patterns": [
 		  {
 			"match": "\\bnot\\b|¬|\\bor\\b|∨",
-			"name": "keyword.operator.logical.classicalb"
+			"name": "keyword.operator.logical.rmchAddOn"
 		  },
 		  {
 			"match": "!|#|∀|∃|&|∧|<=>|=>|⇔|⇒",
-			"name": "keyword.operator.logical.classicalb"
+			"name": "keyword.operator.logical.rmchAddOn"
 		  },
 		  {
 			"match": "≠|/=|=|==",
-			"name": "keyword.operator.equality.classicalb"
+			"name": "keyword.operator.equality.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(first|last|tail|front|rev|seq|seq1|conc)\\b",
-			"name": "keyword.operator.sequence.classicalb"
+			"name": "keyword.operator.sequence.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(tree|btree|top|const|rank|father|son|sons|subtree|arity|bin|left|right|sizet|prefix|postfix|mirror|infix)\\b",
-			"name": "keyword.operator.tree.classicalb"
+			"name": "keyword.operator.tree.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(mod|succ|pred)\\b",
-			"name": "keyword.operator.numeric.classicalb"
+			"name": "keyword.operator.numeric.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(rec|struct)\\b",
-			"name": "keyword.operator.record.classicalb"
+			"name": "keyword.operator.record.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(ran|dom|id|prj1|prj2|closure1|closure|interate|fnc|rel)\\b|%|λ",
-			"name": "keyword.operator.relation.classicalb"
+			"name": "keyword.operator.relation.rmchAddOn"
 		  },
 		  {
 			"match": "bool",
-			"name": "keyword.operator.boolean.classicalb"
+			"name": "keyword.operator.boolean.rmchAddOn"
 		  },
 		  {
 			"match": "<--|:=|::",
-			"name": "keyword.operator.assignment.classicalb"
+			"name": "keyword.operator.assignment.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏",
-			"name": "keyword.operator.set.classicalb"
+			"name": "keyword.operator.set.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(min|max|card|size)\\b",
-			"name": "keyword.operator.set.classicalb"
+			"name": "keyword.operator.set.rmchAddOn"
 		  },
 		  {
 			"match": ":|∈|∉|\\\\/|/\\\\|∪|∩|⊄|⊈|⊂|⊆",
-			"name": "keyword.operator.set.classicalb"
+			"name": "keyword.operator.set.rmchAddOn"
 		  },
 		  {
 			"begin": "{",
 			"beginCaptures": {
 			  "0": {
-				"name": "punctuation.definition.set.begin.classicalb"
+				"name": "punctuation.definition.set.begin.rmchAddOn"
 			  }
 			},
 			"end": "}",
 			"endCaptures": {
 			  "0": {
-				"name": "punctuation.definition.set.end.classicalb"
+				"name": "punctuation.definition.set.end.rmchAddOn"
 			  }
 			},
 			"patterns": [
@@ -219,23 +225,23 @@
 		  },
 		  {
 			"match": "-->|-->(>)?|>->(>)?|<->|>+>(>)?",
-			"name": "keyword.operator.relation.classicalb"
+			"name": "keyword.operator.relation.rmchAddOn"
 		  },
 		  {
 			"match": "(\\|>(>)?)|((<)?<\\|)|(\\|->)",
-			"name": "keyword.operator.relation.classicalb"
+			"name": "keyword.operator.relation.rmchAddOn"
 		  },
 		  {
 			"match": "↠|↦|⤀|⤖|⇸|⤔|◀|←|→|↔|↣|▶|⇾|⋖|⊗|◁|▷|⇽",
-			"name": "keyword.operator.relation.classicalb"
+			"name": "keyword.operator.relation.rmchAddOn"
 		  },
 		  {
 			"match": "\\|\\|",
-			"name": "keyword.operator.parallel.classicalb"
+			"name": "keyword.operator.parallel.rmchAddOn"
 		  },
 		  {
 			"match": ">|<|>=|=<|≤|≥",
-			"name": "keyword.operator.numeric.classicalb"
+			"name": "keyword.operator.numeric.rmchAddOn"
 		  }
 		]
 	  },
@@ -243,41 +249,68 @@
 		"patterns": [
 		  {
 			"match": "\\b\\d+",
-			"name": "constant.numeric.classicalb"
+			"name": "constant.numeric.rmchAddOn"
 		  },
 		  {
 			"match": "{}|∅",
-			"name": "constant.set.classicalb"
+			"name": "constant.set.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(TRUE|FALSE)\\b",
-			"name": "constant.language.boolean.classicalb"
+			"name": "constant.language.boolean.rmchAddOn"
 		  },
 		  {
 			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b",
-			"name": "constant.other.sets.classicalb"
+			"name": "constant.other.sets.rmchAddOn"
 		  }
 		]
 	  },
 	  "control_blocks": {
 		"patterns": [
 		  {
-			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER)\\b",
+			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER|IN)\\b",
 			"beginCaptures": {
 			  "0": {
-				"name": "keyword.control.classicalb"
+				"name": "keyword.control.rmchAddOn"
 			  }
 			},
 			"end": "\\bEND\\b",
 			"endCaptures": {
 			  "0": {
-				"name": "keyword.control.classicalb"
+				"name": "keyword.control.rmchAddOn"
 			  }
 			},
 			"patterns": [
 			  {
 				"match": "\\bINVARIANT\\b",
-				"name": "keyword.control.classicalb"
+				"name": "keyword.control.rmchAddOn"
+			  },
+			  {
+				"include": "$self"
+			  }
+			]
+		  }
+		]
+	  },
+	  "scope_blocks": {
+		"patterns": [
+		  {
+			"begin": "(?x)\n\\b(RULE|COMPUTATION|FUNCTION|RULE_FORALL|RULE_FAIL)\\b",
+			"beginCaptures": {
+			  "0": {
+				"name": "keyword.control.rmchAddOn"
+			  }
+			},
+			"end": "\\bEND\\b",
+			"endCaptures": {
+			  "0": {
+				"name": "keyword.control.rmchAddOn"
+			  }
+			},
+			"patterns": [
+			  {
+				"match": "\\bINVARIANT\\b",
+				"name": "keyword.control.rmchAddOn"
 			  },
 			  {
 				"include": "$self"
@@ -289,19 +322,19 @@
 	  "components": {
 		"patterns": [
 		  {
-			"begin": "\\b(MACHINE|SYSTEM|MODEL|REFINEMENT|IMPLEMENTATION)\\b",
+			"begin": "\\b(RULES_MACHINE)\\b",
 			"beginCaptures": {
 			  "0": {
-				"name": "storage.type.machine.start.classicalb"
+				"name": "storage.type.machine.start.rmchAddOn"
 			  }
 			},
 			"end": "\\bEND\\b",
 			"endCaptures": {
 			  "0": {
-				"name": "storage.type.machine.end.classicalb"
+				"name": "storage.type.machine.end.rmchAddOn"
 			  }
 			},
-			"name": "meta.machine.classicalb",
+			"name": "meta.machine.rmchAddOn",
 			"patterns": [
 			  {
 				"include": "$self"
@@ -314,7 +347,7 @@
 		"patterns": [
 		  {
 			"match": "(?x)\n\\b(GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT\n|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*\n|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b",
-			"name": "entity.other.attribute-name.classicalb"
+			"name": "entity.other.attribute-name.rmchAddOn"
 		  }
 		]
 	  },
@@ -322,11 +355,11 @@
 		"patterns": [
 		  {
 			"match": "@|\\?|€",
-			"name": "invalid.illegal.other.classicalb"
+			"name": "invalid.illegal.other.rmchAddOn"
 		  },
 		  {
 			"match": ";(\\s)*;",
-			"name": "invalid.illegal.other.classicalb"
+			"name": "invalid.illegal.other.rmchAddOn"
 		  }
 		]
 	  }
