@@ -81,3 +81,10 @@
 - debug mode is now disabled by default
 - debug console will now behave more reasonable behavior
 - updated server version to take care of windows and mac problems
+
+## [1.1.1]
+
+- fixed bug where problems from sub machines where shown in the main machine
+- added a opical feedback when an evaluation is finished
+- added .rmch file extensions (still pretty much a prototype regarding coloring)
+- added file icons to identify files which can be processed by this plugin, note that icon themes are exclusive, selecting the new theme will disable all other themes: https://github.com/microsoft/vscode/issues/14662

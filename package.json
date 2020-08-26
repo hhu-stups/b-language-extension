@@ -97,8 +97,7 @@
 					".mch",
 					".def",
 					".imp",
-					".ref",
-					".rmch"
+					".ref"
 				],
 				"aliases": [
 					"B",
@@ -138,7 +137,7 @@
 				"path": "./snippets/rmchAddOn_snippets.json"
 			}
 		],
-		"iconThemes": [
+		"icons": [
 			{
 				"id": "b",
 				"label": "B",
