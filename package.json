@@ -137,7 +137,7 @@
 				"path": "./snippets/rmchAddOn_snippets.json"
 			}
 		],
-		"icons": [
+		"iconThemes": [
 			{
 				"id": "b",
 				"label": "B",
