@@ -73,7 +73,7 @@
 					"description": "Option for enabeling (extensiv) debug messages"
 				},
 				"common.javaHome": {
-					"id": "7",
+					"id": "6",
 					"title": "Java Home",
 					"scope": "application",
 					"type": "string",
