@@ -88,3 +88,7 @@
 - added a opical feedback when an evaluation is finished
 - added .rmch file extensions (still pretty much a prototype regarding coloring)
 - added file icons to identify files which can be processed by this plugin, note that icon themes are exclusive, selecting the new theme will disable all other themes: https://github.com/microsoft/vscode/issues/14662
+
+## [1.1.2]
+
+- fixed bug where for longer outputs from probcli the system would not return causing a deadlook

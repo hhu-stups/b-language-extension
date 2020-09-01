@@ -72,14 +72,6 @@
 					"default": false,
 					"description": "Option for enabeling (extensiv) debug messages"
 				},
-				"languageServer.maxNumberOfProblems": {
-					"id": "6",
-					"title": "max. number of problems",
-					"scope": "application",
-					"type": "number",
-					"default": 100,
-					"description": "Controls the maximum number of problems produced by the server."
-				},
 				"common.javaHome": {
 					"id": "7",
 					"title": "Java Home",
@@ -154,9 +146,9 @@
 	},
 	"devDependencies": {
 		"@types/mocha": "^7.0.2",
-		"@types/node": "^14.6.0",
+		"@types/node": "^14.6.2",
 		"@typescript-eslint/parser": "^2.34.0",
-		"eslint": "^7.7.0",
+		"eslint": "^7.8.0",
 		"mocha": "^7.2.0",
 		"typescript": "^3.9.7"
 	},
@@ -164,7 +156,7 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.48.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.4.0.tar.gz",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.5.0.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"fs": "0.0.1-security",
