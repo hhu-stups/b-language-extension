@@ -1,6 +1,6 @@
 # b-language-extension README
 
-Compiler support for B via ProB. You don´t need your own version of proB, This plugin comes with one packed. You can however provide a proB version by your own, but be cautious; This can lead to unexpected and untested behavior.
+Compiler support for B via ProB. You don´t need your own version of proB, This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
 
 
 ## Features
