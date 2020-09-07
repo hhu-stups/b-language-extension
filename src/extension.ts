@@ -15,6 +15,7 @@ import {
 } from 'vscode-languageclient';
 
 import * as net from 'net';
+
 import * as path from 'path'
 import { spawn } from 'child_process';
 
@@ -34,6 +35,7 @@ export function activate(context: ExtensionContext) {
 
 	prc.stdout.on('data', function(data){
 	
+
 
 	let connectionInfo = {
 		port : 55556
