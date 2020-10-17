@@ -1,10 +1,11 @@
-import { 
-	workspace, 
-	ExtensionContext, 
+import {
+	workspace,
+	ExtensionContext,
 	window,
 	TextEditor,
-	StatusBarAlignment, 
-	OutputChannel} from 'vscode';
+	StatusBarAlignment,
+	OutputChannel
+} from 'vscode';
 
 
 import {
@@ -17,90 +18,98 @@ import {
 import * as net from 'net';
 
 import * as path from 'path'
-import { spawn } from 'child_process';
+import { spawn, spawnSync } from 'child_process';
 
 
 let client: LanguageClient;
+let debugChannle: OutputChannel = null;
 
 export function activate(context: ExtensionContext) {
 
 	const serverHome = context.asAbsolutePath(path.join('node_modules', 'b-language-server', 'build', 'libs', 'b-language-server-all.jar'))
-	const javaHome : string = workspace.getConfiguration("common").get("javaHome")
+	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
 
 
 
 	//Start the server
+	// comment the two lines (and the closing brackets) if you want to run a server by hand -> for developing
 	let prc = spawn(javaHome, ['-jar', serverHome])
-	
 
-	prc.stdout.on('data', function(data){
-	
+	prc.stdout.on('data', function (data) {
 
+		let connectionInfo = {
+			port: 55555,
+		}
 
-	let connectionInfo = {
-		port : 55556
-	}
-
-
-	let serverOptions : ServerOptions = () => {
-		let socket = net.connect(connectionInfo);
-        let result: StreamInfo = {
-            writer: socket,
-            reader: socket
-        };
-        return Promise.resolve(result);
-	}
+		console.log(javaHome, ['-jar', serverHome])
 
 
-	let debugChannle = window.createOutputChannel("ProB language server")
-	debugChannle.appendLine("starting server " )
+		let serverOptions: ServerOptions = () => {
+			let socket = net.connect(connectionInfo);
+			let result: StreamInfo = {
+				writer: socket,
+				reader: socket
+			};
+			return Promise.resolve(result);
+		}
 
-	//debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
-	// Options to control the language client
-	let clientOptions: LanguageClientOptions = {
-		// Register the server for B files
-		documentSelector: [{ scheme: 'file', language: 'classicalb' }, { scheme: 'file', language: 'rmchAddOn' }],
-		synchronize: {
-			// Notify the server about file changes to '.clientrc files contained in the workspace
-			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
-		},
-		outputChannel : debugChannle,
-		
-	}
 
-	// Create the language client and start the client.
-	client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
 
-	let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
+		if (debugChannle == null) {
+			debugChannle = window.createOutputChannel("ProB language server")
+		}
 
-	item.text = 'Starting ProB LSP...';
-	toggleItem(window.activeTextEditor, item);
 
-	// Start the client. This will also launch the server
-	let disposable = client.start();
-	context.subscriptions.push(disposable);
+		//debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
+		// Options to control the language client
+		let clientOptions: LanguageClientOptions = {
+			// Register the server for B files
+			documentSelector: [{ scheme: 'file', language: 'classicalb' }, { scheme: 'file', language: 'rmchAddOn' }],
+			synchronize: {
+				// Notify the server about file changes to '.clientrc files contained in the workspace
+				fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
+			},
+			outputChannel: debugChannle,
 
-	const debugMode : Boolean = workspace.getConfiguration("languageServer").get("debugMode")
-	if(!debugMode){
-		debugChannle.hide()
-	}else{
-		debugChannle.show()
-	}
+		}
 
-	console.log(workspace.getConfiguration("languageServer").get("debugMode"))
-	
-	window.onDidOpenTerminal(() => 
-	{
-		showDebugMessages(debugChannle)
-	})	
+		// Create the language client and start the client.
+		client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
+
+		let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
+
+		debugChannle.appendLine("starting server: " + javaHome + " -jar " + serverHome)
+
+		console.log(prc.pid)
+
+
+		item.text = 'Starting ProB LSP...';
+		toggleItem(window.activeTextEditor, item);
+
+		// Start the client. This will also launch the server
+		let disposable = client.start();
+		context.subscriptions.push(disposable);
+
+		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+		if (!debugMode) {
+			debugChannle.hide()
+		} else {
+			debugChannle.show()
+		}
+
+		//console.log(workspace.getConfiguration("languageServer").get("debugMode"))
+
+		window.onDidOpenTerminal(() => {
+			showDebugMessages(debugChannle)
+		})
+
 	})
-	
+
 }
 
-function showDebugMessages(debugChannle : OutputChannel){
-	const debugMode : Boolean = workspace.getConfiguration("languageServer").get("debugMode")
-	if(debugMode)
-	{
+function showDebugMessages(debugChannle: OutputChannel) {
+	const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+	if (debugMode) {
 		debugChannle.show()
 	}
 }
@@ -115,14 +124,14 @@ export function deactivate(): Thenable<void> | undefined {
 
 
 function toggleItem(editor: TextEditor, item) {
-	if(editor && editor.document &&
-		(editor.document.languageId === 'B')){
+	if (editor && editor.document &&
+		(editor.document.languageId === 'B')) {
 		item.show();
-	} else{
+	} else {
 		item.hide();
 	}
 }
 
 
- 
+
 
