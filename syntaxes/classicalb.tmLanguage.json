@@ -167,8 +167,12 @@
 			"name": "keyword.operator.tree.classicalb"
 		  },
 		  {
-			"match": "\\b(mod|succ|pred)\\b",
+			"match": "\\b(mod|succ|pred|ceiling|real|floor)\\b",
 			"name": "keyword.operator.numeric.classicalb"
+		  },
+		  {
+			"match": "\\b(REAL)\\b",
+			"name": "keyword.operator.numeric.operator.classicalb"
 		  },
 		  {
 			"match": "\\b(rec|struct)\\b",
