@@ -17,11 +17,11 @@ Compiler support for B via ProB. You don´t need your own version of proB, This 
 
 This extension contributes the following settings:
 
-* `languageServer.probHome`: to set the path to ProB
-* `languageServer.wdChecks`: to enable/disable WD (Well-Definedness) Checks. 
-* `languageServer.strictChecks`: to enable/disable stricter Checks. 
-* `languageServer.performanceHints`: to enable/disable performance-related Hints.
-* `languageServer.debugMode`: to enable/disable the server log
+* `proB.probHome`: to set the path to ProB
+* `proB.wdChecks`: to enable/disable WD (Well-Definedness) Checks. 
+* `proB.strictChecks`: to enable/disable stricter Checks. 
+* `proB.performanceHints`: to enable/disable performance-related Hints.
+* `proB.debugMode`: to enable/disable the server log
 
 
 ## Bugs

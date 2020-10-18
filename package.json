@@ -32,7 +32,7 @@
 			"type": "object",
 			"title": "Configuration",
 			"properties": {
-				"languageServer.probHome": {
+				"proB.probHome": {
 					"id": "1",
 					"title": "ProBHome",
 					"scope": "application",
@@ -40,7 +40,7 @@
 					"default": "~/prob_prolog/probcli.sh",
 					"description": "Path to ProB executable"
 				},
-				"languageServer.wdChecks": {
+				"proB.wdChecks": {
 					"id": "2",
 					"title": "WD Checks",
 					"scope": "window",
@@ -48,7 +48,7 @@
 					"default": true,
 					"description": "Option for WD Checks"
 				},
-				"languageServer.strictChecks": {
+				"proB.strictChecks": {
 					"id": "3",
 					"title": "Strict Checks",
 					"scope": "application",
@@ -56,7 +56,7 @@
 					"default": true,
 					"description": "Option for stricter Checks"
 				},
-				"languageServer.performanceHints": {
+				"proB.performanceHints": {
 					"id": "4",
 					"title": "Performance Hints",
 					"scope": "application",
@@ -64,7 +64,7 @@
 					"default": true,
 					"description": "Option for performance-related Hints"
 				},
-				"languageServer.debugMode": {
+				"proB.debugMode": {
 					"id": "5",
 					"title": "Debug Mode",
 					"scope": "application",
