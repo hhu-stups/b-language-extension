@@ -32,9 +32,9 @@ export function activate(context: ExtensionContext) {
 
 	//Start the server
 	// comment the two lines (and the closing brackets) if you want to run a server by hand -> for developing
-//	let prc = spawn(javaHome, ['-jar', serverHome])
+	let prc = spawn(javaHome, ['-jar', serverHome])
 
-//	prc.stdout.on('data', function (data) {
+	prc.stdout.on('data', function (data) {
 
 		let connectionInfo = {
 			port: 55556,
@@ -104,7 +104,7 @@ export function activate(context: ExtensionContext) {
 			showDebugMessages(debugChannle)
 		})
 
-//	})
+	})
 
 }
 
