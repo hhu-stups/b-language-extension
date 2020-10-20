@@ -37,8 +37,8 @@
 					"title": "ProB Home",
 					"scope": "application",
 					"type": "string",
-					"default": "~/prob_prolog/",
-					"description": "Path to ProB directory"
+					"default": "DEFAULT",
+					"description": "Path to ProB directory. Use 'DEFAULT' to access the shipped version."
 				},
 				"languageServer.wdChecks": {
 					"id": "2",
@@ -156,7 +156,7 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.49.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v1.5.0.tar.gz",
+		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v2.0.2.tar.gz",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"fs": "0.0.1-security",

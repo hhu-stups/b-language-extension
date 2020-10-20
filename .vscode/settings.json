@@ -4,7 +4,5 @@
 	"typescript.preferences.quoteStyle": "single",
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
-	},
-	"prob.wdChecks": false,
-	"prob.debugMode": false
+	}
 }

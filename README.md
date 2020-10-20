@@ -43,5 +43,4 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 ### 2.0.0
 
 - keyword support for new proB features: REAL, real, floor, ceiling
-- renamed settings from 'languageserver' to 'prob'
 - now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up
