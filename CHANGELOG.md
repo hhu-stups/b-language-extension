@@ -92,3 +92,10 @@
 ## [1.1.2]
 
 - fixed bug where for longer outputs from probcli the system would not return causing a deadlook
+
+
+## [2.0.0]
+
+- keyword support for new proB features: REAL, real, floor, ceiling
+- renamed settings from 'languageServer' to 'prob'
+- now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up

@@ -1,7 +1,8 @@
 # b-language-extension README
 
-Compiler support for B via ProB. You don´t need your own version of proB, This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
+Compiler support for B via ProB. You don't need your own version of prob. This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
 
+In order to change prob_cli versions you need to make the change in the settings and restart the extension (open and close vscode).
 
 ## Features
 
@@ -17,11 +18,11 @@ Compiler support for B via ProB. You don´t need your own version of proB, This 
 
 This extension contributes the following settings:
 
-* `proB.probHome`: to set the path to ProB
-* `proB.wdChecks`: to enable/disable WD (Well-Definedness) Checks. 
-* `proB.strictChecks`: to enable/disable stricter Checks. 
-* `proB.performanceHints`: to enable/disable performance-related Hints.
-* `proB.debugMode`: to enable/disable the server log
+* `prob.probHome`: to set the path to ProB. Default ist 'DEFAULT' and means that shipped version of prob ist used
+* `prob.wdChecks`: to enable/disable WD (Well-Definedness) Checks. 
+* `prob.strictChecks`: to enable/disable stricter Checks. 
+* `prob.performanceHints`: to enable/disable performance-related Hints.
+* `prob.debugMode`: to enable/disable the server log
 
 
 ## Bugs
@@ -41,4 +42,6 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ### 2.0.0
 
-- know uses the java prob kernel for drastic performance gain
+- keyword support for new proB features: REAL, real, floor, ceiling
+- renamed settings from 'languageserver' to 'prob'
+- now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up
