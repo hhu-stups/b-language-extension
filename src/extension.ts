@@ -30,12 +30,11 @@ export function activate(context: ExtensionContext) {
 	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
 
 
-
 	//Start the server
 	// comment the two lines (and the closing brackets) if you want to run a server by hand -> for developing
-//	let prc = spawn(javaHome, ['-jar', serverHome])
+	let prc = spawn(javaHome, ['-jar', serverHome])
 
-//	prc.stdout.on('data', function (data) {
+	prc.stdout.on('data', function (data) {
 
 		let connectionInfo = {
 			port: 55555,
@@ -90,6 +89,7 @@ export function activate(context: ExtensionContext) {
 
 		console.log( workspace.getConfiguration())
 		console.log( workspace.getConfiguration("languageServer"))
+		
 
 		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
 		if (!debugMode) {
@@ -104,7 +104,7 @@ export function activate(context: ExtensionContext) {
 			showDebugMessages(debugChannle)
 		})
 
-	//})
+	})
 
 }
 
