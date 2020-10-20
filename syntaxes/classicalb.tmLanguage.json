@@ -167,12 +167,8 @@
 			"name": "keyword.operator.tree.classicalb"
 		  },
 		  {
-			"match": "\\b(mod|succ|pred|ceiling|real|floor)\\b",
+			"match": "\\b(mod|succ|pred|ceiling|real|floorreal)\\b",
 			"name": "keyword.operator.numeric.classicalb"
-		  },
-		  {
-			"match": "\\b(REAL)\\b",
-			"name": "keyword.operator.numeric.operator.classicalb"
 		  },
 		  {
 			"match": "\\b(rec|struct)\\b",
@@ -258,7 +254,7 @@
 			"name": "constant.language.boolean.classicalb"
 		  },
 		  {
-			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT)\\b",
+			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT|REAL)\\b",
 			"name": "constant.other.sets.classicalb"
 		  }
 		]
