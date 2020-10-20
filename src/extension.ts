@@ -33,15 +33,14 @@ export function activate(context: ExtensionContext) {
 
 	//Start the server
 	// comment the two lines (and the closing brackets) if you want to run a server by hand -> for developing
-	let prc = spawn(javaHome, ['-jar', serverHome])
+//	let prc = spawn(javaHome, ['-jar', serverHome])
 
-	prc.stdout.on('data', function (data) {
+//	prc.stdout.on('data', function (data) {
 
 		let connectionInfo = {
 			port: 55555,
 		}
 
-		console.log(javaHome, ['-jar', serverHome])
 
 
 		let serverOptions: ServerOptions = () => {
@@ -74,21 +73,23 @@ export function activate(context: ExtensionContext) {
 		}
 
 		// Create the language client and start the client.
-		client = new LanguageClient('languageServer', 'Language Server', serverOptions, clientOptions)
+		client = new LanguageClient('languageServer', 'languageServer', serverOptions, clientOptions)
 
 		let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
 
 		debugChannle.appendLine("starting server: " + javaHome + " -jar " + serverHome)
 
-		console.log(prc.pid)
 
 
 		item.text = 'Starting ProB LSP...';
 		toggleItem(window.activeTextEditor, item);
 
-		// Start the client. This will also launch the server
+		// Start the clienServert. This will also launch the server
 		let disposable = client.start();
 		context.subscriptions.push(disposable);
+
+		console.log( workspace.getConfiguration())
+		console.log( workspace.getConfiguration("languageServer"))
 
 		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
 		if (!debugMode) {
@@ -97,13 +98,13 @@ export function activate(context: ExtensionContext) {
 			debugChannle.show()
 		}
 
-		//console.log(workspace.getConfiguration("languageServer").get("debugMode"))
+
 
 		window.onDidOpenTerminal(() => {
 			showDebugMessages(debugChannle)
 		})
 
-	})
+	//})
 
 }
 

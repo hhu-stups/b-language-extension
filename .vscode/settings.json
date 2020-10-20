@@ -5,6 +5,6 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"proB.wdChecks": false,
-	"proB.debugMode": false
+	"prob.wdChecks": false,
+	"prob.debugMode": false
 }
