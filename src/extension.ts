@@ -4,7 +4,7 @@ import {
 	window,
 	TextEditor,
 	StatusBarAlignment,
-	OutputChannel
+	OutputChannel,
 } from 'vscode';
 
 
@@ -18,7 +18,7 @@ import {
 import * as net from 'net';
 
 import * as path from 'path'
-import { spawn, spawnSync } from 'child_process';
+import {  spawn } from 'child_process';
 
 
 let client: LanguageClient;
@@ -30,17 +30,18 @@ export function activate(context: ExtensionContext) {
 	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
 
 
-	//Start the server
-	// comment the two lines (and the closing brackets) if you want to run a server by hand -> for developing
-	let prc = spawn(javaHome, ['-jar', serverHome])
+	let prc  = spawn(javaHome, ['-jar', serverHome])
 
-	prc.stdout.on('data', function (data) {
+	prc.stdout.on('data', function (data : Buffer) {
+
+		let portAsStringWithBrackets : String = data.toString()
+		let closingBracketPos : number = portAsStringWithBrackets.indexOf(">")
+		let portNumber : number = parseInt(portAsStringWithBrackets.substring(1, closingBracketPos))
 
 		let connectionInfo = {
-			port: 55556,
+			port: portNumber,
 		}
-
-
+	
 
 		let serverOptions: ServerOptions = () => {
 			let socket = net.connect(connectionInfo);
@@ -52,13 +53,11 @@ export function activate(context: ExtensionContext) {
 		}
 
 
-
 		if (debugChannle == null) {
 			debugChannle = window.createOutputChannel("ProB language server")
 		}
 
 
-		//debugChannle.appendLine("fs exits " + fs.existsSync(serverHome))
 		// Options to control the language client
 		let clientOptions: LanguageClientOptions = {
 			// Register the server for B files
@@ -76,20 +75,11 @@ export function activate(context: ExtensionContext) {
 
 		let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
 
-		debugChannle.appendLine("starting server: " + javaHome + " -jar " + serverHome)
-
-
-
 		item.text = 'Starting ProB LSP...';
 		toggleItem(window.activeTextEditor, item);
-
-		// Start the clienServert. This will also launch the server
+	
 		let disposable = client.start();
 		context.subscriptions.push(disposable);
-
-		console.log( workspace.getConfiguration())
-		console.log( workspace.getConfiguration("languageServer"))
-		
 
 		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
 		if (!debugMode) {
@@ -105,7 +95,6 @@ export function activate(context: ExtensionContext) {
 		})
 
 	})
-
 }
 
 function showDebugMessages(debugChannle: OutputChannel) {
