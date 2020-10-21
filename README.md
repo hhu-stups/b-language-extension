@@ -1,6 +1,6 @@
 # b-language-extension README
 
-Compiler support for B via ProB. You don't need your own version of prob. This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
+Compiler support for B via ProB. You don't need your own version of proB. This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
 
 In order to change prob_cli versions you need to make the change in the settings and restart the extension (open and close vscode).
 
@@ -35,7 +35,6 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 ## Future plans
 - Quickfix support aká Code Completion
 - Definition provider
-
 
 
 ## Release Notes
