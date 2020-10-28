@@ -76,6 +76,15 @@
 		"prefix": "choice",
 		"body": "CHOICE\n\t${1:G}\nOR\n\t${2:H}\nEND"
 	  },
+	  "TRUE":{
+		"prefix": "TRUE",
+		"body": "TRUE"
+	  }, 
+	  "FALSE":{
+		"prefix": "FALSE",
+		"body": "FALSE"
+	  }, 
+	  
 	  "Set Pref MININT": {
 		"prefix": "set minint",
 		"body": "SET_PREF_MININT == ${1:n};"

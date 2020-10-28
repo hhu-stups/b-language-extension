@@ -39,7 +39,11 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ## Release Notes
 
-### 2.0.0
+### 2.0.1
 
-- keyword support for new proB features: REAL, real, floor, ceiling
-- now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up
+- bug fixes reading statespacel life cycle
+
+
+## Acknowledgements
+
+- big thanks to Sebastian Krings for providing his snippets.

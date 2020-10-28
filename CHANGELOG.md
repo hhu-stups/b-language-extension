@@ -98,3 +98,9 @@
 
 - keyword support for new proB features: REAL, real, floor, ceiling
 - now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up
+
+
+## [2.0.1]
+
+- bug fix regarding completion
+- stability improvements
