@@ -104,3 +104,9 @@
 
 - bug fix regarding completion
 - stability improvements
+
+
+## [2.0.2]
+
+- bug fixed that were introduced by not properly rebasing server branches
+- brought back notifcation when evaluation is done

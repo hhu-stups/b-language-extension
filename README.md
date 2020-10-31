@@ -39,9 +39,10 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ## Release Notes
 
-### 2.0.1
+### 2.0.2
 
-- bug fixes reading statespacel life cycle
+- bug fixed that were introduced by not properly rebasing server branches
+- brought back notifcation when evaluation is done
 
 
 ## Acknowledgements
