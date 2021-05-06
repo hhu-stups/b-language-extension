@@ -26,7 +26,7 @@ This extension contributes the following settings:
 
 
 ## Bugs
-- please open an issue at https://github.com/SeeBasTStick/b-language-extension
+- please open an issue at https://github.com/hhu-stups/prob-issues/issues
 
 ## Server
 The language server can be found here https://github.com/SeeBasTStick/b-language-server. 
@@ -39,10 +39,9 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ## Release Notes
 
-### 2.0.2
+### 2.0.3
 
-- bug fixed that were introduced by not properly rebasing server branches
-- brought back notifcation when evaluation is done
+- fixed dependency warnings
 
 
 ## Acknowledgements

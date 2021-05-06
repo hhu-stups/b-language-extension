@@ -110,3 +110,7 @@
 
 - bug fixed that were introduced by not properly rebasing server branches
 - brought back notifcation when evaluation is done
+
+## [2.0.3]
+
+- dependencies updated
