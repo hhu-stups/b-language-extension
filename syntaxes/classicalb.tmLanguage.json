@@ -147,7 +147,7 @@
 	  "keyword_operators": {
 		"patterns": [
 		  {
-			"match": "\\bnot\\b|¬|\\bor\\b|∨",
+			"match": "\\bnot\\b|¬|\\bor\\b|\\bbtrue\\b|\\bbfalse\\b|∨",
 			"name": "keyword.operator.logical.classicalb"
 		  },
 		  {
@@ -167,7 +167,7 @@
 			"name": "keyword.operator.tree.classicalb"
 		  },
 		  {
-			"match": "\\b(mod|succ|pred|ceiling|real|floorreal)\\b",
+			"match": "\\b(mod|succ|pred|ceiling|real|floor)\\b",
 			"name": "keyword.operator.numeric.classicalb"
 		  },
 		  {
@@ -254,7 +254,7 @@
 			"name": "constant.language.boolean.classicalb"
 		  },
 		  {
-			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT|REAL)\\b",
+			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT|REAL|FLOAT)\\b",
 			"name": "constant.other.sets.classicalb"
 		  }
 		]
@@ -313,7 +313,7 @@
 	  "preferences": {
 		"patterns": [
 		  {
-			"match": "(?x)\n\\b(GOAL|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT\n|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*\n|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b",
+			"match": "(?x)\n\\b(GOAL|SCOPE|SET_PREF_\\w*|FORCE_SYMMETRY_\\w*|GOAL|ANIMATION_FUNCTION_DEFAULT\n|VISB_JSON_FILE|CUSTOM_GRAPH_EDGES|CUSTOM_GRAPH_NODES|HEURISTIC_FUNCTION|ANIMATION_FUNCTION[0-9]*|ANIMATION_IMG\\w*\n|ANIMATION_STR\\w*|ASSERT_(LTL|CTL)\\w*)\\b",
 			"name": "entity.other.attribute-name.classicalb"
 		  }
 		]
