@@ -140,9 +140,9 @@
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",
 		"compile": "tsc -watch -p ./",
-		"install:nix": "./node_modules/b-language-server/gradlew shadowjar -p ./node_modules/b-language-server",
-		"install:windows": "./node_modules/b-language-server/gradlew.bat shadowjar -p ./node_modules/b-language-server",
-		"tslint": "gulp tslint"
+		"tslint": "gulp tslint",
+		"postinstall:nix": "./node_modules/b-language-server/gradlew shadowjar -p ./node_modules/b-language-server",
+		"postinstall:windows": "./node_modules/b-language-server/gradlew.bat shadowjar -p ./node_modules/b-language-server"
 	},
 	"devDependencies": {
 		"@types/mocha": "^7.0.2",
@@ -156,7 +156,7 @@
 		"@types/ndjson": "^1.5.0",
 		"@types/stream-to-array": "^2.3.0",
 		"@types/vscode": "^1.55.0",
-		"b-language-server": "https://github.com/SeeBasTStick/b-language-server/archive/v2.1.1.tar.gz",
+		"b-language-server": "https://github.com/hhu-stups/b-language-server#master",
 		"clean": "^4.0.2",
 		"error": "^10.4.0",
 		"fs": "0.0.1-security",
