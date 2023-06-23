@@ -6,7 +6,7 @@
 	"publisher": "SeeBasTStick",
 	"icon": "media/prob2-ui.png",
 	"author": "Sebastian Stock",
-	"license": "MIT",
+	"license": "EPL-2.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hhu-stups/b-language-extension"
