@@ -13,7 +13,7 @@ import {
 	LanguageClientOptions,
 	ServerOptions,
 	StreamInfo
-} from 'vscode-languageclient';
+} from 'vscode-languageclient/node';
 
 import * as net from 'net';
 
@@ -78,8 +78,7 @@ export function activate(context: ExtensionContext) {
 		item.text = 'Starting ProB LSP...';
 		toggleItem(window.activeTextEditor, item);
 	
-		let disposable = client.start();
-		context.subscriptions.push(disposable);
+		client.start();
 
 		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
 		if (!debugMode) {
