@@ -6,3 +6,9 @@
 ./media/screencapture.gif
 optionAdder.py
 vsc-extension-quickstart.md
+
+node_modules/b-language-server/**
+!node_modules/b-language-server/build/libs/b-language-server-all.jar
+!node_modules/b-language-server/LICENSE
+!node_modules/b-language-server/package.json
+!node_modules/b-language-server/README.md
