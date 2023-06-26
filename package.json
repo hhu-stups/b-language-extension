@@ -94,7 +94,11 @@
 				"aliases": [
 					"B",
 					"classical B"
-				]
+				],
+				"icon": {
+					"light": "./media/prob2-ui.png",
+					"dark": "./media/prob2-ui.png"
+				}
 			},
 			{
 				"id": "rmchAddOn",
@@ -104,7 +108,11 @@
 				"aliases": [
 					"B",
 					"B DSL"
-				]
+				],
+				"icon": {
+					"light": "./media/prob2-ui.png",
+					"dark": "./media/prob2-ui.png"
+				}
 			}
 		],
 		"grammars": [
@@ -127,13 +135,6 @@
 			{
 				"language": "rmchAddOn",
 				"path": "./snippets/rmchAddOn_snippets.json"
-			}
-		],
-		"iconThemes": [
-			{
-				"id": "b",
-				"label": "B",
-				"path": "./themes/b-themes.json"
 			}
 		]
 	},
