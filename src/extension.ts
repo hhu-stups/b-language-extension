@@ -26,7 +26,7 @@ let debugChannle: OutputChannel = null;
 
 export function activate(context: ExtensionContext) {
 
-	const serverHome = context.asAbsolutePath(path.join('node_modules', 'b-language-server', 'build', 'libs', 'b-language-server-all.jar'))
+	const serverHome = context.asAbsolutePath(path.join('out', 'b-language-server-all.jar'))
 	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
 
 

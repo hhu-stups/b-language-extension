@@ -141,19 +141,16 @@
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",
 		"compile": "tsc -watch -p ./",
-		"package": "vsce package",
-		"postinstall:nix": "./node_modules/b-language-server/gradlew shadowjar -p ./node_modules/b-language-server",
-		"postinstall:windows": "./node_modules/b-language-server/gradlew.bat shadowjar -p ./node_modules/b-language-server"
+		"download_jar": "curl -fL -o \"out/b-language-server-all.jar\" \"https://gitlab.cs.uni-duesseldorf.de/api/v4/projects/2834/jobs/artifacts/master/raw/build/libs/b-language-server-all.jar?job=test\"",
+		"package": "vsce package"
 	},
 	"devDependencies": {
 		"@types/node": "^14.14.44",
 		"@types/vscode": "^1.67.0",
 		"@vscode/vsce": "^2.19.0",
-		"run-script-os": "^1.1.6",
 		"typescript": "^4.8.4"
 	},
 	"dependencies": {
-		"b-language-server": "https://github.com/hhu-stups/b-language-server#master",
 		"vscode-languageclient": "^8.1.0"
 	}
 }
