@@ -16,8 +16,6 @@ import {
 } from 'vscode-languageclient/node';
 
 import * as net from 'net';
-
-import * as path from 'path'
 import {  spawn } from 'child_process';
 
 
@@ -26,7 +24,7 @@ let debugChannle: OutputChannel = null;
 
 export function activate(context: ExtensionContext) {
 
-	const serverHome = context.asAbsolutePath(path.join('out', 'b-language-server-all.jar'))
+	const serverHome = context.asAbsolutePath("b-language-server-all.jar")
 	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
 
 

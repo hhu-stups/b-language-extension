@@ -141,7 +141,7 @@
 	"scripts": {
 		"vscode:prepublish": "tsc -p ./",
 		"compile": "tsc -watch -p ./",
-		"download_jar": "curl -fL -o \"out/b-language-server-all.jar\" \"https://gitlab.cs.uni-duesseldorf.de/api/v4/projects/2834/jobs/artifacts/master/raw/build/libs/b-language-server-all.jar?job=test\"",
+		"download_jar": "curl -fL -o \"b-language-server-all.jar\" \"https://gitlab.cs.uni-duesseldorf.de/api/v4/projects/2834/jobs/artifacts/master/raw/build/libs/b-language-server-all.jar?job=test\"",
 		"package": "vsce package"
 	},
 	"devDependencies": {
