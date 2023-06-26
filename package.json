@@ -153,8 +153,6 @@
 	},
 	"dependencies": {
 		"b-language-server": "https://github.com/hhu-stups/b-language-server#master",
-		"net": "^1.0.2",
-		"path": "^0.12.7",
 		"vscode-languageclient": "^8.1.0"
 	}
 }
