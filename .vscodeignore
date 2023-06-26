@@ -1,11 +1,8 @@
 *.iml
 .idea/**
 .vscode/**
-.vscode-test/**
 .gitignore
-./media/screencapture.gif
-optionAdder.py
-vsc-extension-quickstart.md
+media/screencaputer.gif
 
 node_modules/b-language-server/**
 !node_modules/b-language-server/build/libs/b-language-server-all.jar
