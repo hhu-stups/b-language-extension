@@ -1,8 +1,11 @@
+default:
+  image: node:20
+  before_script:
+    - npm install
+
 test:
   stage: test
-  image: node:20
   script:
-    - npm install
     - npm run-script download_jar
     - npm run-script package
   artifacts:
@@ -12,3 +15,12 @@ test:
   cache:
     paths:
       - node_modules
+
+deploy:
+  stage: deploy
+  needs:
+    - test
+  script:
+    - npm exec vsce -- publish --packagePath b-language-extension-*.vsix
+  only:
+    - release@general/stups/b_language_extension
