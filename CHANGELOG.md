@@ -120,3 +120,7 @@
 - Updated to ProB 1.12.1
 - Now requires VSCode 1.67
 - Optimized dependencies
+
+## 2.1.1 (not released yet)
+
+- (no changes yet)
