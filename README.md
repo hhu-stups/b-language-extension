@@ -39,9 +39,11 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ## Release Notes
 
-### 2.0.4
+### 2.1.0
 
-- fixed dependency warnings
+- Updated to ProB 1.12.1
+- Now requires VSCode 1.67
+- Optimized dependencies
 
 
 ## Acknowledgements

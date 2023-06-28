@@ -114,3 +114,9 @@
 ## [2.0.4]
 
 - dependencies updated
+
+## [2.1.0]
+
+- Updated to ProB 1.12.1
+- Now requires VSCode 1.67
+- Optimized dependencies
