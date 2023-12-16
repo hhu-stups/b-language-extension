@@ -119,7 +119,7 @@
 	  },
 	  "B: -->>": {
 		"prefix": "funcTotalSurjection",
-		"body": ">->"
+		"body": "-->>"
 	  },
 	  "B: >->>": {
 		"prefix": "funcTotalBijection",
@@ -131,11 +131,31 @@
 	  },
 	  "B: >+>": {
 		"prefix": "funcPartialInjection",
+		"body": ">+>"
+	  },
+	  "B: +->>": {
+		"prefix": "funcPartialSurjection",
 		"body": "+->>"
 	  },
 	  "B: >+>>": {
-		"prefix": "funcBijection",
+		"prefix": "funcPartialBijection",
 		"body": ">+>>"
+	  },
+	  "B: <->": {
+		"prefix": "relation",
+		"body": "<->"
+	  },
+	  "B: <<->": {
+		"prefix": "relationTotal",
+		"body": "<<->"
+	  },
+	  "B: <->>": {
+		"prefix": "relationSurjective",
+		"body": "<->>"
+	  },
+	  "B: <<->>": {
+		"prefix": "relationTotalSurjective",
+		"body": "<<->>"
 	  }
 	}
   }
