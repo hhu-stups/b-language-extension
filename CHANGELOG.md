@@ -123,4 +123,6 @@
 
 ## 2.1.1 (not released yet)
 
-- (no changes yet)
+- Updated to ProB 1.13.0
+- Updated keywords for B rules machines
+- Fixed and expanded snippets for B relation/function operators

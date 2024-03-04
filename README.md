@@ -39,12 +39,11 @@ The language server can be found here https://github.com/SeeBasTStick/b-language
 
 ## Release Notes
 
-### 2.1.0
+### 2.1.1
 
-- Updated to ProB 1.12.1
-- Now requires VSCode 1.67
-- Optimized dependencies
-
+- Updated to ProB 1.13.0
+- Updated keywords for B rules machines
+- Fixed and expanded snippets for B relation/function operators
 
 ## Acknowledgements
 
