@@ -1,8 +1,8 @@
 # b-language-extension README
 
-Compiler support for B via ProB. You don't need your own version of proB. This plugin comes with one packed. You can however provide a proB version on your own, but be cautious; This can lead to unexpected and untested behavior.
-
-In order to change prob_cli versions you need to make the change in the settings and restart the extension (open and close vscode).
+Compiler support for B via ProB. You don't need your own version of ProB. This plugin comes with one packed.
+You can, however, provide your own ProB command-line version (aka probcli), but be cautious; this can lead to unexpected and untested behavior.
+In order to change the probcli version you need to make the change in the settings and restart the extension (open and close vscode).
 
 ## Features
 
@@ -11,7 +11,7 @@ In order to change prob_cli versions you need to make the change in the settings
 
 ## Requirements
 
-- Java v.8 or higher. By default java home is considerd to be accessible by typing 'java' in terminal/powershell
+- Java v.8 or higher. By default Java home is considerd to be accessible by typing 'java' in terminal/powershell
 
 
 ## Extension Settings
@@ -33,7 +33,7 @@ The language server can be found here https://github.com/hhu-stups/b-language-ex
 
 
 ## Future plans
-- Quickfix support aká Code Completion
+- Quickfix support aka Code Completion
 - Definition provider
 
 
