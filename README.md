@@ -29,7 +29,7 @@ This extension contributes the following settings:
 - please open an issue at https://github.com/hhu-stups/prob-issues/issues
 
 ## Server
-The language server can be found here https://github.com/SeeBasTStick/b-language-server. 
+The language server can be found here https://github.com/hhu-stups/b-language-extension. 
 
 
 ## Future plans
