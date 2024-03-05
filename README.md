@@ -31,6 +31,10 @@ This extension contributes the following settings:
 ## Server
 The language server can be found here https://github.com/hhu-stups/b-language-extension. 
 
+## Installation on VSCodium
+
+You can also install the plugin in [VSCodium](https://vscodium.com) by downloading the artefact (b-language-extension-2.1.1.vsix) and typing
+ codium --install-extension b-language-extension-2.1.1.vsix 
 
 ## Future plans
 - Quickfix support aka Code Completion
