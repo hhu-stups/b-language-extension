@@ -121,9 +121,13 @@
 - Now requires VSCode 1.67
 - Optimized dependencies
 
-## 2.2.0 (not released yet)
+## 2.2.0
 
 - Updated to ProB 1.13.0
 - Updated keywords for B rules machines
 - Changed settings prefixes from `languageServer` and `common` to `prob` - this will reset existing settings, but avoids conflicts with other extensions
 - Fixed and expanded snippets for B relation/function operators
+
+## 2.2.1 (not released yet)
+
+- (no changes yet)
