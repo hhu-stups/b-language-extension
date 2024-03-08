@@ -46,7 +46,7 @@
 					"scope": "application",
 					"type": "boolean",
 					"default": true,
-					"description": "Option for WD Checks"
+					"description": "Option for WD checks"
 				},
 				"prob.strictChecks": {
 					"id": "3",
@@ -54,7 +54,7 @@
 					"scope": "application",
 					"type": "boolean",
 					"default": true,
-					"description": "Option for stricter Checks"
+					"description": "Option for stricter checks"
 				},
 				"prob.performanceHints": {
 					"id": "4",
@@ -62,7 +62,7 @@
 					"scope": "application",
 					"type": "boolean",
 					"default": true,
-					"description": "Option for performance-related Hints"
+					"description": "Option for performance-related hints"
 				},
 				"prob.debugMode": {
 					"id": "5",
@@ -70,7 +70,7 @@
 					"scope": "application",
 					"type": "boolean",
 					"default": false,
-					"description": "Option for enabling (extensiv) debug messages"
+					"description": "Option for enabling (extensive) debug messages"
 				},
 				"prob.javaHome": {
 					"id": "6",
@@ -78,7 +78,7 @@
 					"scope": "application",
 					"type": "string",
 					"default": "java",
-					"description": "Points to the java sdk responsible for executing the language server"
+					"description": "Points to the java executable responsible for executing the language server"
 				}
 			}
 		},
