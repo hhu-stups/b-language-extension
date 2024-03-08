@@ -47,6 +47,7 @@ You can also install the plugin in [VSCodium](https://vscodium.com) by downloadi
 
 - Updated to ProB 1.13.0
 - Updated keywords for B rules machines
+- Changed settings prefixes from `languageServer` and `common` to `prob` - this will reset existing settings, but avoids conflicts with other extensions
 - Fixed and expanded snippets for B relation/function operators
 
 ## Acknowledgements
