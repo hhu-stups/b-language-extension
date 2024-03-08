@@ -33,8 +33,8 @@ The language server can be found here https://github.com/hhu-stups/b-language-ex
 
 ## Installation on VSCodium
 
-You can also install the plugin in [VSCodium](https://vscodium.com) by downloading the artefact (b-language-extension-2.1.1.vsix) and typing
- codium --install-extension b-language-extension-2.1.1.vsix 
+You can also install the plugin in [VSCodium](https://vscodium.com) by downloading the artefact (b-language-extension-\<VERSION>.vsix) and typing
+ codium --install-extension b-language-extension-\<VERSION>.vsix 
 
 ## Future plans
 - Quickfix support aka Code Completion
@@ -43,7 +43,7 @@ You can also install the plugin in [VSCodium](https://vscodium.com) by downloadi
 
 ## Release Notes
 
-### 2.1.1
+### 2.2.0
 
 - Updated to ProB 1.13.0
 - Updated keywords for B rules machines

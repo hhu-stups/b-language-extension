@@ -121,7 +121,7 @@
 - Now requires VSCode 1.67
 - Optimized dependencies
 
-## 2.1.1 (not released yet)
+## 2.2.0 (not released yet)
 
 - Updated to ProB 1.13.0
 - Updated keywords for B rules machines
