@@ -30,9 +30,9 @@
 	"contributes": {
 		"configuration": {
 			"type": "object",
-			"title": "Configuration",
+			"title": "ProB Language Extension",
 			"properties": {
-				"languageServer.proBHome": {
+				"prob.proBHome": {
 					"id": "1",
 					"title": "ProB Home",
 					"scope": "application",
@@ -40,7 +40,7 @@
 					"default": "DEFAULT",
 					"description": "Path to ProB directory. Use 'DEFAULT' to access the shipped version."
 				},
-				"languageServer.wdChecks": {
+				"prob.wdChecks": {
 					"id": "2",
 					"title": "WD Checks",
 					"scope": "application",
@@ -48,7 +48,7 @@
 					"default": true,
 					"description": "Option for WD Checks"
 				},
-				"languageServer.strictChecks": {
+				"prob.strictChecks": {
 					"id": "3",
 					"title": "Strict Checks",
 					"scope": "application",
@@ -56,7 +56,7 @@
 					"default": true,
 					"description": "Option for stricter Checks"
 				},
-				"languageServer.performanceHints": {
+				"prob.performanceHints": {
 					"id": "4",
 					"title": "Performance Hints",
 					"scope": "application",
@@ -64,21 +64,21 @@
 					"default": true,
 					"description": "Option for performance-related Hints"
 				},
-				"languageServer.debugMode": {
+				"prob.debugMode": {
 					"id": "5",
 					"title": "Debug Mode",
 					"scope": "application",
 					"type": "boolean",
 					"default": false,
-					"description": "Option for enabeling (extensiv) debug messages"
+					"description": "Option for enabling (extensiv) debug messages"
 				},
-				"common.javaHome": {
+				"prob.javaHome": {
 					"id": "6",
 					"title": "Java Home",
 					"scope": "application",
 					"type": "string",
 					"default": "java",
-					"description": "points to the java sdk responsible for executing the server"
+					"description": "Points to the java sdk responsible for executing the language server"
 				}
 			}
 		},

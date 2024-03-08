@@ -20,12 +20,12 @@ import {  spawn } from 'child_process';
 
 
 let client: LanguageClient;
-let debugChannle: OutputChannel = null;
+let debugChannel: OutputChannel = null;
 
 export function activate(context: ExtensionContext) {
 
 	const serverHome = context.asAbsolutePath("b-language-server-all.jar")
-	const javaHome: string = workspace.getConfiguration("common").get("javaHome")
+	const javaHome: string = workspace.getConfiguration("prob").get("javaHome")
 
 
 	let prc  = spawn(javaHome, ['-jar', serverHome])
@@ -39,7 +39,7 @@ export function activate(context: ExtensionContext) {
 		let connectionInfo = {
 			port: portNumber,
 		}
-	
+
 
 		let serverOptions: ServerOptions = () => {
 			let socket = net.connect(connectionInfo);
@@ -51,8 +51,8 @@ export function activate(context: ExtensionContext) {
 		}
 
 
-		if (debugChannle == null) {
-			debugChannle = window.createOutputChannel("ProB language server")
+		if (debugChannel == null) {
+			debugChannel = window.createOutputChannel("ProB language server")
 		}
 
 
@@ -64,40 +64,40 @@ export function activate(context: ExtensionContext) {
 				// Notify the server about file changes to '.clientrc files contained in the workspace
 				fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
 			},
-			outputChannel: debugChannle,
+			outputChannel: debugChannel,
 
 		}
 
 		// Create the language client and start the client.
-		client = new LanguageClient('languageServer', 'languageServer', serverOptions, clientOptions)
+		client = new LanguageClient('probls', 'ProB Language Server', serverOptions, clientOptions)
 
 		let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
 
 		item.text = 'Starting ProB LSP...';
 		toggleItem(window.activeTextEditor, item);
-	
+
 		client.start();
 
-		const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+		const debugMode: Boolean = workspace.getConfiguration("prob").get("debugMode")
 		if (!debugMode) {
-			debugChannle.hide()
+			debugChannel.hide()
 		} else {
-			debugChannle.show()
+			debugChannel.show()
 		}
 
 
 
 		window.onDidOpenTerminal(() => {
-			showDebugMessages(debugChannle)
+			showDebugMessages(debugChannel)
 		})
 
 	})
 }
 
-function showDebugMessages(debugChannle: OutputChannel) {
-	const debugMode: Boolean = workspace.getConfiguration("languageServer").get("debugMode")
+function showDebugMessages(debugChannel: OutputChannel) {
+	const debugMode: Boolean = workspace.getConfiguration("prob").get("debugMode")
 	if (debugMode) {
-		debugChannle.show()
+		debugChannel.show()
 	}
 }
 
@@ -118,7 +118,3 @@ function toggleItem(editor: TextEditor, item) {
 		item.hide();
 	}
 }
-
-
-
-
