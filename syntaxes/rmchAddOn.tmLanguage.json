@@ -284,7 +284,7 @@
 	  "control_blocks": {
 		"patterns": [
 		  {
-			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|FOR|DO|IF|CHOICE|CASE|EITHER|IN)\\b",
+			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|WITNESS|ANY|LET|VAR|ASSERT|WHILE|FOR|DO|IF|CHOICE|CASE|EITHER|IN)\\b",
 			"beginCaptures": {
 			  "0": {
 				"name": "keyword.control.rmchAddOn"

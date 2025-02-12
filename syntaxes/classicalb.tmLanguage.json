@@ -278,7 +278,7 @@
 	  "control_blocks": {
 		"patterns": [
 		  {
-			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER)\\b",
+			"begin": "(?x)\n\\b(BEGIN|PRE|SELECT|WITNESS|ANY|LET|VAR|ASSERT|WHILE|IF|CHOICE|CASE|EITHER)\\b",
 			"beginCaptures": {
 			  "0": {
 				"name": "keyword.control.classicalb"
