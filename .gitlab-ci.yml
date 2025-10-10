@@ -16,6 +16,16 @@ test:
     paths:
       - node_modules
 
+deploy:snapshot:
+  stage: deploy
+  only:
+    - develop@general/stups/b_language_extension
+  image: alpine:3
+  before_script:
+    - apk update
+    - apk add lftp openssh-client
+  script: LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/snapshot/; mput -e b-language-extension-*.vsix"
+
 deploy:
   stage: deploy
   needs:
