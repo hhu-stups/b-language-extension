@@ -26,11 +26,16 @@ deploy:snapshot:
     - apk add lftp openssh-client
   script: LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/snapshot/; mput -e b-language-extension-*.vsix"
 
-deploy:
+deploy:release:
   stage: deploy
-  needs:
-    - test
-  script:
-    - npm exec vsce -- publish --packagePath b-language-extension-*.vsix
   only:
     - release@general/stups/b_language_extension
+  needs:
+    - test
+  image: alpine:3
+  before_script:
+    - apk update
+    - apk add lftp openssh-client
+  script:
+    - npm exec vsce -- publish --packagePath b-language-extension-*.vsix
+    - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/; mput -e b-language-extension-*.vsix"
