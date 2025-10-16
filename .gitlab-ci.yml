@@ -37,7 +37,7 @@ deploy:release:
     - apk update
     - apk add lftp openssh-client
   script:
-    - npm exec vsce -- publish --packagePath b-language-extension-*.vsix
+    - npm exec -- vsce publish --packagePath b-language-extension-*.vsix
     # token given by OVSX_PAT
-    - npm exec ovsx publish b-language-extension-*.vsix
+    - npm exec -- ovsx publish b-language-extension-*.vsix
     - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/; mput -e b-language-extension-*.vsix"
