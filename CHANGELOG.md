@@ -15,12 +15,12 @@
 
 - fixed bug in the package.json file leading to unnoticed server crash
 - added feedback when using an unreachable path
-- added feedback when using a old version of proB
+- added feedback when using an old version of proB
 
 
 ## 0.1.0
 
-- added more sound auto compeltion
+- added more sound auto-completion
 - added WD cheks
 - added strict checks
 
@@ -58,7 +58,7 @@
 
 ## 0.5.3
 
-- reworked error messages to be more managable
+- reworked error messages to be more manageable
 
 
 ## 0.6.0
@@ -66,7 +66,7 @@
 - added snippets
 - improved error feedback for failing call to probcli
 - improved error feedback for wrong format of the _error.json file
-- _error.json will now dumpend in a /tmp/ folder
+- _error.json is now dumped in a /tmp/ folder
 
 
 ## 1.0.0
@@ -85,19 +85,19 @@
 ## 1.1.1
 
 - fixed bug where problems from sub machines where shown in the main machine
-- added a opical feedback when an evaluation is finished
+- added an optical feedback when an evaluation is finished
 - added .rmch file extensions (still pretty much a prototype regarding coloring)
 - added file icons to identify files which can be processed by this plugin, note that icon themes are exclusive, selecting the new theme will disable all other themes: https://github.com/microsoft/vscode/issues/14662
 
 ## 1.1.2
 
-- fixed bug where for longer outputs from probcli the system would not return causing a deadlook
+- fixed bug where for longer outputs from probcli the system would not return causing a deadlock
 
 
 ## 2.0.0
 
 - keyword support for new proB features: REAL, real, floor, ceiling
-- now uses prob2_kernel library instead of calling prob_cli direc; leads to noticable performance gain after initial warm up
+- now uses prob2_kernel library instead of calling prob_cli directly; leads to noticeable performance gain after initial warm up
 
 
 ## 2.0.1
@@ -109,7 +109,7 @@
 ## 2.0.2
 
 - bug fixed that were introduced by not properly rebasing server branches
-- brought back notifcation when evaluation is done
+- brought back notification when evaluation is done
 
 ## 2.0.4
 
