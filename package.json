@@ -146,12 +146,12 @@
 	},
 	"devDependencies": {
 		"@types/node": "^24.8.0",
-		"@types/vscode": "^1.105.0",
+		"@types/vscode": "^1.67.0",
 		"@vscode/vsce": "^3.6.2",
 		"ovsx": "^0.10.6",
-		"typescript": "^5.9.3"
+		"typescript": "5.5.x"
 	},
 	"dependencies": {
-		"vscode-languageclient": "^8.1.0"
+		"vscode-languageclient": "^9.0.1"
 	}
 }
