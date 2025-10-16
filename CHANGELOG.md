@@ -130,4 +130,6 @@
 
 ## 2.2.1 (not released yet)
 
-- (no changes yet)
+- Updated to ProB 1.15.0
+- Added highlighting for more B keywords (FREETYPES, WITNESS, template strings)
+- Added highlighting for B Rules DSL keywords (WHEN, ON_SUCCESS, UNCHECKED)
