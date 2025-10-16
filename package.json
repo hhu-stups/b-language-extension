@@ -3,9 +3,9 @@
 	"displayName": "B/ProB Language Support",
 	"description": "Compiler and language support for B via ProB",
 	"version": "2.2.1",
-	"publisher": "SeeBasTStick",
+	"publisher": "hhu-stups",
 	"icon": "media/prob2-ui.png",
-	"author": "Sebastian Stock",
+	"author": "Sebastian Stock & HHU STUPS",
 	"license": "EPL-2.0",
 	"repository": {
 		"type": "git",
