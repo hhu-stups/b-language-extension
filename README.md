@@ -1,4 +1,4 @@
-# B/ProB Language Support
+# B/ProB Language Extension
 
 Compiler support for B via ProB for VSCode and VSCodium.
 You don't need your own version of ProB.

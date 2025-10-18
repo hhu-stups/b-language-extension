@@ -1,6 +1,6 @@
 {
 	"name": "prob",
-	"displayName": "B/ProB Language Support",
+	"displayName": "B/ProB Language Extension",
 	"description": "Compiler and language support for B via ProB",
 	"version": "3.0.0",
 	"publisher": "hhu-stups",
