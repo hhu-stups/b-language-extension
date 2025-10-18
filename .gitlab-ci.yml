@@ -37,6 +37,7 @@ deploy:release:
     - npm install
     - apt-get update && apt-get install -y --no-install-recommends lftp openssh-client
   script:
+    # token given by VSCE_PAT
     - npm exec -- vsce publish --packagePath b-language-extension-*.vsix
     # token given by OVSX_PAT
     - npm exec -- ovsx publish b-language-extension-*.vsix
