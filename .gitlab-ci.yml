@@ -1,5 +1,5 @@
 default:
-  image: node:20
+  image: node:22
   before_script:
     - npm install
 
