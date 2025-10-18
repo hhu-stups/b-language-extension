@@ -128,7 +128,7 @@
 - Changed settings prefixes from `languageServer` and `common` to `prob` - this will reset existing settings, but avoids conflicts with other extensions
 - Fixed and expanded snippets for B relation/function operators
 
-## 2.2.1 (not released yet)
+## 2.2.1
 
 - Updated to ProB 1.15.0
 - Added highlighting for more B keywords (FREETYPES, WITNESS, template strings)
