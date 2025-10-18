@@ -24,8 +24,7 @@ deploy:snapshot:
     - test
   before_script:
     - npm install
-    - apk update
-    - apk add lftp openssh-client
+    - apt-get update && apt-get install -y --no-install-recommends lftp openssh-client
   script: LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/snapshot/; mput -e b-language-extension-*.vsix"
 
 deploy:release:
@@ -36,8 +35,7 @@ deploy:release:
     - test
   before_script:
     - npm install
-    - apk update
-    - apk add lftp openssh-client
+    - apt-get update && apt-get install -y --no-install-recommends lftp openssh-client
   script:
     - npm exec -- vsce publish --packagePath b-language-extension-*.vsix
     # token given by OVSX_PAT
