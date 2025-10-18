@@ -11,7 +11,7 @@ test:
   artifacts:
     expire_in: 1 week
     paths:
-      - b-language-extension-*.vsix
+      - prob-*.vsix
   cache:
     paths:
       - node_modules
@@ -25,7 +25,7 @@ deploy:snapshot:
   before_script:
     - npm install
     - apt-get update && apt-get install -y --no-install-recommends lftp openssh-client
-  script: LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/snapshot/; mput -e b-language-extension-*.vsix"
+  script: LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/snapshot/; mput -e prob-*.vsix"
 
 deploy:release:
   stage: deploy
@@ -38,7 +38,7 @@ deploy:release:
     - apt-get update && apt-get install -y --no-install-recommends lftp openssh-client
   script:
     # token given by VSCE_PAT
-    - npm exec -- vsce publish --packagePath b-language-extension-*.vsix
+    - npm exec -- vsce publish --packagePath prob-*.vsix
     # token given by OVSX_PAT
-    - npm exec -- ovsx publish b-language-extension-*.vsix
-    - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/; mput -e b-language-extension-*.vsix"
+    - npm exec -- ovsx publish prob-*.vsix
+    - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/; mput -e prob-*.vsix"

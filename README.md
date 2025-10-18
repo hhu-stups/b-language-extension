@@ -1,6 +1,8 @@
-# b-language-extension
+# B/ProB Language Support
 
-Compiler support for B via ProB. You don't need your own version of ProB. This plugin comes with one packed.
+Compiler support for B via ProB for VSCode and VSCodium.
+You don't need your own version of ProB.
+This plugin comes with one packed.
 You can, however, provide your own ProB command-line version (aka probcli), but be cautious; this can lead to unexpected and untested behavior.
 In order to change the probcli version you need to make the change in the settings and restart the extension (open and close vscode).
 
@@ -27,11 +29,13 @@ This extension contributes the following settings:
 
 
 ## Bugs
-- please open an issue at https://github.com/hhu-stups/prob-issues/issues
+
+Please open an issue at https://github.com/hhu-stups/prob-issues/issues.
 
 
 ## Server
-The language server can be found here https://github.com/hhu-stups/b-language-extension. 
+
+The language server can be found here https://github.com/hhu-stups/b-language-server. 
 
 
 ## Manual installation
@@ -40,6 +44,7 @@ Snapshots and releases are uploaded [here](https://stups.hhu-hosting.de/download
 
 
 ## Future plans
+
 - Quickfix support aka Code Completion
 - Definition provider
 

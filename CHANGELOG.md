@@ -128,8 +128,9 @@
 - Changed settings prefixes from `languageServer` and `common` to `prob` - this will reset existing settings, but avoids conflicts with other extensions
 - Fixed and expanded snippets for B relation/function operators
 
-## 2.2.1
+## 3.0.0
 
+- Rename the extension to `hhu-stup.prob`
 - Updated to ProB 1.15.0
 - Added highlighting for more B keywords (FREETYPES, WITNESS, template strings)
 - Added highlighting for B Rules DSL keywords (WHEN, ON_SUCCESS, UNCHECKED)
