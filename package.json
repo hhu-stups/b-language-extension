@@ -2,7 +2,7 @@
 	"name": "prob",
 	"displayName": "B/ProB Language Extension",
 	"description": "Compiler and language support for B via ProB",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"publisher": "hhu-stups",
 	"icon": "media/prob2-ui.png",
 	"author": "Sebastian Stock & HHU STUPS",
