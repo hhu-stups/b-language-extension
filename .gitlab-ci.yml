@@ -41,4 +41,4 @@ deploy:release:
     - npm exec -- vsce publish --packagePath prob-*.vsix
     # token given by OVSX_PAT
     - npm exec -- ovsx publish prob-*.vsix
-    - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/; mput -e prob-*.vsix"
+    - LFTP_PASSWORD="${DEPLOY_PASSWORD}" lftp -c "set cmd:fail-exit true; set sftp:auto-confirm true; open --user ${DEPLOY_USERNAME} --env-password sftp://${DEPLOY_HOST}/${DEPLOY_REMOTE_BASEDIR}/downloads/vscode_plugin/release/; mput -e prob-*.vsix"
