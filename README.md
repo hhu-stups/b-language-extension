@@ -40,13 +40,6 @@ You can also install the plugin in [VSCodium](https://vscodium.com) by downloadi
 - Quickfix support aka Code Completion
 - Definition provider
 
-
-## Release Notes
-
-### 2.2.1
-
-- (no changes yet)
-
 ## Acknowledgements
 
 - big thanks to Sebastian Krings for providing his snippets.
