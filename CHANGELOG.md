@@ -130,7 +130,7 @@
 
 ## 3.0.0
 
-- Rename the extension to `hhu-stup.prob`
+- Rename the extension to `hhu-stups.prob`
 - Updated to ProB 1.15.0
 - Added highlighting for more B keywords (FREETYPES, WITNESS, template strings)
 - Added highlighting for B Rules DSL keywords (WHEN, ON_SUCCESS, UNCHECKED)
