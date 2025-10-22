@@ -8,20 +8,20 @@
 
 ## 0.0.2
 
-- option to add cutom path
+- option to add custom path
 
 
 ## 0.0.4
 
 - fixed bug in the package.json file leading to unnoticed server crash
 - added feedback when using an unreachable path
-- added feedback when using an old version of proB
+- added feedback when using an old version of ProB
 
 
 ## 0.1.0
 
 - added more sound auto-completion
-- added WD cheks
+- added WD checks
 - added strict checks
 
 
@@ -79,8 +79,8 @@
 ## 1.0.1
 
 - debug mode is now disabled by default
-- debug console will now behave more reasonable behavior
-- updated server version to take care of windows and mac problems
+- debug console will now behave more reasonably
+- updated server version to take care of Windows and Mac problems
 
 ## 1.1.1
 
@@ -96,8 +96,8 @@
 
 ## 2.0.0
 
-- keyword support for new proB features: REAL, real, floor, ceiling
-- now uses prob2_kernel library instead of calling prob_cli directly; leads to noticeable performance gain after initial warm up
+- keyword support for new ProB features: REAL, real, floor, ceiling
+- now uses prob2_kernel library instead of calling probcli directly; leads to noticeable performance gain after initial warm up
 
 
 ## 2.0.1
