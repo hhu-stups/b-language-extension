@@ -179,7 +179,7 @@
 			"name": "keyword.operator.equality.classicalb"
 		  },
 		  {
-			"match": "\\b(first|last|tail|front|rev|seq|seq1|conc)\\b",
+			"match": "\\b(first|last|tail|front|rev|seq|seq1|iseq|iseq1|perm|conc)\\b",
 			"name": "keyword.operator.sequence.classicalb"
 		  },
 		  {
@@ -207,7 +207,7 @@
 			"name": "keyword.operator.assignment.classicalb"
 		  },
 		  {
-			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏",
+			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|FIN|FIN1|union|inter)\\b|⋂|⋃|∑|∏",
 			"name": "keyword.operator.set.classicalb"
 		  },
 		  {
