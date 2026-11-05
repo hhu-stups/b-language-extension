@@ -163,6 +163,10 @@
 	  "keyword_operators": {
 		"patterns": [
 		  {
+			"match": "/<<:|/<:|<<:|<:|/:|/=|/\\\\|/\\|\\\\|\\\\\\|/|<--|<->|<=>|<=|<\\+|<<\\||<\\||<-|>=|>->>|>->|>\\+>>|>\\+>|><|==|-->>|-->|->|\\+->>|\\+->|\\*\\*|\\.\\.|[-+*/~^]|;(?!\\s*;)",
+			"name": "keyword.operator.classicalb"
+		  },
+		  {
 			"match": "\\bnot\\b|¬|\\bor\\b|\\bbtrue\\b|\\bbfalse\\b|∨",
 			"name": "keyword.operator.logical.classicalb"
 		  },
@@ -232,10 +236,6 @@
 				"include": "$self"
 			  }
 			]
-		  },
-		  {
-			"match": "-->|-->(>)?|>->(>)?|<->|>+>(>)?",
-			"name": "keyword.operator.relation.classicalb"
 		  },
 		  {
 			"match": "(\\|>(>)?)|((<)?<\\|)|(\\|->)",
