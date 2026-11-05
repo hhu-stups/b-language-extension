@@ -147,7 +147,7 @@
 	  "machineclauses": {
 		"patterns": [
 		  {
-			"match": "(?x)\n\\b(INITIALI(Z|S)ATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES\n|INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES\n|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS\n|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|FREETYPES|DEFINITIONS|VALUES|GOAL)\\b",
+			"match": "(?x)\n\\b(INITIALI(Z|S)ATION|ASSERTIONS|OPERATIONS|SEES|PROMOTES|USES\n|INCLUDES|IMPORTS|REFINES|EXTENDS|INVARIANT|CONCRETE_VARIABLES\n|ABSTRACT_VARIABLES|VARIABLES|PROPERTIES|CONSTANTS|ABSTRACT_CONSTANTS\n|CONCRETE_CONSTANTS|CONSTRAINTS|SETS|FREETYPES|DEFINITIONS|VALUES|GOAL\n|LOCAL_OPERATIONS)\\b",
 			"name": "storage.type.clause.classicalb"
 		  }
 		]
@@ -163,6 +163,14 @@
 	  "keyword_operators": {
 		"patterns": [
 		  {
+			"match": "\\b(first|last|tail|front|rev|seq1|seq|iseq1|iseq|perm|conc|succ|pred|ceiling|real|floor|ran|dom|id|prj1|prj2|closure1|closure|iterate|fnc|rel|bool|INTER|UNION|SIGMA|PI|POW1|POW|FIN1|FIN|union|inter|min|max|card|size)\\b",
+			"name": "support.function.classicalb"
+		  },
+		  {
+			"match": "/<<:|/<:|<<:|<:|/:|/=|/\\\\|/\\|\\\\|\\\\\\|/|<--|<->|<=>|<=|<\\+|<<\\||<\\||<-|>=|>->>|>->|>\\+>>|>\\+>|><|==|-->>|-->|->|\\+->>|\\+->|\\*\\*|\\.\\.|[-+*/~^]|;(?!\\s*;)",
+			"name": "keyword.operator.classicalb"
+		  },
+		  {
 			"match": "\\bnot\\b|¬|\\bor\\b|\\bbtrue\\b|\\bbfalse\\b|∨",
 			"name": "keyword.operator.logical.classicalb"
 		  },
@@ -175,15 +183,11 @@
 			"name": "keyword.operator.equality.classicalb"
 		  },
 		  {
-			"match": "\\b(first|last|tail|front|rev|seq|seq1|conc)\\b",
-			"name": "keyword.operator.sequence.classicalb"
-		  },
-		  {
 			"match": "\\b(tree|btree|top|const|rank|father|son|sons|subtree|arity|bin|left|right|sizet|prefix|postfix|mirror|infix)\\b",
 			"name": "keyword.operator.tree.classicalb"
 		  },
 		  {
-			"match": "\\b(mod|succ|pred|ceiling|real|floor)\\b",
+			"match": "\\bmod\\b",
 			"name": "keyword.operator.numeric.classicalb"
 		  },
 		  {
@@ -191,23 +195,15 @@
 			"name": "keyword.operator.record.classicalb"
 		  },
 		  {
-			"match": "\\b(ran|dom|id|prj1|prj2|closure1|closure|iterate|fnc|rel)\\b|%|λ",
+			"match": "%|λ",
 			"name": "keyword.operator.relation.classicalb"
-		  },
-		  {
-			"match": "bool",
-			"name": "keyword.operator.boolean.classicalb"
 		  },
 		  {
 			"match": "<--|:=|::",
 			"name": "keyword.operator.assignment.classicalb"
 		  },
 		  {
-			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|union|inter)\\b|⋂|⋃|∑|∏",
-			"name": "keyword.operator.set.classicalb"
-		  },
-		  {
-			"match": "\\b(min|max|card|size)\\b",
+			"match": "⋂|⋃|∑|∏",
 			"name": "keyword.operator.set.classicalb"
 		  },
 		  {
@@ -234,10 +230,6 @@
 			]
 		  },
 		  {
-			"match": "-->|-->(>)?|>->(>)?|<->|>+>(>)?",
-			"name": "keyword.operator.relation.classicalb"
-		  },
-		  {
 			"match": "(\\|>(>)?)|((<)?<\\|)|(\\|->)",
 			"name": "keyword.operator.relation.classicalb"
 		  },
@@ -258,7 +250,7 @@
 	  "constant_values": {
 		"patterns": [
 		  {
-			"match": "\\b\\d+",
+			"match": "\\b\\d+(\\.\\d+)?\\b",
 			"name": "constant.numeric.classicalb"
 		  },
 		  {
@@ -266,12 +258,12 @@
 			"name": "constant.set.classicalb"
 		  },
 		  {
-			"match": "\\b(TRUE|FALSE)\\b",
+			"match": "\\b(TRUE|FALSE|MININT|MAXINT)\\b",
 			"name": "constant.language.boolean.classicalb"
 		  },
 		  {
-			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT|REAL|FLOAT)\\b",
-			"name": "constant.other.sets.classicalb"
+			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|REAL|FLOAT)\\b",
+			"name": "support.type.classicalb"
 		  }
 		]
 	  },

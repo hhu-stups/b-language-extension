@@ -137,4 +137,4 @@
 
 ## 3.0.1 (not released yet)
 
-- (no changes yet)
+- Fixed highlighting groups
