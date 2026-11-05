@@ -258,12 +258,12 @@
 			"name": "constant.set.classicalb"
 		  },
 		  {
-			"match": "\\b(TRUE|FALSE)\\b",
+			"match": "\\b(TRUE|FALSE|MININT|MAXINT)\\b",
 			"name": "constant.language.boolean.classicalb"
 		  },
 		  {
-			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|MININT|MAXINT|REAL|FLOAT)\\b",
-			"name": "constant.other.sets.classicalb"
+			"match": "\\b(BOOL|STRING|INT(EGER)?|NAT(URAL)?(1)?|REAL|FLOAT)\\b",
+			"name": "support.type.classicalb"
 		  }
 		]
 	  },
