@@ -258,7 +258,7 @@
 	  "constant_values": {
 		"patterns": [
 		  {
-			"match": "\\b\\d+",
+			"match": "\\b\\d+(\\.\\d+)?\\b",
 			"name": "constant.numeric.classicalb"
 		  },
 		  {
