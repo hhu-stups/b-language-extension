@@ -163,6 +163,10 @@
 	  "keyword_operators": {
 		"patterns": [
 		  {
+			"match": "\\b(first|last|tail|front|rev|seq1|seq|iseq1|iseq|perm|conc|succ|pred|ceiling|real|floor|ran|dom|id|prj1|prj2|closure1|closure|iterate|fnc|rel|bool|INTER|UNION|SIGMA|PI|POW1|POW|FIN1|FIN|union|inter|min|max|card|size)\\b",
+			"name": "support.function.classicalb"
+		  },
+		  {
 			"match": "/<<:|/<:|<<:|<:|/:|/=|/\\\\|/\\|\\\\|\\\\\\|/|<--|<->|<=>|<=|<\\+|<<\\||<\\||<-|>=|>->>|>->|>\\+>>|>\\+>|><|==|-->>|-->|->|\\+->>|\\+->|\\*\\*|\\.\\.|[-+*/~^]|;(?!\\s*;)",
 			"name": "keyword.operator.classicalb"
 		  },
@@ -179,15 +183,11 @@
 			"name": "keyword.operator.equality.classicalb"
 		  },
 		  {
-			"match": "\\b(first|last|tail|front|rev|seq|seq1|iseq|iseq1|perm|conc)\\b",
-			"name": "keyword.operator.sequence.classicalb"
-		  },
-		  {
 			"match": "\\b(tree|btree|top|const|rank|father|son|sons|subtree|arity|bin|left|right|sizet|prefix|postfix|mirror|infix)\\b",
 			"name": "keyword.operator.tree.classicalb"
 		  },
 		  {
-			"match": "\\b(mod|succ|pred|ceiling|real|floor)\\b",
+			"match": "\\bmod\\b",
 			"name": "keyword.operator.numeric.classicalb"
 		  },
 		  {
@@ -195,23 +195,15 @@
 			"name": "keyword.operator.record.classicalb"
 		  },
 		  {
-			"match": "\\b(ran|dom|id|prj1|prj2|closure1|closure|iterate|fnc|rel)\\b|%|λ",
+			"match": "%|λ",
 			"name": "keyword.operator.relation.classicalb"
-		  },
-		  {
-			"match": "\\bbool\\b",
-			"name": "keyword.operator.boolean.classicalb"
 		  },
 		  {
 			"match": "<--|:=|::",
 			"name": "keyword.operator.assignment.classicalb"
 		  },
 		  {
-			"match": "\\b(INTER|UNION|SIGMA|PI|POW|POW1|FIN|FIN1|union|inter)\\b|⋂|⋃|∑|∏",
-			"name": "keyword.operator.set.classicalb"
-		  },
-		  {
-			"match": "\\b(min|max|card|size)\\b",
+			"match": "⋂|⋃|∑|∏",
 			"name": "keyword.operator.set.classicalb"
 		  },
 		  {
